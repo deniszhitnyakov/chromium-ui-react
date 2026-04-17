@@ -1,0 +1,47 @@
+.cr-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.cr-dialog {
+  background: var(--cr-fallback-color-surface);
+  border-radius: var(--cr-radius-lg);
+  box-shadow: var(--cr-elevation-5);
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--cr-font-family);
+  color: var(--cr-primary-text-color);
+}
+
+.cr-dialog__title {
+  font-size: var(--cr-font-size-lg);
+  font-weight: var(--cr-font-weight-medium);
+  color: var(--cr-primary-text-color);
+  line-height: 24px;
+  margin: 0;
+}
+
+.cr-dialog__body {
+  font-size: var(--cr-font-size-md);
+  color: var(--cr-secondary-text-color);
+  line-height: 20px;
+}
+
+.cr-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+}

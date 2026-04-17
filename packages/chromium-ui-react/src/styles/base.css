@@ -1,0 +1,107 @@
+/* ==========================================================================
+   chromium-ui-react — Base reset & typography helpers
+   ========================================================================== */
+
+.cr-root,
+.cr-root * ,
+.cr-root *::before,
+.cr-root *::after {
+  box-sizing: border-box;
+}
+
+.cr-root {
+  font-family:              var(--cr-font-family);
+  font-size:                var(--cr-font-size-md);
+  font-weight:              var(--cr-font-weight-regular);
+  line-height:              var(--cr-line-height-normal);
+  color:                    var(--cr-primary-text-color);
+  background-color:         var(--cr-fallback-color-surface);
+  -webkit-font-smoothing:   antialiased;
+  -moz-osx-font-smoothing:  grayscale;
+}
+
+/* Typography utility classes */
+.cr-title-large {
+  font-size: var(--cr-font-size-xl);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 28px;
+  color: var(--cr-primary-text-color);
+}
+.cr-title-medium {
+  font-size: var(--cr-font-size-base);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
+}
+.cr-title-small {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
+}
+.cr-body-large {
+  font-size: var(--cr-font-size-base);
+  font-weight: var(--cr-font-weight-regular);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
+}
+.cr-body {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-regular);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
+}
+.cr-body-small {
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-regular);
+  line-height: 16px;
+  color: var(--cr-secondary-text-color);
+}
+.cr-label {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
+}
+.cr-label-small {
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 16px;
+  letter-spacing: .4px;
+  color: var(--cr-secondary-text-color);
+  text-transform: uppercase;
+}
+.cr-section-header {
+  font-size: var(--cr-font-size-xs);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 16px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--cr-secondary-text-color);
+  padding: var(--cr-space-2) var(--cr-space-4) var(--cr-space-1);
+}
+
+/* Scrollbar (opt-in via .cr-scrollbar to avoid global pollution) */
+.cr-scrollbar::-webkit-scrollbar       { width: 8px; height: 8px; }
+.cr-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.cr-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--cr-fallback-color-outline);
+  border-radius: 4px;
+  opacity: .6;
+}
+.cr-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--cr-fallback-color-on-surface-subtle);
+}
+.cr-scrollbar--thin::-webkit-scrollbar { width: 4px; }
+
+/* Utilities */
+.cr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

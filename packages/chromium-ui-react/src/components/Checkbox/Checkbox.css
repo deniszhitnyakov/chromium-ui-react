@@ -1,0 +1,90 @@
+.cr-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cr-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.cr-checkbox__box {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 2px solid var(--cr-fallback-color-outline);
+  border-radius: var(--cr-radius-xs);
+  background: transparent;
+  position: relative;
+  transition: background var(--cr-transition-duration),
+              border-color var(--cr-transition-duration);
+}
+
+.cr-checkbox__box::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 2px;
+  top: -1px;
+  width: 5px;
+  height: 9px;
+  border: solid var(--cr-fallback-color-on-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.cr-checkbox__input:checked + .cr-checkbox__box {
+  background: var(--cr-checked-color);
+  border-color: var(--cr-checked-color);
+}
+
+.cr-checkbox__input:checked + .cr-checkbox__box::after {
+  display: block;
+}
+
+.cr-checkbox__input:indeterminate + .cr-checkbox__box {
+  background: var(--cr-checked-color);
+  border-color: var(--cr-checked-color);
+}
+
+.cr-checkbox__input:indeterminate + .cr-checkbox__box::after {
+  display: block;
+  left: 2px;
+  top: 5px;
+  width: 8px;
+  height: 0;
+  border: solid var(--cr-fallback-color-on-primary);
+  border-width: 2px 0 0 0;
+  transform: none;
+}
+
+.cr-checkbox__input:focus-visible + .cr-checkbox__box {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.cr-checkbox__input:disabled + .cr-checkbox__box {
+  border-color: var(--cr-fallback-color-disabled-background);
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.cr-checkbox--disabled {
+  cursor: not-allowed;
+  color: var(--cr-fallback-color-disabled-foreground);
+}
+
+.cr-checkbox__label {
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-regular);
+  color: var(--cr-primary-text-color);
+  line-height: 20px;
+}

@@ -1,0 +1,95 @@
+.cr-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cr-toggle__track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.cr-toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cr-toggle__bar {
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  border: 1.5px solid var(--cr-fallback-color-outline);
+  background: transparent;
+  transition: background var(--cr-transition-duration),
+              border-color var(--cr-transition-duration);
+}
+
+.cr-toggle__knob {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cr-fallback-color-outline);
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  transition: transform var(--cr-transition-duration) linear,
+              width var(--cr-transition-duration),
+              height var(--cr-transition-duration),
+              background var(--cr-transition-duration);
+}
+
+.cr-toggle__input:checked ~ .cr-toggle__bar {
+  background: var(--cr-checked-color);
+  border-color: var(--cr-checked-color);
+}
+
+.cr-toggle__input:checked ~ .cr-toggle__knob {
+  background: var(--cr-fallback-color-on-primary);
+  width: 12px;
+  height: 12px;
+  transform: translate(15px, -50%);
+}
+
+.cr-toggle__track:hover .cr-toggle__knob {
+  width: 10px;
+  height: 10px;
+}
+
+.cr-toggle__input:checked:hover ~ .cr-toggle__knob,
+.cr-toggle__input:checked:active ~ .cr-toggle__knob {
+  background: var(--cr-fallback-color-primary-container);
+}
+
+.cr-toggle__input:focus-visible ~ .cr-toggle__bar {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.cr-toggle__input:disabled ~ .cr-toggle__bar {
+  background: var(--cr-fallback-color-disabled-background);
+  border-color: var(--cr-fallback-color-disabled-background);
+  cursor: not-allowed;
+}
+
+.cr-toggle__input:disabled ~ .cr-toggle__knob {
+  background: var(--cr-fallback-color-disabled-foreground);
+}
+
+.cr-toggle--disabled {
+  cursor: not-allowed;
+  color: var(--cr-fallback-color-disabled-foreground);
+}
+
+.cr-toggle__label {
+  font-size: var(--cr-font-size-md);
+  color: var(--cr-primary-text-color);
+  line-height: 20px;
+}

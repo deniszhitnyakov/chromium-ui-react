@@ -1,0 +1,63 @@
+.cr-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cr-icon-ripple-size);
+  height: var(--cr-icon-ripple-size);
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--cr-secondary-text-color);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--cr-transition-duration) linear;
+}
+
+.cr-icon-button > svg,
+.cr-icon-button > img {
+  width: var(--cr-icon-size);
+  height: var(--cr-icon-size);
+  pointer-events: none;
+}
+
+.cr-icon-button:hover:not(:disabled)  { background: var(--cr-hover-background-color); }
+.cr-icon-button:active:not(:disabled) { background: var(--cr-active-background-color); }
+
+.cr-icon-button:focus-visible {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.cr-icon-button:disabled {
+  color: var(--cr-fallback-color-disabled-foreground);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cr-icon-button--filled {
+  background: var(--cr-fallback-color-surface-variant);
+  border-radius: var(--cr-radius-md);
+}
+
+.cr-icon-button--sm {
+  width: 28px;
+  height: 28px;
+}
+.cr-icon-button--sm > svg,
+.cr-icon-button--sm > img {
+  width: 16px;
+  height: 16px;
+}
+
+.cr-icon-button--lg {
+  width: 44px;
+  height: 44px;
+}
+.cr-icon-button--lg > svg,
+.cr-icon-button--lg > img {
+  width: 24px;
+  height: 24px;
+}

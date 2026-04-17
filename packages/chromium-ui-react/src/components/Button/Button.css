@@ -1,0 +1,97 @@
+.cr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  min-width: 5.14em;
+  height: var(--cr-button-height);
+  padding: 8px 16px;
+  border-radius: var(--cr-radius-full);
+  border: 1px solid var(--cr-fallback-color-tonal-outline);
+  background: transparent;
+  color: var(--cr-fallback-color-primary);
+  font-family: var(--cr-font-family);
+  font-size: var(--cr-font-size-md);
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--cr-transition-duration) linear,
+              box-shadow var(--cr-transition-duration) linear;
+}
+
+.cr-button:hover:not(:disabled)  { background: var(--cr-hover-background-color); }
+.cr-button:active:not(:disabled) { background: var(--cr-active-background-color); }
+
+.cr-button:focus-visible {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: 2px;
+}
+
+.cr-button:disabled {
+  background: transparent;
+  border-color: var(--cr-fallback-color-disabled-background);
+  color: var(--cr-fallback-color-disabled-foreground);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cr-button--action {
+  background: var(--cr-fallback-color-primary);
+  border: none;
+  color: var(--cr-fallback-color-on-primary);
+}
+.cr-button--action:hover:not(:disabled)  { background: var(--cr-fallback-color-primary); filter: brightness(1.12); }
+.cr-button--action:active:not(:disabled) { background: var(--cr-fallback-color-primary); filter: brightness(.92); }
+.cr-button--action:disabled {
+  background: var(--cr-fallback-color-disabled-background);
+  color: var(--cr-fallback-color-disabled-foreground);
+  filter: none;
+}
+
+.cr-button--tonal {
+  background: var(--cr-fallback-color-secondary-container);
+  border: none;
+  color: var(--cr-fallback-color-on-tonal-container);
+}
+.cr-button--tonal:hover:not(:disabled) { filter: brightness(1.05); }
+.cr-button--tonal:disabled {
+  background: var(--cr-fallback-color-disabled-background);
+  color: var(--cr-fallback-color-disabled-foreground);
+  filter: none;
+}
+
+.cr-button--destructive {
+  border-color: var(--cr-fallback-color-error);
+  color: var(--cr-fallback-color-error);
+}
+.cr-button--destructive:hover:not(:disabled) {
+  background: var(--cr-fallback-color-error-container);
+}
+
+.cr-button--text {
+  border: none;
+  min-width: unset;
+  padding: 8px 12px;
+}
+
+.cr-button--sm {
+  height: 28px;
+  padding: 4px 12px;
+  font-size: var(--cr-font-size-sm);
+}
+
+.cr-button--lg {
+  height: 44px;
+  padding: 10px 24px;
+  font-size: var(--cr-font-size-base);
+}
+
+.cr-button--full { width: 100%; }

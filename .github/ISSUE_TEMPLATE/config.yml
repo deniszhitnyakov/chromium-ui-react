@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation site
+    url: https://ztnkv.github.io/chromium-ui-react/
+    about: Search the docs before opening an issue — most questions are answered there.
+  - name: One-page LLM doc
+    url: https://ztnkv.github.io/chromium-ui-react/one-page
+    about: The entire library on one page — useful for quick lookups.
+  - name: Security report
+    url: https://github.com/ztnkv/chromium-ui-react/security/advisories/new
+    about: For security vulnerabilities, please file a private advisory instead of a public issue.

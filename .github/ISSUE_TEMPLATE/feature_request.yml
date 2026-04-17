@@ -1,0 +1,58 @@
+name: Feature request
+description: Suggest a new component, prop, or behavior.
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing — please skim the [design principles in CONTRIBUTING.md](https://github.com/ztnkv/chromium-ui-react/blob/main/CONTRIBUTING.md#design-principles). This library is deliberately narrow; some ideas that make sense in a general UI toolkit don't fit here.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the user-facing problem, not the proposed solution yet.
+      placeholder: "When I render a Select with 200+ options in a browser extension popup, ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or behavior
+      description: |
+        Rough TypeScript signatures or JSX usage snippets are great.
+        If you're proposing a new component, explain how it maps to
+        Chromium's cr_elements (settings page, bookmarks, history, etc.).
+      render: tsx
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: "Using component X, writing CSS override, pulling a separate library, ..."
+
+  - type: dropdown
+    id: chromium-reference
+    attributes:
+      label: Does Chromium itself have this?
+      description: Required. This library mirrors Chromium's native UI; we don't invent components from scratch.
+      options:
+        - "Yes — in chrome://settings"
+        - "Yes — in chrome://bookmarks"
+        - "Yes — in the side panel / downloads / history"
+        - "Yes — elsewhere in WebUI (please say where)"
+        - "No — but I think it's still a fit because ..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I've searched [existing issues](https://github.com/ztnkv/chromium-ui-react/issues) and this hasn't been proposed.
+          required: true

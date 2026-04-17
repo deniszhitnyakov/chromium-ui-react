@@ -1,0 +1,90 @@
+name: Bug report
+description: Something in chromium-ui-react is broken or doesn't match what the docs promise.
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. A few seconds spent filling this out saves hours of back-and-forth.
+
+  - type: input
+    id: version
+    attributes:
+      label: chromium-ui-react version
+      description: Output of `npm ls chromium-ui-react` (e.g. `0.1.1`).
+      placeholder: "0.1.1"
+    validations:
+      required: true
+
+  - type: input
+    id: react-version
+    attributes:
+      label: React version
+      placeholder: "18.3.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      multiple: true
+      options:
+        - Browser extension (popup)
+        - Browser extension (side panel)
+        - Browser extension (options page)
+        - Next.js
+        - Remix
+        - Vite / CRA web app
+        - Electron
+        - Tauri
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: A clear description of the unexpected behavior.
+      placeholder: "I rendered <Dialog open /> and ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      placeholder: "I expected the dialog to ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: |
+        A minimal runnable example. Either a code snippet or a link to a
+        reproduction on CodeSandbox / StackBlitz / a small GitHub repo.
+        "It doesn't work" without a reproduction is hard to fix.
+      render: tsx
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console output
+      description: Any relevant errors or warnings from the browser devtools console.
+      render: text
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I've searched [existing issues](https://github.com/ztnkv/chromium-ui-react/issues) and this hasn't been reported.
+          required: true
+        - label: I'm on the latest published version of `chromium-ui-react` (or explicitly stated the version above).
+          required: true

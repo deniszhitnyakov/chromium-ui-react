@@ -1,0 +1,58 @@
+.cr-tabs {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--cr-fallback-color-surface-variant);
+  background: var(--cr-fallback-color-surface);
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.cr-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 48px;
+  padding: 0 16px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--cr-secondary-text-color);
+  font-family: var(--cr-font-family);
+  font-size: var(--cr-font-size-sm);
+  font-weight: var(--cr-font-weight-medium);
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--cr-transition-duration),
+              border-color var(--cr-transition-duration),
+              background var(--cr-transition-duration);
+}
+
+.cr-tab:hover {
+  background: var(--cr-hover-background-color);
+  color: var(--cr-primary-text-color);
+}
+
+.cr-tab[aria-selected="true"] {
+  color: var(--cr-fallback-color-primary);
+  border-bottom-color: var(--cr-fallback-color-primary);
+}
+
+.cr-tab:focus-visible {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: -2px;
+}
+
+.cr-tab:disabled {
+  color: var(--cr-fallback-color-disabled-foreground);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.cr-tab-panel { padding: var(--cr-space-4); }
+.cr-tab-panel[hidden] { display: none; }

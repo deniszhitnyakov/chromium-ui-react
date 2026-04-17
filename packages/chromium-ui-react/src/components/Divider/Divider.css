@@ -1,0 +1,23 @@
+.cr-divider {
+  display: block;
+  height: 1px;
+  background: var(--cr-fallback-color-surface-variant);
+  border: none;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.cr-divider--subtle {
+  background: var(--cr-fallback-color-outline);
+  opacity: .25;
+}
+
+.cr-divider--vertical {
+  width: 1px;
+  height: auto;
+  align-self: stretch;
+}
+
+.cr-divider--inset {
+  margin-inline-start: 56px;
+}

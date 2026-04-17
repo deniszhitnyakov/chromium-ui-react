@@ -1,0 +1,25 @@
+.cr-link {
+  color: var(--cr-link-color);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.cr-link:hover { opacity: .8; }
+
+.cr-link:focus-visible {
+  outline: 2px solid var(--cr-focus-outline-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.cr-link--subtle {
+  color: var(--cr-secondary-text-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cr-link--subtle:hover { color: var(--cr-primary-text-color); opacity: 1; }

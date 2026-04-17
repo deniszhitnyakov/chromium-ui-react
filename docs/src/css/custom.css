@@ -1,0 +1,27 @@
+/* Load chromium-ui-react tokens and component styles so that live-code
+ * previews on component pages render with the real library styling. */
+@import 'chromium-ui-react/styles.css';
+
+:root {
+  --ifm-color-primary: #1a73e8;
+  --ifm-color-primary-dark: #1765cc;
+  --ifm-color-primary-darker: #175fc0;
+  --ifm-color-primary-darkest: #134e9e;
+  --ifm-color-primary-light: #3083ec;
+  --ifm-color-primary-lighter: #3c8bed;
+  --ifm-color-primary-lightest: #5a9df0;
+  --ifm-code-font-size: 13px;
+  --ifm-font-family-base: Roboto, 'Google Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #8ab4f8;
+  --ifm-color-primary-dark: #669df6;
+  --ifm-color-primary-darker: #4285f4;
+  --ifm-color-primary-darkest: #1a73e8;
+  --ifm-color-primary-light: #aecbfa;
+  --ifm-color-primary-lighter: #d2e3fc;
+  --ifm-color-primary-lightest: #e8f0fe;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+}

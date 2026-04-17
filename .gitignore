@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.docusaurus/
+.cache-loader/
+docs/static/llm/
+.DS_Store
+*.log
+coverage/
+.env
+.env.local
+.idea/
+.vscode/
+*.tsbuildinfo

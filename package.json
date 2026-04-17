@@ -1,0 +1,49 @@
+{
+  "name": "chromium-ui-react-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Monorepo for chromium-ui-react — a Chromium-native React component library for browser extensions and Google-adjacent web UIs — plus its Docusaurus documentation site.",
+  "workspaces": [
+    "packages/*",
+    "docs"
+  ],
+  "scripts": {
+    "dev:lib": "npm --workspace chromium-ui-react run dev",
+    "build:lib": "npm --workspace chromium-ui-react run build",
+    "dev:docs": "npm --workspace docs run start",
+    "build:docs": "npm --workspace docs run build",
+    "typecheck": "npm --workspaces --if-present run typecheck",
+    "dev": "npm-run-all --parallel dev:lib dev:docs"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "overrides": {
+    "webpackbar": "7.0.0"
+  },
+  "author": {
+    "name": "Denis Zhitnyakov",
+    "email": "denis.zhitnyakov@gmail.com",
+    "url": "https://github.com/ztnkv"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/ztnkv/chromium-ui-react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ztnkv/chromium-ui-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ztnkv/chromium-ui-react/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "react",
+    "chromium",
+    "chrome-extension",
+    "component-library",
+    "design-system",
+    "monorepo"
+  ]
+}

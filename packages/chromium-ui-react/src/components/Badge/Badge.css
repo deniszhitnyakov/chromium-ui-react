@@ -1,0 +1,21 @@
+.cr-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background: var(--cr-fallback-color-primary);
+  color: var(--cr-fallback-color-on-primary);
+  font-family: var(--cr-font-family);
+  font-size: 11px;
+  font-weight: var(--cr-font-weight-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.cr-badge--error   { background: var(--cr-fallback-color-error); color: var(--cr-fallback-color-on-error); }
+.cr-badge--success { background: var(--google-green-600); color: #fff; }
+.cr-badge--neutral { background: var(--cr-fallback-color-surface-variant); color: var(--cr-secondary-text-color); }
+.cr-badge--warning { background: var(--google-yellow-400); color: var(--google-grey-900); }
