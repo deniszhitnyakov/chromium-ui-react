@@ -103,7 +103,7 @@ import {
     <PanelView id="about">
       <PanelHeader title="About" back />
       <div style={{ padding: 16 }}>
-        <p>Version 0.2.0. Built with <code>chromium-ui-react</code>.</p>
+        <p>Version 0.2.1. Built with <code>chromium-ui-react</code>.</p>
       </div>
     </PanelView>
   </PanelStack>
