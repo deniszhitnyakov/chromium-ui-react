@@ -9,6 +9,8 @@
 
 Built first and foremost for **Chromium extension developers** who want their popups, side panels, and options pages to feel like first-party Google surfaces rather than generic React apps. Works anywhere React works — including Electron, Tauri, Next.js, Remix, Astro, and Docusaurus.
 
+![Chromium UI React showcase — toolbar, sidebar, card with tabs and form, progress, activity list, buttons, chips, badges, and toasts.](https://raw.githubusercontent.com/ztnkv/chromium-ui-react/main/docs/static/img/showcase-light.v2.png)
+
 ## Features
 
 - 21 accessible React components (Button, Input, Toggle, Dialog, Tabs, Menu, Toast, Card, ...)
