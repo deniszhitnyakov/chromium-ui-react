@@ -34,6 +34,7 @@ const sidebars: SidebarsConfig = {
         'components/link',
         'components/list',
         'components/empty-state',
+        'components/panel-stack',
       ],
     },
   ],

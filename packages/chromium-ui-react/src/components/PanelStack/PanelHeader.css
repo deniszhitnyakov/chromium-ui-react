@@ -1,0 +1,32 @@
+.cr-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  min-height: 52px;
+  background: var(--cr-fallback-color-surface);
+  border-bottom: 1px solid var(--cr-fallback-color-surface-variant);
+}
+
+.cr-panel-header__back {
+  margin-right: 4px;
+}
+
+.cr-panel-header__title {
+  flex: 1;
+  min-width: 0;
+  font-weight: var(--cr-font-weight-medium);
+  font-size: var(--cr-font-size-base);
+  line-height: 1.3;
+  color: var(--cr-fallback-color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cr-panel-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}

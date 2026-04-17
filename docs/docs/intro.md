@@ -41,7 +41,7 @@ A live (non-React) HTML version of the same layout is served at [`/showcase/inde
 
 ## What's inside
 
-- **21 accessible React components** — buttons, inputs, toggles, dialogs, toasts, tabs, menus, etc.
+- **22 accessible React component families** — buttons, inputs, toggles, dialogs, toasts, tabs, menus, and a drill-in `PanelStack` for native Chromium side-panel navigation.
 - **Design tokens** — Google color palette, semantic colors, spacing, typography, elevation — all exposed as CSS custom properties that mirror Chromium's `cr_shared_vars.css`.
 - **Automatic dark mode** — components switch via `prefers-color-scheme`; no provider or setup needed.
 - **Zero-runtime styles** — plain CSS, no CSS-in-JS bundle, no emotion/styled-components runtime.

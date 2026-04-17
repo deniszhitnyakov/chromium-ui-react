@@ -50,7 +50,7 @@ It's built first and foremost for **Chromium extension developers**, but nothing
 
 ## Highlights
 
-- **21 accessible React components** — Button, Input, Toggle, Dialog, Tabs, Menu, Toast, and more
+- **22 accessible React component families** — Button, Input, Toggle, Dialog, Tabs, Menu, Toast, and a drill-in `PanelStack` for native Chromium side-panel navigation
 - **Chromium-authentic design tokens** — Google color palette (blue / green / red / yellow / grey), 4 / 8 / 12 / 16 px spacing scale, Roboto typography, `cr_shared_vars.css`-aligned elevation
 - **Automatic dark mode** via `prefers-color-scheme` — no provider, no context, no setup
 - **Zero-runtime styling** — plain CSS, no CSS-in-JS bundle bloat
@@ -128,7 +128,7 @@ npm run build:docs          # build the static docs site to docs/build
 
 Every documentation page has a **Copy Markdown** button in its header. Clicking it copies the raw source markdown for that page — perfect for pasting into ChatGPT, Claude, Cursor, or any coding agent that needs a focused reference for the component you're using.
 
-In addition to the per-component pages, there's a dedicated **[One-page LLM doc](https://ztnkv.github.io/chromium-ui-react/one-page)** that fits the entire library (tokens, all 21 components, composition examples) into a single copy-pasteable document. Give it to an agent once and they can generate the rest of your extension UI from there.
+In addition to the per-component pages, there's a dedicated **[One-page LLM doc](https://ztnkv.github.io/chromium-ui-react/one-page)** that fits the entire library (tokens, every component, composition examples) into a single copy-pasteable document. Give it to an agent once and they can generate the rest of your extension UI from there.
 
 **Live site: [ztnkv.github.io/chromium-ui-react](https://ztnkv.github.io/chromium-ui-react/)**
 

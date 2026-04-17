@@ -82,6 +82,7 @@ import {
   Spinner, Progress,
   Toast, Dialog, Tooltip, Link,
   List, ListItem, EmptyState,
+  PanelStack, PanelView, PanelHeader, PanelRow, usePanelStack,
 } from 'chromium-ui-react';
 ```
 
@@ -448,6 +449,39 @@ Centered placeholder for empty lists / zero results.
   action={<Button variant="action">Add bookmark</Button>}
 />
 ```
+
+---
+
+### PanelStack / PanelView / PanelHeader / PanelRow
+
+Drill-in navigation inside a side panel. Native Chromium pattern — click a row, a sub-page slides in from the right; a back-arrow slides it back. The only **composite** group in the library; everything else is a primitive.
+
+**PanelStack props:** `defaultView?`, `value?` (controlled), `onChange?(view)`, `transitionDuration?: number` (ms, default `240`).
+
+**PanelView props:** `id: string` (required).
+
+**PanelHeader props:** `title?`, `back?: boolean`, `onBack?`, `leading?`, `actions?`.
+
+**PanelRow props:** `primary?`, `secondary?`, `icon?`, `end?`, `navigateTo?: string`, `chevron?`, `interactive?`, `disabled?`.
+
+**Hook:** `usePanelStack()` → `{ current, stack, push(id), pop(), reset(id) }`.
+
+```tsx
+<PanelStack defaultView="main">
+  <PanelView id="main">
+    <PanelHeader title="Extension panel" />
+    <PanelRow primary="Source" secondary="Current tab" end={<Badge variant="success">ready</Badge>} />
+    <PanelRow primary="Include nested items" end={<Toggle defaultChecked />} />
+    <PanelRow primary="Advanced options" secondary="Output, filters, columns" navigateTo="advanced" />
+  </PanelView>
+  <PanelView id="advanced">
+    <PanelHeader title="Advanced options" back />
+    {/* form, radios, checkboxes... */}
+  </PanelView>
+</PanelStack>
+```
+
+Give it an explicit `height` (or put it inside a `min-height: 0` flex parent) — otherwise views collapse to zero.
 
 ---
 
