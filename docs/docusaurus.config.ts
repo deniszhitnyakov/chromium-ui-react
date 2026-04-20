@@ -43,7 +43,6 @@ const config: Config = {
         },
         gtag: {
           trackingID: 'G-B7N5Q2MHXK',
-          anonymizeIP: true,
         },
       } satisfies Preset.Options,
     ],
