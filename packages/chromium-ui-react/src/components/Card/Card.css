@@ -7,7 +7,7 @@
 
 .cr-card--outlined {
   box-shadow: none;
-  border: 1px solid var(--cr-fallback-color-outline);
+  border: 1px solid var(--cr-fallback-color-surface-variant);
 }
 
 .cr-card--filled {
