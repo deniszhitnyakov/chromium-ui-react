@@ -42,6 +42,7 @@ Every Chromium-native surface has the same shell:
 
 - Use `<Toolbar title="..." />` at the top. **Never** replace it with a custom `<h1>` in a header div.
 - Content below scrolls. Toolbar stays fixed.
+- **The toolbar `actions` slot is empty by default.** Do not park a settings gear, a "+", or any other `IconButton` next to the title — see [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). A settings entry point is a drill-in `PanelRow` inside the content, not an icon in the header.
 - For popups and side panels: use `display: flex; flex-direction: column; height: 100vh` so the toolbar is pinned, content scrolls, footer pins.
 - For options pages: content max-width is **680px**, centered. Do not stretch settings to the full viewport.
 
@@ -130,6 +131,7 @@ Before you declare a layout complete, run through this:
 - [ ] Is any `Card` flat (no shadow) unless it is a hover state?
 - [ ] Is the focus ring the default one (no custom `:focus-visible` override)?
 - [ ] Did you avoid adding icons to every row?
+- [ ] **Is the toolbar `actions` slot empty, or at most a single far-right `⋮` with content between it and the title?** No settings gear, no "+", no typography icon glued to the heading.
 - [ ] If there is navigation, is it the right primitive (`PanelStack` / `Menu` / `Tabs`)?
 - [ ] No gradient, no illustration, no marketing copy, no emoji in labels?
 
@@ -145,5 +147,6 @@ When an LLM-produced layout looks wrong, it is almost always one of:
 4. **Tabs used for navigation.** Replace with `Menu` or `PanelStack`.
 5. **Colored page background.** Remove; use `--cr-fallback-color-surface`.
 6. **Oversized title.** Reduce to `--cr-font-size-lg` in `<Toolbar>`.
+7. **Settings gear (or any IconButton) in the header.** Demote to a `PanelRow` inside the content. See [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
-These six fixes resolve the majority of "doesn't look like Chromium" feedback.
+These seven fixes resolve the majority of "doesn't look like Chromium" feedback.

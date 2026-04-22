@@ -25,10 +25,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar
-    title="Quick capture"
-    actions={<IconButton aria-label="Options" icon={<span>⚙</span>} />}
-  />
+  <Toolbar title="Quick capture" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <Card variant="filled" style={{ margin: '16px', borderRadius: 8 }}>
       <CardBody style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -87,6 +84,16 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
         <Checkbox defaultChecked label="Page metadata" />
         <Checkbox label="Images" />
       </div>
+      <div style={{ height: 16 }} />
+      <List>
+        <Divider subtle />
+        <ListItem
+          primary="Options"
+          secondary="Default format, shortcut, destinations"
+          interactive
+          end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+        />
+      </List>
     </div>
   </div>
   <div style={{
@@ -105,7 +112,8 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
 ## What to copy from this
 
 - **Dimensions.** 380×520. Chrome enforces a max popup size of 800×600; stay well under.
-- **Toolbar.** Standard 56px `<Toolbar>`. Title is the extension name. One `IconButton` on the right leading to a full options page.
+- **Toolbar.** Standard 56px `<Toolbar>`. Title is the extension name — **nothing else in the actions slot.** No gear, no "+", no `⋮`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Options entry point.** A drill-in `ListItem` (or `PanelRow`) at the bottom of the popup, leading to the full options page. Not an `IconButton` in the header.
 - **Content.** One column, no sidebar. Mix of card-wrapped context (the current-page info) and ungrouped controls (radios, checkboxes).
 - **Current-page card.** Use `Card variant="filled"` to visually group the "what you are about to act on" context without adding a shadow that would compete with the popup's own border.
 - **Group labels.** 11px all-caps — the pattern is acceptable in popups because there is no `<h2>` hierarchy competing.
@@ -208,11 +216,8 @@ When the popup is purely informational (e.g., ad blocker summarizing what was bl
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar
-    title="Ad blocker"
-    actions={<IconButton aria-label="Settings" icon={<span>⚙</span>} />}
-  />
-  <div style={{ flex: 1, padding: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
+  <Toolbar title="Ad blocker" />
+  <div style={{ flex: 1, overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
     <Card variant="filled">
       <CardBody>
         <div style={{ fontSize: 24, fontWeight: 400 }}>47</div>
@@ -227,6 +232,14 @@ When the popup is purely informational (e.g., ad blocker summarizing what was bl
         <ListItem primary="All other sites" end={<Toggle defaultChecked />} />
       </List>
     </div>
+    <List>
+      <ListItem
+        primary="Settings"
+        secondary="Filter lists, exceptions, advanced"
+        interactive
+        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+      />
+    </List>
   </div>
 </div>
 ```
@@ -241,11 +254,12 @@ When the popup is purely informational (e.g., ad blocker summarizing what was bl
 - **Three-column layouts.** At 380px there is no room.
 - **Scroll in both directions.** Vertical only; never horizontal.
 - **Tiny text to fit more.** If content does not fit, drill into a subpage with `PanelStack`.
-- **Full-tab options link as a giant button.** It is an `IconButton aria-label="Options"` in the toolbar actions slot.
+- **Full-tab options link as a giant button.** It is a drill-in `ListItem` or `PanelRow` at the bottom of the popup, labelled `Options` / `Settings`, with a chevron.
+- **Gear icon next to the title.** Do not place an `IconButton` in the toolbar actions slot for the options entry — it is the most common reason a popup stops reading as Chromium-native. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
 ## Options page
 
-Most extensions also have a full-tab options page reached via the gear `IconButton`. That page follows the [Settings page pattern](./settings-page.md). Between the popup and the options page, split content so that:
+Most extensions also have a full-tab options page reached via the `Options` / `Settings` drill-in row at the bottom of the popup. That page follows the [Settings page pattern](./settings-page.md). Between the popup and the options page, split content so that:
 
 - **Popup** has the feature's primary action and the three most-changed settings.
 - **Options** has every setting, grouped into sections.

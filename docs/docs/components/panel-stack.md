@@ -137,7 +137,11 @@ All `<section>` attributes forwarded.
 | `back` | `boolean` | Render a back-arrow IconButton. By default it calls `usePanelStack().pop()`. |
 | `onBack` | `() => void` | Override the back-arrow behavior |
 | `leading` | `ReactNode` | Custom leading slot (overrides the back button) |
-| `actions` | `ReactNode` | Right-aligned action slot (IconButtons etc) |
+| `actions` | `ReactNode` | Right-aligned action slot. **Default to leaving this empty** — see warning below. |
+
+:::warning `actions` defaults to empty
+On a Chromium-native side panel, the `PanelHeader` is **title-only**. Do not hang a settings gear, a "+", or any other `IconButton` off the `actions` slot next to the title — that is [Styleguide Anti-pattern #16](/styleguide/anti-patterns#16-iconbutton-glued-to-a-title-in-the-header). Context-specific actions belong in the content area: per-row `IconButton`s for row operations, a footer `Button` for add-style verbs, or a drill-in `PanelRow` for settings. The `actions` prop exists because there are narrow edge cases (selection-mode swap, bulk operation on a manager) — the default stays empty.
+:::
 
 ## PanelRow props
 

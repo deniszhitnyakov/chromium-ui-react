@@ -158,14 +158,16 @@ Cross-referenced against the [Anti-patterns](../anti-patterns.md) page:
 
 ## Responsive behavior
 
-Below a ~980px viewport (Chromium's `narrow-threshold`), the sidebar should collapse into a hamburger button in the toolbar. This library does not ship that behavior out of the box — you gate on `window.innerWidth` or a media query, and render either the sidebar or a hamburger that opens a drawer:
+Below a ~980px viewport (Chromium's `narrow-threshold`), the sidebar should collapse into a hamburger button on the **left** of the toolbar. This library does not ship that behavior out of the box — you gate on `window.innerWidth` or a media query, and render either the sidebar or a hamburger that opens a drawer. Place the hamburger before the title (it is a navigation affordance, not a trailing action — this is not the IconButton-next-to-title shape described in [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header)):
 
 ```tsx
 const narrow = useMediaQuery('(max-width: 980px)');
 
 <Toolbar
-  title="Settings"
-  actions={narrow && <IconButton aria-label="Menu" icon={<MenuIcon />} onClick={openDrawer} />}
+  title={<>
+    {narrow && <IconButton aria-label="Menu" icon={<MenuIcon />} onClick={openDrawer} style={{ marginRight: 8 }} />}
+    <span>Settings</span>
+  </>}
 >
   {!narrow && <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />}
 </Toolbar>

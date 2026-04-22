@@ -30,12 +30,7 @@ Use this pattern whenever you have:
 }}>
   <Toolbar
     title="Bookmarks"
-    actions={
-      <>
-        <IconButton aria-label="Add bookmark" icon={<span>＋</span>} />
-        <IconButton aria-label="More" icon={<span>⋮</span>} />
-      </>
-    }
+    actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
   >
     <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 400 }} />
   </Toolbar>
@@ -108,7 +103,7 @@ Use this pattern whenever you have:
 
 ## What to copy from this
 
-- **Toolbar.** 56px, title on the left, `SearchInput` in the middle (`maxWidth: 400`), `IconButton`s on the right. One "add" + one "more" is the canonical pair for a manager.
+- **Toolbar.** 56px, title on the left, `SearchInput` in the middle (`maxWidth: 400`), a single `⋮` overflow `IconButton` at the far right. **The `SearchInput` sits between the title and the icon** — the icon never butts up against the title. "Add bookmark" and other one-off actions live inside that overflow `Menu`, not as their own toolbar icons. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Tree pane.** 240px wide, 1px right border separating from main. No shadow, no background tint. `Menu role="tree"` is the right semantic.
 - **Main pane.** Scrollable, 24px padding, content column max-width 960px centered. This is wider than the settings page's 680px — because manager rows need horizontal room for URL + metadata.
 - **Row structure.** 16px favicon, 40–48px row height, primary is the title, secondary is the URL (short domain for the un-selected state, full URL when selected in Chromium). `IconButton` on the right for per-row actions.
@@ -178,7 +173,7 @@ When items are selected, swap the toolbar into "selection mode":
 - Close button (`✕`) on the left exits selection mode.
 - Actions are the bulk operations.
 
-This is the `chrome://history` selection pattern. Do not add a second strip below the toolbar — replace, don't stack.
+This is the `chrome://history` selection pattern. Selection mode is the *only* case where multiple `IconButton`s in the toolbar `actions` slot are correct — the toolbar has swapped modes, the title is no longer the page title, and the actions are the verbs of the current selection. In a persistent (non-selection) toolbar, see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). Do not add a second strip below the toolbar — replace, don't stack.
 
 ## Sorting and filtering
 

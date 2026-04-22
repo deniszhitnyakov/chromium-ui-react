@@ -157,6 +157,79 @@ A settings card has a **subtle elevation-2 shadow** — `<Card variant="elevated
 
 **Right.** The popup opens directly on the feature. Chromium-native popups are immediately functional. Onboarding belongs in a full-tab options page, not the 360×520 popup.
 
+## 16. IconButton glued to a title in the header
+
+**Wrong.** A settings gear, a "+", or any other `IconButton` placed immediately to the right of a page/panel title, on the same row, in the header.
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+}}>
+  <Toolbar
+    title="Google Maps Scraper"
+    actions={<IconButton aria-label="Settings" icon={<span>⚙</span>} />}
+  />
+  <div style={{ padding: 16, color: 'var(--cr-fallback-color-on-surface-subtle)', fontSize: 13 }}>
+    (panel body)
+  </div>
+</div>
+```
+
+Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrome://bookmarks` side-by-side — none of them put a lone icon button next to the page title. The moment you add one, the surface stops reading as Chromium-native and starts reading as a generic webapp. On narrow surfaces (popups, side panels) it is worse: the icon eats width that is already scarce, and the user's eye keeps tripping over an affordance it did not ask for.
+
+**Right (drill-in row).** Demote the icon to a row the user can navigate to — a `Settings` drill-in at the bottom of the main panel, or a row in the main list.
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+  display: 'flex',
+  flexDirection: 'column',
+}}>
+  <Toolbar title="Google Maps Scraper" />
+  <div style={{ flex: 1 }}>
+    <PanelRow primary="Source" secondary="www.google.com · ready" end={<Badge variant="success">ready</Badge>} />
+    <Divider subtle />
+    <PanelRow primary="Run controls" secondary="No run yet" end={<Button variant="action" size="sm">Start</Button>} />
+    <Divider subtle />
+    <PanelRow primary="Single place" secondary="Quick QA from the open place card" end={<Button size="sm">Extract</Button>} />
+    <Divider subtle />
+    <PanelRow primary="Settings" secondary="Run defaults, output format, filters" navigateTo="settings" />
+  </div>
+</div>
+```
+
+**Right (overflow menu at the far corner).** If the surface genuinely has 3+ one-off actions (a bookmarks / history manager), use a single `⋮` `IconButton` placed at the far right of the toolbar — **with the `SearchInput` or content between it and the title**, never butting up against the title. That matches the `chrome://bookmarks` shape.
+
+```tsx live
+<Toolbar
+  title="Bookmarks"
+  actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+  style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
+>
+  <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
+</Toolbar>
+```
+
+**Rule.** On a Chromium-native surface, the `actions` slot of a `<Toolbar>` or `<PanelHeader>` is **not** a shelf for icon-button shortcuts next to the title. The default state is empty. You may add:
+
+- **One** single `⋮` overflow `IconButton` at the far corner of a *full-page manager's* toolbar, with other content (usually a `SearchInput`) between it and the title — matching `chrome://bookmarks`.
+- A `Button variant="text"` like "Clear all" when the whole surface has exactly one bulk operation.
+- The toolbar's **bulk-selection mode** may host the selection verbs (Delete / Move) as `IconButton`s — that is a *mode swap*, not a persistent header, and the title is replaced by the selection count (`"5 selected"`).
+
+Everything else is a drill-in row. If it feels like it deserves an icon in the header, it probably deserves a proper `PanelRow` instead.
+
+### Narrow-purpose exception
+
+Chromium does put a small feedback `IconButton` next to some section labels in `chrome://settings/performance`. That is the one in-Chromium precedent for an icon-adjacent-to-heading pattern, and it is scoped narrowly: a single icon, a single purpose (send feedback), sitting beside a *section* label (not the page title). If you reproduce *that* exact shape, you are inside the precedent. Anything broader is not.
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.

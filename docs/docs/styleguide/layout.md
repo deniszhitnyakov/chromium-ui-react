@@ -50,7 +50,7 @@ Opened from the toolbar icon. Small, fixed size.
   overflow: 'hidden',
   background: 'var(--cr-fallback-color-surface)',
 }}>
-  <Toolbar title="Quick capture" actions={<IconButton aria-label="Settings" icon={<span>⚙</span>} />} />
+  <Toolbar title="Quick capture" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <List>
       <ListItem primary="Save page" secondary="Current tab" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
@@ -58,6 +58,8 @@ Opened from the toolbar icon. Small, fixed size.
       <ListItem primary="Save selection" secondary="Highlighted text only" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
       <Divider subtle />
       <ListItem primary="Save screenshot" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
+      <Divider subtle />
+      <ListItem primary="Settings" secondary="Where to save, format, shortcut" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
     </List>
   </div>
   <div style={{
@@ -72,6 +74,8 @@ Opened from the toolbar icon. Small, fixed size.
   </div>
 </div>
 ```
+
+Note the `Settings` row at the bottom of the list, not a gear `IconButton` in the header — see [Anti-patterns — IconButton glued to a title](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
 ### 2. Side panel
 
@@ -89,15 +93,15 @@ Layout pattern:
 
 ```tsx
 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-  <Toolbar title="Reading list" actions={...} />
+  <Toolbar title="Reading list" />
   <PanelStack style={{ flex: 1, minHeight: 0 }}>
-    <PanelView id="main">{/* ... */}</PanelView>
+    <PanelView id="main">{/* rows, ending with a Settings drill-in row */}</PanelView>
     <PanelView id="detail">{/* ... */}</PanelView>
   </PanelStack>
 </div>
 ```
 
-Do not nest a sidebar inside a side panel — it is already a narrow column. Use drill-in navigation.
+Do not nest a sidebar inside a side panel — it is already a narrow column. Use drill-in navigation. Do not hang icon buttons off the title; if you need a settings entry point, it is a `PanelRow` at the bottom of the main view, not a gear in the header.
 
 ### 3. Full-tab options page
 
@@ -143,15 +147,12 @@ Banner, floating button, or overlay injected by a content script into a host pag
 - **Height is 56px** — determined by the component. Do not wrap it in a container that forces a different height.
 - **Title is left-aligned.** If your surface is narrow (popup/side panel), no icon on the left. If wide (options page), optionally a hamburger or back arrow on the left.
 - **Search goes in the middle** (children slot) — usually a `<SearchInput>` that fills available width.
-- **Actions are right-aligned** (`actions` prop) — `IconButton`s or a single `Button variant="text"` for "Clear all" style cleanups.
+- **The `actions` slot defaults to empty.** `chrome://settings`, `chrome://history`, and a plain popup have *nothing* in this slot. The two narrow cases where you may use it: a single `⋮` overflow `IconButton` at the far right of a full-page manager's toolbar (with the `SearchInput` between it and the title — the `chrome://bookmarks` shape), or a single `Button variant="text"` like "Clear all" when the whole surface has exactly one bulk operation. Do **not** park icon-button shortcuts next to the title — see [Anti-patterns — IconButton glued to a title](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
 ```tsx live
 <Toolbar
   title="Bookmarks"
-  actions={<>
-    <IconButton aria-label="Add folder" icon={<span>＋</span>} />
-    <IconButton aria-label="More" icon={<span>⋮</span>} />
-  </>}
+  actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
@@ -160,6 +161,7 @@ Banner, floating button, or overlay injected by a content script into a host pag
 
 Do **not** put:
 
+- Icon-button shortcuts (settings gear, "+ add", typography) immediately next to the title — demote them to drill-in rows inside the content area. See [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - A secondary title below the primary title (use `tall` variant with composed nodes — see [Toolbar](/components/toolbar) — but keep it rare).
 - A tab bar inside the toolbar — tabs go *below* it, as a separate strip.
 - The app's logo — Chromium surfaces do not have logos. The title text is enough.

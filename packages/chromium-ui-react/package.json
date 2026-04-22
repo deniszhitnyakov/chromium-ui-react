@@ -1,6 +1,6 @@
 {
   "name": "chromium-ui-react",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Chromium-native React component library. Build browser extensions, Electron apps, and Google-adjacent web UIs that look and feel like first-party Chromium surfaces.",
   "type": "module",
   "main": "./dist/chromium-ui-react.cjs",

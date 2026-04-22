@@ -27,10 +27,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar
-    title="Link Collector"
-    actions={<IconButton aria-label="Options" icon={<span>⚙</span>} />}
-  />
+  <Toolbar title="Link Collector" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <Card variant="filled" style={{ margin: 16, borderRadius: 8 }}>
       <CardBody style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -101,6 +98,16 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
         interactive
       />
     </List>
+    <div style={{ height: 16 }} />
+    <List>
+      <Divider subtle />
+      <ListItem
+        primary="Options"
+        secondary="Collections, tags, sync, shortcuts"
+        interactive
+        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+      />
+    </List>
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
@@ -126,7 +133,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
 
 ## The options page
 
-The full-tab options page (opened from the gear icon) follows the [Settings page pattern](../patterns/settings-page.md).
+The full-tab options page (opened from the `Options` drill-in row at the bottom of the popup) follows the [Settings page pattern](../patterns/settings-page.md).
 
 ```tsx live
 <div style={{

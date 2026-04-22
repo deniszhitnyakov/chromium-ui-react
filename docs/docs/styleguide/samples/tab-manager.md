@@ -26,13 +26,7 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
 }}>
   <Toolbar
     title="Tab Manager"
-    actions={
-      <>
-        <IconButton aria-label="New group" icon={<span>＋</span>} />
-        <IconButton aria-label="Sort" icon={<span>⇅</span>} />
-        <IconButton aria-label="More" icon={<span>⋮</span>} />
-      </>
-    }
+    actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
   >
     <SearchInput placeholder="Search tabs by title or URL" style={{ flex: 1, maxWidth: 400 }} />
   </Toolbar>
@@ -169,6 +163,7 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
 - **Two-pane shell** from the Bookmarks manager pattern: 240px tree on the left, scrollable main column on the right with a 960px max-width — wider than settings (680px) because tab rows need horizontal room for URL + metadata.
 - **Tree pane is a flat `Menu role="tree"`**, no card, just a 1px right border. `MenuLabel` separates "Windows" from "Groups".
 - **Colored dots next to group names** are the only saturated-color spots in the UI — they mirror Chromium's tab-group chips. Use the `--cr-fallback-color-primary` token for the "active group" and explicit hex for other group colors (Chromium's group colors are fixed, not theme tokens).
+- **Toolbar actions slot has a single `⋮` overflow `IconButton` at the far corner** — with the `SearchInput` between it and the title, matching `chrome://bookmarks`. "New group", "Sort", and other one-off verbs live inside that overflow `Menu`. Do **not** line up three `IconButton`s next to the title — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Groups rendered as sections** in the main pane. Each section has an 11px all-caps header (count included) above an elevated card. This is the one place 11px all-caps is acceptable inside a manager: *per-group labeling* — analogous to the "Unread" / "Pages you've read" labels in the reading-list side panel.
 - **One overflow IconButton per row.** "Close tab" is the only always-visible action because closing is the manager's primary per-row verb (parallel to "mark as read" in reading list). Moving to group, pinning, muting — all go in a per-row overflow `⋮` in the real product.
 - **No per-row checkbox.** Selection is click-with-shift/cmd, just like `chrome://bookmarks` and `chrome://history`.
@@ -203,6 +198,7 @@ Click-and-drag or shift-click to select multiple tabs. The toolbar swaps into se
 - **Title becomes the count.** Not "5 tabs selected" — just "5 selected", matching Chromium.
 - **Exit control is a leading `✕` `IconButton`**, not a text button.
 - **Max four icon actions** in the actions slot. If you need more, the fifth goes in `⋮ More`.
+- **Why the icon cluster is OK here.** Selection mode is a full *mode swap*: the title is the selection count, not the page title, and the icons are the verbs of the current selection. That is the one exemption to [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). In the persistent (non-selection) toolbar above, the actions slot stays single-`⋮`.
 
 ## Bulk close confirmation
 
@@ -241,7 +237,7 @@ render(<BulkCloseDemo />);
 
 ## Sort menu
 
-Three sort modes fit in an overflow `Menu` behind the toolbar's sort `IconButton`:
+Three sort modes are nested inside the single `⋮` overflow `Menu` — not hung off a dedicated sort `IconButton`:
 
 ```tsx live
 <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -286,13 +282,13 @@ No action button — there is nothing to do here yet. The empty state is purely 
 ## What makes this Chromium-native
 
 - ✅ Two-pane manager shell (tree + main), exactly the `chrome://bookmarks` shape.
-- ✅ 56px `<Toolbar>` with title + `SearchInput` (maxWidth 400) + 2–3 `IconButton`s.
+- ✅ 56px `<Toolbar>` with title + `SearchInput` (maxWidth 400) + a single `⋮` overflow `IconButton` at the far right.
 - ✅ Tree pane flat (no card), 240px, 1px right border.
 - ✅ Main column centered, 960px max-width, 24px outer padding.
 - ✅ Row actions are `IconButton` only; multi-action rows use `⋮ More`.
 - ✅ Selection mode swaps the toolbar instead of stacking a second strip.
 - ✅ Destructive confirmations have a count in the title and recovery info in the body.
-- ✅ Sort behind one `IconButton` + `Menu`, not three buttons in the toolbar.
+- ✅ New group, Sort, and other one-off verbs live inside the single `⋮` `Menu`, not as separate toolbar icons.
 - ✅ No tabs at the top, no accordion, no per-row checkbox.
 
 ## What to reuse

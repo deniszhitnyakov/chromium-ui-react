@@ -27,15 +27,10 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
     height: 48,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0 8px 0 16px',
+    padding: '0 16px',
     borderBottom: '1px solid var(--cr-fallback-color-outline)',
   }}>
     <div style={{ fontSize: 14, fontWeight: 500 }}>Reading list</div>
-    <div style={{ display: 'flex', gap: 4 }}>
-      <IconButton aria-label="Add current tab" icon={<span style={{ fontSize: 16 }}>＋</span>} />
-      <IconButton aria-label="More" icon={<span style={{ fontSize: 16 }}>⋮</span>} />
-    </div>
   </div>
   <PanelStack defaultView="main" style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="main">
@@ -110,10 +105,10 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
 
 - **Width.** 360–400px fixed. Chromium's side panel is user-resizable; your code does not need to be.
 - **Header height.** **48px**, not 56px. Chromium uses `--cr-sidepanel-header-height: 48px` — the side panel header is one notch shorter than the main toolbar.
-- **Header title.** 14px weight-500. Placed next to `padding-left: 16px`. Actions (`IconButton`s) are right-aligned with 8px right padding on the header.
+- **Header title.** 14px weight-500, `padding-left: 16px`. Nothing else in the header — no gear, no "+", no `⋮`. Row-level actions live on the rows; a single "Add current tab" control (if needed) is an `EmptyState` / footer `Button`, not a header icon. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Search in the panel.** Placed immediately below the header, in a small horizontal gutter. `--cr-space-2` (8px) vertical, `--cr-space-4` (16px) horizontal.
 - **Group labels.** 11px all-caps, weight-500, letter-spacing 0.06em, `on-surface-subtle`. Side panels *do* use this pattern (unlike full settings pages, where `<h2>` is the norm). Padding `16px 16px 8px`.
-- **Rows.** Standard `ListItem` with primary + secondary + trailing `IconButton`. 48px or 64px min-height depending on sublabel presence.
+- **Rows.** Standard `ListItem` with primary + secondary + trailing `IconButton`. 48px or 64px min-height depending on sublabel presence. Per-row `IconButton`s are fine — they sit *inside* rows, not in the header.
 - **No card.** Side panels do not wrap their lists in cards — the panel itself is the card.
 
 ## Subpage navigation
@@ -131,7 +126,7 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
 }}>
   <PanelStack defaultView="all">
     <PanelView id="all">
-      <PanelHeader title="Bookmarks" actions={<IconButton aria-label="More" icon={<span>⋮</span>} />} />
+      <PanelHeader title="Bookmarks" />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <PanelRow
           icon={<span>📁</span>}
@@ -154,7 +149,7 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
       </div>
     </PanelView>
     <PanelView id="bar">
-      <PanelHeader title="Bookmarks bar" back actions={<IconButton aria-label="Add" icon={<span>＋</span>} />} />
+      <PanelHeader title="Bookmarks bar" back />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <List>
           <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="Chromium UI React" secondary="ztnkv.github.io" interactive />
@@ -163,6 +158,9 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
           <Divider subtle />
           <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="React" secondary="react.dev" interactive />
         </List>
+      </div>
+      <div style={{ padding: 16, borderTop: '1px solid var(--cr-fallback-color-outline)', display: 'flex', justifyContent: 'flex-end' }}>
+        <Button variant="action" size="sm">Add bookmark</Button>
       </div>
     </PanelView>
     <PanelView id="other"><PanelHeader title="Other bookmarks" back /></PanelView>
@@ -174,7 +172,7 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
 Notes:
 
 - `<PanelHeader>` replaces the hand-rolled 48px header when you use `PanelStack` — it is 48px tall and has the back arrow built in.
-- Actions on the subpage header are context-specific — "Add" appears on the folder view, not the root view.
+- The header is title-only. Context-specific actions ("Add bookmark" on a folder view) belong in the content area — a footer `Button` for add-style actions, or per-row `IconButton`s for row operations. Do not hang icon buttons off the `PanelHeader` — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - Icons on rows are acceptable in a side-panel context (favicon, folder icon). They are 16px, leading.
 
 ## Spacing differences from full-page
@@ -195,10 +193,10 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 
 - **Wrapping the list in a `Card`.** The panel itself is the card. Do not nest.
 - **Using `Toolbar` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
+- **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; add-style actions live in a small footer `Button`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Two-pane inside the side panel.** A side panel is already narrow — drill in, don't split.
 - **Tabs at the top.** Use `PanelStack` or the 11px all-caps group labels.
 - **Large icons on rows.** 16px favicons or 16px leading icons. Nothing larger.
-- **Footer action buttons.** Rare in side panels — actions live in the header as `IconButton`s.
 
 ## Mapping to Chromium source
 
