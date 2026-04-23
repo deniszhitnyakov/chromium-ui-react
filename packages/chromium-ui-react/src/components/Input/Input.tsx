@@ -75,9 +75,9 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(functi
 ) {
   return (
     <div className={cn('cr-search', className)}>
-      <svg className="cr-search__icon" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <svg className="cr-search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path
-          d="M10.5 9h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L15.49 14l-4.99-5zm-6 0A4.5 4.5 0 1 1 9 4.5 4.5 4.5 0 0 1 4.5 9z"
+          d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l4.25 4.25a1 1 0 0 0 1.42-1.42L15.5 14zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"
           fill="currentColor"
         />
       </svg>
