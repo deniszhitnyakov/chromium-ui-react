@@ -77,6 +77,7 @@ const sidebars: SidebarsConfig = {
             'styleguide/patterns/styleguide-pattern-bookmarks-manager',
             'styleguide/patterns/styleguide-pattern-side-panel',
             'styleguide/patterns/styleguide-pattern-extension-popup',
+            'styleguide/patterns/styleguide-pattern-primary-action',
           ],
         },
         {

@@ -159,8 +159,8 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
           <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="React" secondary="react.dev" interactive />
         </List>
       </div>
-      <div style={{ padding: 16, borderTop: '1px solid var(--cr-fallback-color-outline)', display: 'flex', justifyContent: 'flex-end' }}>
-        <Button variant="action" size="sm">Add bookmark</Button>
+      <div style={{ padding: 'var(--cr-space-4)', borderTop: '1px solid var(--cr-fallback-color-outline)', display: 'flex', justifyContent: 'center' }}>
+        <Button variant="action">Add bookmark</Button>
       </div>
     </PanelView>
     <PanelView id="other"><PanelHeader title="Other bookmarks" back /></PanelView>
@@ -172,8 +172,14 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
 Notes:
 
 - `<PanelHeader>` replaces the hand-rolled 48px header when you use `PanelStack` — it is 48px tall and has the back arrow built in.
-- The header is title-only. Context-specific actions ("Add bookmark" on a folder view) belong in the content area — a footer `Button` for add-style actions, or per-row `IconButton`s for row operations. Do not hang icon buttons off the `PanelHeader` — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- The header is title-only. Context-specific actions ("Add bookmark" on a folder view) belong in the content area — a centered footer `Button` for the view's single primary action (see [Pattern — Primary action button](./primary-action.md)), or per-row `IconButton`s for row operations. Do not hang icon buttons off the `PanelHeader` — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - Icons on rows are acceptable in a side-panel context (favicon, folder icon). They are 16px, leading.
+
+## The panel's primary action
+
+If the side panel (or any of its subviews) has a single clear CTA — *Start*, *Capture*, *Export*, *Scan*, *Add bookmark*, the verb the user came to press — it belongs in a **pinned footer, horizontally centered, full size**, and it is the **only** `variant="action"` visible. This is a deliberate departure from Chromium's `[Cancel] [Primary]` right-aligned footer; it exists to shorten the time a new user spends finding the thing to press. See [Pattern — Primary action button](./primary-action.md) for the full reasoning, scope, and variants (full-width, running-state replacement, no-primary case).
+
+Side panels without a single primary (pure viewers, status-only panels) omit the footer entirely.
 
 ## Spacing differences from full-page
 
@@ -193,7 +199,8 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 
 - **Wrapping the list in a `Card`.** The panel itself is the card. Do not nest.
 - **Using `Toolbar` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
-- **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; add-style actions live in a small footer `Button`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Right-aligned or `size="sm"` primary action at the bottom.** The panel's single primary CTA is pinned at the bottom, centered, and full-size — see [Pattern — Primary action button](./primary-action.md) and [Anti-patterns #17](../anti-patterns.md#17-primary-action-buried-on-a-side-panel).
 - **Two-pane inside the side panel.** A side panel is already narrow — drill in, don't split.
 - **Tabs at the top.** Use `PanelStack` or the 11px all-caps group labels.
 - **Large icons on rows.** 16px favicons or 16px leading icons. Nothing larger.

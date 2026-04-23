@@ -230,6 +230,72 @@ Everything else is a drill-in row. If it feels like it deserves an icon in the h
 
 Chromium does put a small feedback `IconButton` next to some section labels in `chrome://settings/performance`. That is the one in-Chromium precedent for an icon-adjacent-to-heading pattern, and it is scoped narrowly: a single icon, a single purpose (send feedback), sitting beside a *section* label (not the page title). If you reproduce *that* exact shape, you are inside the precedent. Anything broader is not.
 
+## 17. Primary action buried on a side panel
+
+**Wrong.** A browser-extension side panel with a single primary verb (Start, Capture, Export, Scan) inlined into the `end` slot of a mid-surface row as a `size="sm"` button.
+
+```tsx live
+<div style={{
+  width: 360,
+  height: 460,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+  display: 'flex',
+  flexDirection: 'column',
+}}>
+  <Toolbar title="Maps scraper" />
+  <div style={{ flex: 1, overflowY: 'auto' }}>
+    <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
+    <Divider subtle />
+    <PanelRow primary="Scraping" secondary="Idle" end={<Button variant="action" size="sm">Start</Button>} />
+    <Divider subtle />
+    <PanelRow primary="Collected" secondary="4 unique · 1 duplicate · 0 errors" end={<Badge>5</Badge>} />
+    <Divider subtle />
+    <PanelRow primary="Export" secondary="CSV / XLSX / JSON" navigateTo="export" />
+  </div>
+</div>
+```
+
+The verb is labelled and coloured correctly. But a first-time user has to scan past two rows, tell the `Start` pill apart from the `5` badge two rows below, and only then decide to press. That friction eats directly into the extension's first-run aha moment.
+
+**Right.** Promote the primary out of the row, pin it to a centered footer, full-size. The mid-surface row becomes a pure status row.
+
+```tsx live
+<div style={{
+  width: 360,
+  height: 460,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+  display: 'flex',
+  flexDirection: 'column',
+}}>
+  <Toolbar title="Maps scraper" />
+  <div style={{ flex: 1, overflowY: 'auto' }}>
+    <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
+    <Divider subtle />
+    <PanelRow primary="Scraping" secondary="Idle" />
+    <Divider subtle />
+    <PanelRow primary="Collected" secondary="4 unique · 1 duplicate · 0 errors" end={<Badge>5</Badge>} />
+    <Divider subtle />
+    <PanelRow primary="Export" secondary="CSV / XLSX / JSON" navigateTo="export" />
+  </div>
+  <div style={{
+    padding: 'var(--cr-space-4)',
+    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    display: 'flex',
+    justifyContent: 'center',
+  }}>
+    <Button variant="action">Start scraping</Button>
+  </div>
+</div>
+```
+
+**Rule.** On an extension **side panel** (only — not popup, not options page, not dialog), the single primary action is pinned at the bottom, centered, full-size, and alone. This is an extension-specific departure from Chromium's `[Cancel] [Primary]` right-aligned footer, justified by the aha-moment cost of a buried CTA. Full reasoning, scope, and variants in [Pattern — Primary action button](./patterns/primary-action.md).
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.
