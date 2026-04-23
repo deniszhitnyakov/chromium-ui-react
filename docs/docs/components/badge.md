@@ -2,7 +2,7 @@
 id: badge
 title: Badge
 slug: /components/badge
-description: Small non-interactive status tag. Five semantic variants.
+description: Small non-interactive status tag. Five semantic variants in solid and outline appearances.
 format: mdx
 ---
 
@@ -33,6 +33,7 @@ import { Badge } from 'chromium-ui-react';
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `variant` | `'default' \| 'error' \| 'success' \| 'neutral' \| 'warning'` | `'default'` | Semantic color |
+| `appearance` | `'solid' \| 'outline'` | `'solid'` | Fill style — solid tint vs. outlined with matching text color |
 
 All other `<span>` attributes are forwarded. Ref goes to the underlying `<span>`.
 
@@ -53,6 +54,28 @@ All other `<span>` attributes are forwarded. Ref goes to the underlying `<span>`
 - `error` — problem state. "Failed", "Expired", "Blocked".
 - `warning` — caution state. "Deprecated", "Limited", "Beta".
 - `neutral` — informational, no urgency. "Draft", "Archived".
+
+## Outline appearance
+
+A quieter variant for dense layouts where a fully tinted fill would feel heavy. The border and the text share the same semantic color; the fill is transparent, so the badge inherits the surface underneath.
+
+```tsx live
+<div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
+  <Badge appearance="outline">New</Badge>
+  <Badge appearance="outline" variant="success">Synced</Badge>
+  <Badge appearance="outline" variant="error">Failed</Badge>
+  <Badge appearance="outline" variant="warning">Deprecated</Badge>
+  <Badge appearance="outline" variant="neutral">Beta</Badge>
+</div>
+```
+
+### When to prefer outline
+
+- Inside cards, list rows, or toolbars where several badges appear close together and a wall of solid color would dominate the row.
+- Next to other tinted elements (chips, primary buttons) where solid badges would compete for attention.
+- On colored or busy backgrounds where a transparent fill reads more cleanly than a second fill on top of the first.
+
+Solid stays the right choice for high-signal states that must be spotted at a glance — a single "Failed" in a long list of "OK", for example.
 
 ## Counting badge
 
@@ -75,4 +98,4 @@ Badges work well as numeric counters next to menu items or tab labels:
 ## Accessibility
 
 - For counting badges, consider adding visually-hidden text to clarify the count's meaning to screen readers: `<span className="cr-sr-only">3 unread messages</span>` alongside the visible number.
-- Don't rely on color alone to convey meaning — pair `variant="error"` with an explicit label like "Failed" or an icon.
+- Don't rely on color alone to convey meaning — pair `variant="error"` with an explicit label like "Failed" or an icon. This matters more for `appearance="outline"`, where the fill is transparent and the color signal is slightly quieter.
