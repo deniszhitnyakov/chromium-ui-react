@@ -144,6 +144,15 @@ These are used for small inline status indicators only: "Online", "Syncing", "3 
 
 Toasts follow the same palette for their left accent strip — the body remains neutral.
 
+### Badge defaults: quiet first
+
+Badges are attention magnets. A row of solid-filled badges competes with the primary action for the user's eye and produces the same "too much color" feeling as a colored page background. The styleguide prefers **quiet-first** defaults:
+
+1. **Prefer `appearance="outline"` over solid.** An outline badge shares only a 1px border + text color with the surface, so several of them can sit on a row without forming a wall of fills. Reach for the solid appearance only when the state must be spotted instantly in a long list of otherwise-neutral rows — a single red "Failed" in a column of green "OK".
+2. **Prefer `variant="neutral"` over colored variants.** Most status labels ("Beta", "Draft", "Archived", "Experimental", a plain count like "3") are informational, not actionable — grey says "here is a label" without inventing a color hierarchy. Reserve `success` / `warning` / `error` for states the user actually has to react to.
+
+Combined, the rule is: **outline-neutral first, colored outline second, solid last.** If you find yourself reaching for a solid colored badge, confirm the state deserves that much volume — otherwise dial it down.
+
 ## Dark mode
 
 You do nothing. The tokens flip via `prefers-color-scheme: dark`, and every component re-renders correctly. **Do not write `@media (prefers-color-scheme: dark)` queries in your own CSS.** If a piece of your UI looks wrong in dark mode, the bug is almost always that you hardcoded a hex value — replace it with a token.

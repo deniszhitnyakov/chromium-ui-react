@@ -96,6 +96,7 @@ The color budget for a Chromium surface:
 - **Primary accent:** `--cr-fallback-color-primary` — used for the single primary button, checked toggles, the focus ring, and links. Nothing else.
 - **Error:** `--cr-fallback-color-error` — used for destructive buttons and inline error text. Nothing else.
 - **Success / warning / info:** only on Badges and Toasts. Never on body text, never on backgrounds.
+- **Badges default to outline + neutral.** Use `appearance="outline"` unless the state must jump out at a glance, and prefer `variant="neutral"` over colored variants for informational labels ("Beta", "Draft", a plain count). Solid colored badges are the last resort, not the first reach. See [Color & surfaces — Badge defaults](./color.md#badge-defaults-quiet-first).
 
 Do not write dark-mode media queries. The tokens handle it.
 
@@ -131,6 +132,7 @@ Before you declare a layout complete, run through this:
 - [ ] Is any `Card` flat (no shadow) unless it is a hover state?
 - [ ] Is the focus ring the default one (no custom `:focus-visible` override)?
 - [ ] Did you avoid adding icons to every row?
+- [ ] Are badges using `appearance="outline"` (and `variant="neutral"` where the state is informational), falling back to solid or colored variants only where the status must be unmissable?
 - [ ] **Is the toolbar `actions` slot empty, or at most a single far-right `⋮` with content between it and the title?** No settings gear, no "+", no typography icon glued to the heading.
 - [ ] If there is navigation, is it the right primitive (`PanelStack` / `Menu` / `Tabs`)?
 - [ ] No gradient, no illustration, no marketing copy, no emoji in labels?
