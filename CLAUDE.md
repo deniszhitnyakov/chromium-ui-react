@@ -26,6 +26,9 @@ initiatives/
 ├── README.md                              # Navigation + why the folder is `initiatives/` not `docs/`
 ├── glossary.md                            # Shared vocabulary (Chromium surfaces, library terms, framework terms)
 ├── TIMELINE.md                            # Chronological register of every initiative
+├── tickets/                               # Global ticket registry — one file per ticket, sequential numbering
+│   ├── README.md                          # Numbering policy + ticket template + lifecycle
+│   └── NNNN-<short-kebab>.md              # One ticket file (`#0001`, `#0002`, …)
 └── YYYY-MM-DD-<kebab-name>/               # One folder per initiative
     ├── README.md                          # Goal, status, artifacts
     ├── journal.md                         # Reverse-chronological log
@@ -33,23 +36,31 @@ initiatives/
     └── decisions/NNNN-<kebab>.md          # Optional ADRs, numbered per-initiative
 ```
 
-**Source of truth for current work:** the most recent initiative under `initiatives/` with status `in-progress`, or — if none — the most recent `approved` one. Start at [`initiatives/TIMELINE.md`](./initiatives/TIMELINE.md).
+**Source of truth for current work:** the most recent initiative under `initiatives/` with status `in-progress`, or — if none — the most recent `approved` one. Start at [`initiatives/TIMELINE.md`](./initiatives/TIMELINE.md), then read its `kanban.md`, then drill into the linked ticket file under `initiatives/tickets/`.
 
 **Conventions:**
 
-- Every Markdown file in `initiatives/` opens with a YAML front-matter block: `title`, `status`, `created`, `updated`, `authors`, `type`, `language`.
+- Every Markdown file in `initiatives/` opens with a YAML front-matter block: `title`, `status`, `created`, `updated`, `authors`, `type`, `language`. Ticket files add `initiative:` pointing at the originating initiative folder.
 - Initiative folder names: `YYYY-MM-DD-<kebab-name>/` (start date, lowercase, hyphens). Alphabetical sort = chronological order.
 - Initiative lifecycle: `planned → in-progress → approved → superseded`.
+- Ticket numbering: **global, sequential, zero-padded to four digits**, never reused. Find the next number with `ls initiatives/tickets/ | grep -E '^[0-9]{4}-' | sort | tail -1`.
+- Ticket lifecycle: `open → in-progress → done` (or `wontfix`). The ticket file's `status:` and the kanban card column are bumped **in the same commit** as the work itself.
 - `TIMELINE.md` is updated **in the same commit** that creates or closes an initiative.
 - `glossary.md` is updated **in the same commit** that introduces a new term.
 - Canonical content language: **English** (matches the public docs site). Identifiers (folder names, file names, YAML keys, code) are always English. Operator-facing communication is per the operator's stated preference — that is independent of document content language.
 
+**Packing workflow** (turning an operator-surfaced problem into a tracked unit of work):
+
+1. Pick the next ticket number (`NNNN`).
+2. Write `initiatives/tickets/NNNN-<short-kebab>.md` from the template in [`initiatives/tickets/README.md`](./initiatives/tickets/README.md). The body must include: Summary, Context (with file paths and line numbers), What hurts and why, Direction (possible implementation approaches, no commitment), Acceptance hints, Links.
+3. Add a one-line card to the originating initiative's `kanban.md` under **To Do**: `- [ ] **#NNNN** — [<short title>](../tickets/NNNN-<name>.md)`.
+4. **Packing is not implementation.** The agent does not start coding in the same turn unless the operator explicitly requests it. Commit the packing as `docs(initiatives): pack ticket #NNNN — <short title>`.
+
 **Kanban workflow** (when an initiative has a `kanban.md`):
 
 1. Three columns only: **To Do**, **In Progress**, **Done**. The Obsidian-Kanban front-matter (`kanban-plugin: basic`) lets Obsidian render the file as a board; in any other viewer it reads as a plain checklist.
-2. New problem → packed as a To Do card by the agent (1-line title plus a short "what hurts and why" hook). **Packing is not implementation** — the agent does not start coding in the same turn unless the operator explicitly requests it.
-3. Starting work on a card: move it To Do → In Progress *before* the work begins. **At most one card In Progress at a time.**
-4. Finishing a card: move it In Progress → Done **in the same commit** as the code/docs change it covers.
+2. Starting work on a card: move it To Do → In Progress *before* the work begins, and bump the ticket file's `status:` to `in-progress`. **At most one card In Progress at a time, per initiative.**
+3. Finishing a card: move it In Progress → Done **in the same commit** as the code/docs change it covers, and bump the ticket file's `status:` to `done` with the commit SHA in the `## Status` section.
 
 **Not shipped to npm.** `initiatives/` lives at the repo root, outside `packages/chromium-ui-react/`. The library's `package.json` uses an explicit `files` allowlist (`dist`, `src/styles`, `README.md`, `LICENSE`), so initiative content cannot reach the npm tarball even by accident. The folder *does* ship to GitHub — the repository is its public artifact.
 

@@ -20,11 +20,13 @@ The framework recommends `docs/`, but in this repository `docs/` is already the 
 
 - **[`glossary.md`](./glossary.md)** — shared vocabulary used across all initiatives
 - **[`TIMELINE.md`](./TIMELINE.md)** — chronological register of every initiative with its current status
+- **[`tickets/`](./tickets/)** — global registry of long-form ticket descriptions, numbered sequentially across all initiatives. See [`tickets/README.md`](./tickets/README.md) for the template and lifecycle.
 - **`YYYY-MM-DD-<name>/`** — one folder per initiative, dated by start date
 
 ## How to read this
 
-- **To understand the current state** — open `TIMELINE.md`, jump to the most recent `in-progress` initiative
+- **To understand the current state** — open `TIMELINE.md`, jump to the most recent `in-progress` initiative, then look at its `kanban.md`
+- **To understand a specific ticket in depth** — open `tickets/NNNN-<name>.md` (the kanban card links to it)
 - **To understand why something was decided** — read that initiative's `journal.md` and `decisions/`
 - **To understand a term** — check `glossary.md` first
 

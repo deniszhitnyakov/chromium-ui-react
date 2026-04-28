@@ -36,5 +36,6 @@ Rule: every new term introduced in any initiative document is added here in the 
 ## Framework vocabulary
 
 - **initiative** — a focused stretch of work with a beginning, middle, and end, captured as one folder under `initiatives/`. See the [framework README](https://github.com/ztnkv/initiative-driven-docs-framework).
-- **kanban card** — one checklist item in an initiative's `kanban.md`, in one of three columns (To Do / In Progress / Done). Used in this project as the lightweight "ticket" unit for tracking subtasks of an initiative.
-- **packing** — turning a problem the operator surfaces into a kanban card without implementing it. The agent writes the card title and a short "what hurts and why" hook; implementation is a separate, explicit operator request.
+- **kanban card** — one checklist item in an initiative's `kanban.md`, in one of three columns (To Do / In Progress / Done). Used as the per-initiative board view; the card is a one-line title plus a link to the corresponding ticket file.
+- **ticket** — a single packed problem with a sequential global number (`#0001`, `#0002`, …) and a long-form description at `initiatives/tickets/NNNN-<short-name>.md`. The ticket file is the source of truth for what the work is about; the kanban card in an initiative is a thin pointer at it. Numbering is global across initiatives, never reused. Lifecycle: `open → in-progress → done` (or `wontfix`).
+- **packing** — turning a problem the operator surfaces into a numbered ticket file plus a kanban card under To Do, without implementing it. The agent writes the ticket body (summary, context, what hurts and why, possible directions, acceptance hints, links); implementation is a separate, explicit operator request.
