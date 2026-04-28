@@ -8,7 +8,7 @@ format: mdx
 
 # Button
 
-The workhorse action control. Five variants map 1:1 onto Chromium's `cr-button` semantics: `outlined` (default), `action` (filled primary), `tonal` (soft filled), `destructive` (error), and `text` (bare).
+The workhorse action control. Four variants map onto Chromium's `cr-button` semantics: `outlined` (default), `action` (filled primary), `destructive` (error), and `text` (bare).
 
 ## Live preview
 
@@ -16,7 +16,6 @@ The workhorse action control. Five variants map 1:1 onto Chromium's `cr-button` 
 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
   <Button>Cancel</Button>
   <Button variant="action">Save</Button>
-  <Button variant="tonal">Import</Button>
   <Button variant="destructive">Delete</Button>
   <Button variant="text">Learn more</Button>
 </div>
@@ -32,7 +31,7 @@ import { Button } from 'chromium-ui-react';
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `'outlined' \| 'action' \| 'tonal' \| 'destructive' \| 'text'` | `'outlined'` | Visual style |
+| `variant` | `'outlined' \| 'action' \| 'destructive' \| 'text'` | `'outlined'` | Visual style |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Control size |
 | `startIcon` | `ReactNode` | — | Icon placed before children |
 | `endIcon` | `ReactNode` | — | Icon placed after children |
@@ -46,7 +45,6 @@ All other `<button>` attributes (`onClick`, `aria-*`, `form`, etc.) are forwarde
 ```tsx
 <Button>Cancel</Button>
 <Button variant="action">Save</Button>
-<Button variant="tonal">Import</Button>
 <Button variant="destructive">Delete</Button>
 <Button variant="text">Learn more</Button>
 ```
@@ -55,9 +53,10 @@ All other `<button>` attributes (`onClick`, `aria-*`, `form`, etc.) are forwarde
 
 - `outlined` — the default. Secondary actions, cancel buttons, neutral choices.
 - `action` — the single primary action in a view (form submit, main CTA).
-- `tonal` — secondary emphasis, paired with an `action` primary in a toolbar.
 - `destructive` — irreversible or data-destroying actions (delete, remove).
-- `text` — lowest-emphasis affordance; inline with body text or dense rows.
+- `text` — lowest-emphasis affordance; inline with body text or dense rows. The Cancel side of an action row in destructive contexts.
+
+The library deliberately does not ship a `tonal` (filled-tinted) middle tier — Chromium settles on a binary `action` + `outlined` emphasis split. Two filled tiers in close proximity reliably violate the colour budget and the "one primary per view" rule. Reach for `outlined` whenever you would have reached for `tonal`.
 
 ## Sizes
 

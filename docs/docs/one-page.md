@@ -92,7 +92,7 @@ import {
 
 Filled, outlined, tonal, destructive, or text button.
 
-**Props:** `variant?: 'outlined' | 'action' | 'tonal' | 'destructive' | 'text'` (default `outlined`), `size?: 'sm' | 'md' | 'lg'` (default `md`), `startIcon?: ReactNode`, `endIcon?: ReactNode`, plus every `<button>` attribute. Buttons are content-sized — there is no full-width affordance.
+**Props:** `variant?: 'outlined' | 'action' | 'destructive' | 'text'` (default `outlined`), `size?: 'sm' | 'md' | 'lg'` (default `md`), `startIcon?: ReactNode`, `endIcon?: ReactNode`, plus every `<button>` attribute. Buttons are content-sized — there is no full-width affordance. There is no `tonal` middle tier — `outlined` is the default secondary, `action` is the primary.
 
 ```tsx
 <Button variant="action" onClick={save}>Save</Button>

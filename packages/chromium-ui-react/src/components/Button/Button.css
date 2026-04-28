@@ -56,18 +56,6 @@
   filter: none;
 }
 
-.cr-button--tonal {
-  background: var(--cr-fallback-color-secondary-container);
-  border: none;
-  color: var(--cr-fallback-color-on-tonal-container);
-}
-.cr-button--tonal:hover:not(:disabled) { filter: brightness(1.05); }
-.cr-button--tonal:disabled {
-  background: var(--cr-fallback-color-disabled-background);
-  color: var(--cr-fallback-color-disabled-foreground);
-  filter: none;
-}
-
 .cr-button--destructive {
   border-color: var(--cr-fallback-color-error);
   color: var(--cr-fallback-color-error);

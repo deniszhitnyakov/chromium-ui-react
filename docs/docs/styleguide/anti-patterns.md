@@ -129,7 +129,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card variant="elevated
 
 **Wrong.** Every button uses `variant="action"` because "it looks friendlier."
 
-**Right.** Exactly one primary action per view. Everything else is `outlined`, `text`, or `tonal`. A screen full of blue filled buttons has no primary.
+**Right.** Exactly one primary action per view. Everything else is `outlined` or `text`. A screen full of blue filled buttons has no primary.
 
 ## 12. Custom font family
 

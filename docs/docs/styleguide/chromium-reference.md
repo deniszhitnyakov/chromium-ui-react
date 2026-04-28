@@ -151,7 +151,9 @@ From `cr_button.css`:
 | Ripple | yes — `cr-ripple` (paper-ripple port) |
 | Ripple color | `--cr-button-ripple-color` = `--cr-active-background-color` default |
 
-`action-button` = filled primary. `tonal-button` = secondary-container. `cancel-button` = default outlined + `margin-inline-end: 8px`. No gradient. No `text-transform: uppercase`.
+`action-button` = filled primary. `cancel-button` = default outlined + `margin-inline-end: 8px`. No gradient. No `text-transform: uppercase`.
+
+The Chromium source also defines `tonal-button` (secondary-container fill) — `chromium-ui-react` deliberately does not expose this as a Button variant. Surveying the surfaces this library targets (settings, side panels, popups, options pages), the binary `action` + `outlined` split covers every use; the tonal middle tier reliably violates the "one primary per view" colour-budget rule when adopted. Reach for `outlined` whenever you would have reached for `tonal`.
 
 ## State colors
 

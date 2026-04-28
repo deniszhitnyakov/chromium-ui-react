@@ -2,7 +2,7 @@ import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../utils/cn';
 import './Button.css';
 
-export type ButtonVariant = 'outlined' | 'action' | 'tonal' | 'destructive' | 'text';
+export type ButtonVariant = 'outlined' | 'action' | 'destructive' | 'text';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'> {

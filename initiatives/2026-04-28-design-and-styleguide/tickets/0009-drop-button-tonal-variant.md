@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0009 — Drop Button 'tonal' variant — redundant against outlined / action"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: `'tonal'` removed from `ButtonVariant`, `.cr-button--tonal` removed from `Button.css`. Tokens `--cr-fallback-color-secondary-container` / `--cr-fallback-color-on-tonal-container` retained pending #0012 (Chip removal — Chip is the only remaining consumer). Docs updated: `button.md`, `one-page.md`, `chromium-reference.md`, `anti-patterns.md`. The chromium-reference paragraph rewritten to explain the deliberate non-adoption.
 
 ## Summary
 
