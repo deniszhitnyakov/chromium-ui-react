@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0027 — Reader Mode sample: empty space under the Reader Settings card"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (content-driven layout) plus a small content top-up. PanelView restructured into a three-row flex column: pinned 48px header (`flexShrink: 0`), scrollable article body (`flex: 1, minHeight: 0, overflow: auto`), pinned `Settings` row footer (`flexShrink: 0`). With the Settings row pulled out of the article scroll container and pinned at the bottom, the empty band can no longer appear regardless of article length. Two extra article paragraphs added so the article region itself fills with content rather than leaving its own internal empty space at the typical preview height (640px).
 
 ## Summary
 

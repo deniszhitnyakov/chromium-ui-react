@@ -24,13 +24,14 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
   flexDirection: 'column',
 }}>
   <PanelStack defaultView="reader" style={{ flex: 1, minHeight: 0 }}>
-    <PanelView id="reader">
+    <PanelView id="reader" style={{ display: 'flex', flexDirection: 'column' }}>
       <div style={{
         height: 48,
         display: 'flex',
         alignItems: 'center',
         padding: '0 16px',
         borderBottom: '1px solid var(--cr-fallback-color-outline)',
+        flexShrink: 0,
       }}>
         <div style={{ fontSize: 14, fontWeight: 500, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           Reader Mode
@@ -38,6 +39,7 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
       </div>
       <div style={{
         flex: 1,
+        minHeight: 0,
         overflowY: 'auto',
         fontFamily: 'Georgia, serif',
         color: 'var(--cr-fallback-color-on-surface)',
@@ -58,17 +60,23 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
           <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 12px' }}>
             If you take nothing else from this guide, take the practice of rigorous, unsentimental revision. A quality document is not typed fast and published — it is built, revised, reviewed.
           </p>
+          <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 12px' }}>
+            Spacing matters more than choice of typeface. Most reading happens at body size, and that is where the work has to land — line height, paragraph spacing, the rhythm between heads and body.
+          </p>
+          <p style={{ fontSize: 15, lineHeight: 1.6, margin: '0 0 12px' }}>
+            The two cardinal sins of web typography are using the wrong widths and using the wrong colours. Both make the reader work harder than they have to. Neither is hard to fix.
+          </p>
         </div>
-        <List>
-          <Divider subtle />
-          <ListItem
-            primary="Settings"
-            secondary="Font, size, spacing, background"
-            interactive
-            end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
-          />
-        </List>
       </div>
+      <List style={{ flexShrink: 0 }}>
+        <Divider subtle />
+        <ListItem
+          primary="Settings"
+          secondary="Font, size, spacing, background"
+          interactive
+          end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+        />
+      </List>
     </PanelView>
     <PanelView id="settings">
       <PanelHeader title="Settings" back />
