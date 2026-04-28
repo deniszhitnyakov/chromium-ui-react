@@ -179,7 +179,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card>` (the library de
 
 Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrome://bookmarks` side-by-side — none of them put a lone icon button next to the page title. The moment you add one, the surface stops reading as Chromium-native and starts reading as a generic webapp. On narrow surfaces (popups, side panels) it is worse: the icon eats width that is already scarce, and the user's eye keeps tripping over an affordance it did not ask for.
 
-**Right (drill-in row).** Demote the icon to a row the user can navigate to — a `Settings` drill-in at the bottom of the main panel, or a row in the main list.
+**Right (drill-in row).** Demote the icon to a row the user can navigate to — a `Settings` drill-in placed in the **upper half** of the surface, per [Pattern — Settings entry](./patterns/settings-entry.md). The label is always `Settings` (not `Options` / `Preferences`).
 
 ```tsx live
 <div style={{
@@ -195,11 +195,11 @@ Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrom
   <div style={{ flex: 1 }}>
     <PanelRow primary="Source" secondary="www.google.com · ready" end={<Badge variant="success">ready</Badge>} />
     <Divider subtle />
+    <PanelRow primary="Settings" secondary="Run defaults, output format, filters" navigateTo="settings" />
+    <Divider subtle />
     <PanelRow primary="Run controls" secondary="No run yet" end={<Button variant="action" size="sm">Start</Button>} />
     <Divider subtle />
     <PanelRow primary="Single place" secondary="Quick QA from the open place card" end={<Button size="sm">Extract</Button>} />
-    <Divider subtle />
-    <PanelRow primary="Settings" secondary="Run defaults, output format, filters" navigateTo="settings" />
   </div>
 </div>
 ```
@@ -623,6 +623,83 @@ This is the one styleguide divergence from Chromium's confirmation dialogs (`chr
 ```
 
 **Rule.** Extension side panels never render a top-of-surface `<Header>` — Chrome paints one for them. Other surfaces (popup, options page, in-page UI) keep `Header` as opt-in per the [Layout & shell](./layout.md) recommendation table. `PanelHeader` for drill-in subviews stays allowed everywhere.
+
+## 26. Settings entry buried at the bottom of the surface
+
+**Wrong.** The `Settings` drill-in row sits at the very bottom of a long scrollable list (saved items, captures, results). The user who wants to adjust a setting before pressing the primary verb again has to scroll past the historical content to reach it.
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+}}>
+  <Header title="Link Collector" />
+  <div style={{ padding: 16, fontSize: 14, fontWeight: 400 }}>Recently saved</div>
+  <Card variant="elevated" style={{ margin: '0 16px 12px' }}>
+    <List>
+      <ListItem icon={<GlobeIcon size={14} />} primary="A Case Study on Memory" interactive />
+      <Divider subtle />
+      <ListItem icon={<GlobeIcon size={14} />} primary="Settling 3xx redirects" interactive />
+      <Divider subtle />
+      <ListItem icon={<GlobeIcon size={14} />} primary="Typography rules" interactive />
+    </List>
+  </Card>
+  <Card variant="elevated" style={{ margin: '0 16px 12px' }}>
+    <List>
+      <ListItem
+        primary="Settings"
+        interactive
+        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+      />
+    </List>
+  </Card>
+</div>
+```
+
+**Right.** Place the `Settings` drill-in in the **upper half** of the surface — typically grouped with the primary configuration row (default collection, capture mode, current source) in the first card. The historical / log content (saved items, captures, results) goes below.
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  overflow: 'hidden',
+  background: 'var(--cr-fallback-color-surface)',
+}}>
+  <Header title="Link Collector" />
+  <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
+    <Card variant="elevated">
+      <List>
+        <ListItem
+          primary="Default collection"
+          secondary="Inbox"
+          interactive
+          end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+        />
+        <Divider subtle />
+        <ListItem
+          primary="Settings"
+          interactive
+          end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+        />
+      </List>
+    </Card>
+    <div style={{ fontSize: 14, fontWeight: 400, padding: '4px 4px 0' }}>Recently saved</div>
+    <Card variant="elevated">
+      <List>
+        <ListItem icon={<GlobeIcon size={14} />} primary="A Case Study on Memory" interactive />
+        <Divider subtle />
+        <ListItem icon={<GlobeIcon size={14} />} primary="Settling 3xx redirects" interactive />
+      </List>
+    </Card>
+  </div>
+</div>
+```
+
+**Rule.** Extension surfaces are linear-scroll surfaces — vertical order *is* the navigation. Settings goes near the top because the user reaches for it before the primary verb, not after a scroll past unrelated content. The label is always `Settings` (not `Options`, not `Preferences`, not `Reader settings`). See [Pattern — Settings entry](./patterns/settings-entry.md).
 
 ---
 

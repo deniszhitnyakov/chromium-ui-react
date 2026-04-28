@@ -52,7 +52,15 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
         </div>
       </CardBody>
     </Card>
-    <div style={{ padding: '0 16px' }}>
+    <List style={{ padding: '0 16px' }}>
+      <ListItem
+        primary="Settings"
+        secondary="Collections, tags, sync, shortcuts"
+        interactive
+        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+      />
+    </List>
+    <div style={{ padding: '8px 16px 0' }}>
       <Select
         label="Collection"
         defaultValue="typography"
@@ -96,16 +104,6 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
         interactive
       />
     </List>
-    <div style={{ height: 16 }} />
-    <List>
-      <Divider subtle />
-      <ListItem
-        primary="Options"
-        secondary="Collections, tags, sync, shortcuts"
-        interactive
-        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
-      />
-    </List>
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
@@ -131,7 +129,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
 
 ## The options page
 
-The full-tab options page (opened from the `Options` drill-in row at the bottom of the popup) follows the [Settings page pattern](../patterns/settings-page.md).
+The full-tab options page (opened from the `Settings` drill-in row in the upper half of the popup — see [Pattern — Settings entry](../patterns/settings-entry.md)) follows the [Settings page pattern](../patterns/settings-page.md).
 
 ```tsx live
 <div style={{

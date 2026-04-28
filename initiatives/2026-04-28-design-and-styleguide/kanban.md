@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0026** — [Settings entry pattern: upper-half placement + standardised 'Settings' naming](./tickets/0026-settings-entry-pattern-placement-naming.md)
 - [ ] **#0027** — [Reader Mode sample: empty space under the Reader Settings card](./tickets/0027-reader-mode-sample-empty-space-under-settings.md)
 - [ ] **#0028** — [Track every library deviation from Chromium source on the chromium-reference page](./tickets/0028-track-deviations-on-chromium-reference.md)
 - [ ] **#0029** — [Cleanup: actualise all documentation after the initiative's changes land](./tickets/0029-cleanup-actualize-all-docs.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0023** — [Menu in role='navigation' (sidebar): drop shadow + radius, render flat to match native chrome://settings](./tickets/0023-menu-navigation-flat-no-card.md)
 - [x] **#0024** — [Settings-page SearchInput: center in the header, drop the border (match native chrome://settings)](./tickets/0024-settings-search-input-header-center-no-border.md)
 - [x] **#0025** — [Primary-action running-state replacement: Stop button is variant='destructive', not outlined](./tickets/0025-running-state-stop-as-destructive.md)
+- [x] **#0026** — [Settings entry pattern: upper-half placement + standardised 'Settings' naming](./tickets/0026-settings-entry-pattern-placement-naming.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

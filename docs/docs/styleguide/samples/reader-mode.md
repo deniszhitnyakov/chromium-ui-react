@@ -62,7 +62,7 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
         <List>
           <Divider subtle />
           <ListItem
-            primary="Reader settings"
+            primary="Settings"
             secondary="Font, size, spacing, background"
             interactive
             end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
@@ -71,7 +71,7 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
       </div>
     </PanelView>
     <PanelView id="settings">
-      <PanelHeader title="Reader settings" back />
+      <PanelHeader title="Settings" back />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <List>
           <ListItem primary="Font family" end={<Select defaultValue="serif" options={[{ value: 'serif', label: 'Serif' }, { value: 'sans', label: 'Sans-serif' }, { value: 'mono', label: 'Monospace' }]} />} />
@@ -96,7 +96,7 @@ A fictional extension that opens in the side panel and renders a cleaned-up, rea
 
 - **Custom 48px header, title-only.** Side-panel convention. The header does **not** carry icon-button shortcuts (no Typography, Settings, or overflow icons next to the title) — that is [Anti-pattern #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). It eats horizontal space that is already scarce at 400px and makes the panel read as a generic webapp rather than a Chromium surface.
 - **Reader content** uses a different font family (Georgia) and larger sizes (15–20px) *inside* a content block. This is the one acceptable place to use display-like sizes: article content, not UI chrome.
-- **`Reader settings` drill-in row** pinned at the end of the article is the single access point for font / size / background controls. It is a full-width row with a chevron — matches the Chromium drill-in convention.
+- **`Settings` drill-in row** is the single access point for font / size / background controls. Reader Mode is the rare panel where the row is pinned *after* the article rather than in the upper half — the article body **is** the surface, so settings sits below it. This is a deliberate exception to [Pattern — Settings entry](../patterns/settings-entry.md), justified by the content-dominant shape; the standardised `Settings` label still applies.
 - **Settings drill-in** is a list of inline-control rows (`Select`, `Toggle`) — the classic Chromium settings pattern, reused in the panel.
 
 ## Quick typography menu (optional)
@@ -157,7 +157,7 @@ Side panels are closed by the browser's own "close" control (the chevron on the 
 - ✅ `PanelStack` for settings drill-in.
 - ✅ Content region with its own typography, clearly separated from the UI chrome.
 - ✅ Row list of inline-control rows for settings.
-- ✅ Settings entry point is a drill-in row at the end of the content, not a gear in the header.
+- ✅ Settings entry point is a drill-in row labelled `Settings`, not a gear in the header. (Reader Mode pins it after the article — the deliberate exception to the upper-half rule for content-dominant surfaces; see [Pattern — Settings entry](../patterns/settings-entry.md).)
 - ✅ No footer (side panels rarely need one — drill-in rows replace header actions).
 - ✅ No second-level tabs; drill-in only.
 

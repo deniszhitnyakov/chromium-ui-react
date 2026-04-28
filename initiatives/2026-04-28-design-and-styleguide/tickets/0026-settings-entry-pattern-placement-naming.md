@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0026 — Settings entry pattern: upper-half placement + standardised 'Settings' naming"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (pattern doc + anti-pattern + sweep). New `docs/docs/styleguide/patterns/settings-entry.md` codifies (a) the row label is always "Settings", (b) placement is in the upper half (typically the first 1–3 rows), (c) the visual shape is a drill-in row with chevron, (d) when not to render the entry at all. Two live previews (popup, side panel) show the upper-half shape; full-tab options page is delegated to `Pattern — Settings page`. Sidebar registered in `docs/sidebars.ts`. New anti-pattern #26 ("Settings entry buried at the bottom of the surface") with wrong/right pair. Anti-pattern #16's drill-in right-side example reordered so `Settings` sits in the upper half (between Source and Run controls). `samples/link-collector.md`: bottom `Options` row removed; new `Settings` row inserted directly under the active-tab card; "drill-in row at the bottom" prose rewritten. `samples/reader-mode.md`: `Reader settings` → `Settings`, prose flagging the after-the-article placement as a deliberate exception for content-dominant surfaces (article body **is** the surface). All build green.
 
 ## Summary
 
