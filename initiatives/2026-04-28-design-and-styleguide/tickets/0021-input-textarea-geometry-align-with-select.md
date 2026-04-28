@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0021 — Input / Textarea: align height, border-radius, and font-size with the new Select"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (match Select exactly). `Input.css` `.cr-input__field` updated on the same four axes as Select (#0020): `height: 36px → 32px`, `border-radius: --cr-radius-sm → --cr-radius-md` (4px → 8px), `border-color: --cr-fallback-color-outline → --cr-fallback-color-surface-variant`, `font-size: --cr-font-size-md → --cr-font-size-sm` (13px → 12px). Textarea modifier padding tightened (`8px 12px → 6px 12px`, focus `7px 11px → 5px 11px`) so the new geometry stays compact when used multi-line. A short comment at the top of the field block in `Input.css` flags the intentional Select alignment so a future contributor updates both files together. `SearchInput` left untouched (pill / filled background is its own Chromium-faithful shape). `forms.md` opening prose gained one sentence stating that Input / Textarea / Select share geometry and SearchInput intentionally does not.
 
 ## Summary
 

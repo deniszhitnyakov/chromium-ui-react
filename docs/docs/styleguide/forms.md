@@ -10,6 +10,8 @@ format: mdx
 
 Chromium form fields are quiet: label sits above the field in a small medium-weight sans, hint text in subtle grey below, inline error replaces the hint when validation fails. No floating labels, no placeholder-as-label, no framed form sections with stripes.
 
+`Input`, `Textarea`, and `Select` share the same control geometry by design — 32px tall, 8px corner radius, surface-variant border, 12px text. A row that mixes them lines up because of this; do not override the height or radius of a single control inside a form. (`SearchInput` is intentionally a different shape — pill, filled background — for surfaces like `chrome://history`.)
+
 ## Standalone field
 
 The default `<Input>` composition. Used in dialogs, full-page forms, and configuration screens.

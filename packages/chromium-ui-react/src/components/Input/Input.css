@@ -11,15 +11,17 @@
   letter-spacing: .4px;
 }
 
+/* Geometry intentionally matches Select (height, radius, border-color, font-size).
+   Update both files together — see Select.css. */
 .cr-input__field {
-  height: 36px;
+  height: 32px;
   padding: 0 12px;
-  border: 1px solid var(--cr-fallback-color-outline);
-  border-radius: var(--cr-radius-sm);
+  border: 1px solid var(--cr-fallback-color-surface-variant);
+  border-radius: var(--cr-radius-md);
   background: var(--cr-fallback-color-surface);
   color: var(--cr-primary-text-color);
   font-family: var(--cr-font-family);
-  font-size: var(--cr-font-size-md);
+  font-size: var(--cr-font-size-sm);
   line-height: 20px;
   outline: none;
   width: 100%;
@@ -63,12 +65,12 @@
 .cr-input__field--textarea {
   height: auto;
   min-height: 80px;
-  padding: 8px 12px;
+  padding: 6px 12px;
   resize: vertical;
   line-height: var(--cr-line-height-normal);
 }
 .cr-input__field--textarea:focus {
-  padding: 7px 11px;
+  padding: 5px 11px;
 }
 
 /* Search variant */
