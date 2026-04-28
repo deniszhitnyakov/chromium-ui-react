@@ -19,6 +19,7 @@ kanban-plugin: basic
 - [ ] **#0013** — [Badge: put 'neutral' first in the variants list and make it the default](../tickets/0013-badge-neutral-first.md)
 - [ ] **#0014** — [Card: 'elevated' should be the default variant (and shown first in the live preview)](../tickets/0014-card-elevated-as-default.md)
 - [ ] **#0015** — [Tabs: reduce default height — 48px is too tall for extension surfaces](../tickets/0015-tabs-reduce-default-height.md)
+- [ ] **#0016** — [Add a Table component (dense default, sticky-header option, automatic horizontal scroll)](../tickets/0016-add-table-component.md)
 
 ## In Progress
 
