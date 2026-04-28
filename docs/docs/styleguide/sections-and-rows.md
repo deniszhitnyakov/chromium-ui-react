@@ -198,7 +198,7 @@ The `<ListItem>` slot rules, restated for clarity:
 | `avatar` | Larger leading image (24×24+) for profile/site rows | Random icons |
 | `primary` | The label — 13px, `on-surface` | Multi-line text, inline controls |
 | `secondary` | One-line hint or current-value summary — 12px, subtle | Long descriptions, dates in raw form |
-| `end` | One control: `Toggle`, `Badge`, `Select`, `Chip`, a chevron, or an `IconButton` | Multiple stacked controls, long text |
+| `end` | One control: `Toggle`, `Badge`, `Select`, a chevron, or an `IconButton` | Multiple stacked controls, long text |
 
 Anything that does not fit these slots — a multi-input row, a chart, a preview tile — does not belong in a `ListItem`. Those go in a direct child of `CardBody` or as their own component.
 

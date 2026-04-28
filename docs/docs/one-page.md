@@ -74,7 +74,7 @@ import {
   Button, IconButton,
   Checkbox, Radio, RadioGroup, Toggle,
   Input, Textarea, SearchInput, Select,
-  Chip, Badge,
+  Badge,
   Card, CardHeader, CardBody, CardFooter, CardTitle, CardDescription,
   Divider, Toolbar,
   Tabs, Tab, TabList, TabPanel, TabsSimple,
@@ -193,20 +193,6 @@ Chromium-styled native `<select>`. Pass `options` for the 80% case.
     { value: 'dark',   label: 'Dark' },
   ]}
 />
-```
-
----
-
-### Chip
-
-Pill button for filters, tags, and input chips.
-
-**Props:** `variant?: 'default' | 'selected' | 'compact'`, `selected?: boolean`, `startIcon?: ReactNode`, `onRemove?: (e) => void` (shows ✕), plus `<button>` attributes.
-
-```tsx
-<Chip selected={active} onClick={() => setActive(!active)}>All</Chip>
-<Chip variant="compact">v1.2.0</Chip>
-<Chip onRemove={() => remove(tag)}>{tag}</Chip>
 ```
 
 ---

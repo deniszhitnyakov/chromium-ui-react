@@ -9,7 +9,6 @@ export * from './components/Toggle';
 export * from './components/ToggleRow';
 export * from './components/Input';
 export * from './components/Select';
-export * from './components/Chip';
 export * from './components/Badge';
 export * from './components/Card';
 export * from './components/Divider';

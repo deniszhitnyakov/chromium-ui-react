@@ -66,11 +66,11 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
       <div style={{ height: 16 }} />
       <Input label="Notes" placeholder="Optional" />
       <div style={{ height: 16 }} />
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-        <Chip selected>long-read</Chip>
-        <Chip>reference</Chip>
-        <Chip>typography</Chip>
-        <Chip variant="compact">＋ tag</Chip>
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        <Badge variant="info">long-read</Badge>
+        <Badge>reference</Badge>
+        <Badge>typography</Badge>
+        <Button size="sm" variant="text" startIcon={<PlusIcon size={16} />}>tag</Button>
       </div>
     </div>
     <div style={{
@@ -125,7 +125,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
 - **No hero, no logo.** The popup opens directly on the feature. The active-tab card is the first thing the user sees.
 - **Filled card** for the active-tab context — visually groups "what you are about to act on" without competing with the popup's own border.
 - **Inline form**, not a dialog. The popup *is* the form; opening another dialog on top would be redundant.
-- **Tags via `<Chip>`.** Selected state shows which tags are applied; "＋ tag" is a compact chip that opens an input inline.
+- **Tags via `<Badge>`.** Tags read as static labels (sentence case, neutral or info colour). Adding a new tag is a small text Button with a `+` icon — not a "compact chip" — keeping the surface in the Badge / Button vocabulary.
 - **Recently saved** is a 11px all-caps section below the form — subtle, not competing for attention.
 - **Footer:** `[Cancel (text)] [Save link (action)]` — right-aligned. The text-variant Cancel de-emphasizes it relative to the primary.
 

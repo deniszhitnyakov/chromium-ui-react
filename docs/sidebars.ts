@@ -21,7 +21,6 @@ const sidebars: SidebarsConfig = {
         'components/toggle-row',
         'components/input',
         'components/select',
-        'components/chip',
         'components/badge',
         'components/card',
         'components/divider',

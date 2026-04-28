@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0012 — Drop Chip component — role overlaps with Badge / Button, no clear extension use case"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: `Chip` component removed (`packages/chromium-ui-react/src/components/Chip/`, `docs/docs/components/chip.md`, sidebar entry, `src/index.ts` re-export). All references swept across docs: link-collector sample now uses `Badge` for tags + a small text Button with `+` icon for "add tag"; Badge docs page no longer recommends Chip; sections-and-rows row-vocabulary list trimmed; one-page LLM doc Chip block removed. Tokens `secondary-container` / `on-tonal-container` retained as part of the published palette.
 
 ## Summary
 

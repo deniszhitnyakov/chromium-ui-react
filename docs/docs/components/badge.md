@@ -20,7 +20,7 @@ format: mdx
 </div>
 ```
 
-A tiny inline tag used to annotate a row or control with a status: "New", "Beta", "3 unread", "Error", etc. Non-interactive — if you need click behavior, use [Chip](./chip.md) instead.
+A tiny inline tag used to annotate a row or control with a status: "New", "Beta", "3 unread", "Error", etc. Non-interactive — if you need click behaviour, use a [Button](./button.md) with `variant="outlined"` or `variant="text"`.
 
 Badges in `chromium-ui-react` are outline-only by design: a 1px border and matching text color, with a transparent fill. Solid-tinted badges read as too aggressive on the dense, mostly-grey surfaces this library targets, so they were removed. Reach for `variant="neutral"` first; only escalate to a colored variant when the state is something the user must react to. See [Color & surfaces — Badge defaults](../styleguide/color.md#badge-defaults-quiet-first).
 
