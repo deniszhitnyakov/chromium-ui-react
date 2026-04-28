@@ -20,8 +20,8 @@ Chromium-native UI primitives for building browser extensions, companion apps, a
 
 </div>
 
-![Chromium UI React showcase — light mode. Header with search, sidebar menu, account preferences card with tabs and form, sync status with progress, recent activity list, buttons, badges, and toasts.](docs/static/img/showcase-light.v2.png#gh-light-mode-only)
-![Chromium UI React showcase — dark mode. Same layout on a dark surface.](docs/static/img/showcase-dark.v2.png#gh-dark-mode-only)
+![Chromium UI React showcase — light mode. Header with search, sidebar menu, account preferences card with tabs and form, sync status with progress, recent activity list, buttons, badges, and toasts.](docs/static/img/showcase-light.v3.png#gh-light-mode-only)
+![Chromium UI React showcase — dark mode. Same layout on a dark surface.](docs/static/img/showcase-dark.v3.png#gh-dark-mode-only)
 
 <div align="center">
 <sub>

@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0032 — Cleanup: re-render the Introduction preview images after the initiative's visual changes land"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (re-render against the post-initiative library state). `docs/static/showcase/styles.css` refreshed from `dist/chromium-ui-react.css` (stale by 11 days; now includes every visual change from the initiative — Badge outline-only, Card elevated default, Tabs height tightening, sidebar Menu flat, SearchInput borderless, Header rename, etc.). Showcase server (port 4321) brought up; Playwright (chromium, 1320×auto, deviceScaleFactor 2) captured `showcase-light.v3.png` and `showcase-dark.v3.png` against the live page in both colour-scheme modes. `docs/docs/intro.md` and `README.md` references bumped from `.v2.png` to `.v3.png`. Old `.v2.png` files deleted. Build green.
 
 > **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the showcase images still look right. The showcase content gets a deliberate review against the post-initiative library state, then the images are re-rendered (or explicitly re-confirmed as still-correct, with the file version bumped to `.v3` for cache-busting either way). Finding the existing images already correct is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
 

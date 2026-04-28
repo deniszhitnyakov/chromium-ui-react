@@ -21,7 +21,7 @@ Use it to build browser extensions, companion desktop apps, or internal tools th
 }}>
   <figure style={{ margin: 0 }}>
     <img
-      src="/chromium-ui-react/img/showcase-light.v2.png"
+      src="/chromium-ui-react/img/showcase-light.v3.png"
       alt="Chromium UI React showcase in light mode — toolbar, sidebar menu, tabs, forms, list, buttons, chips, badges and toasts"
       style={{ width: '100%', borderRadius: 8, border: '1px solid var(--cr-fallback-color-outline, #dadce0)' }}
     />
@@ -29,7 +29,7 @@ Use it to build browser extensions, companion desktop apps, or internal tools th
   </figure>
   <figure style={{ margin: 0 }}>
     <img
-      src="/chromium-ui-react/img/showcase-dark.v2.png"
+      src="/chromium-ui-react/img/showcase-dark.v3.png"
       alt="Chromium UI React showcase in dark mode — same layout rendered on a dark surface"
       style={{ width: '100%', borderRadius: 8, border: '1px solid var(--cr-fallback-color-outline, #3c4043)' }}
     />

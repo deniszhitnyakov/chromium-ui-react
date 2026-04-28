@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0032** — [Cleanup: re-render the Introduction preview images after the initiative's visual changes land](./tickets/0032-cleanup-rerender-introduction-preview-images.md)
 
 ## In Progress
 
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0029** — [Cleanup: actualise all documentation after the initiative's changes land](./tickets/0029-cleanup-actualize-all-docs.md)
 - [x] **#0030** — [Cleanup: regenerate the one-page LLM doc after the initiative's changes land](./tickets/0030-cleanup-regenerate-one-page-llm-doc.md)
 - [x] **#0031** — [Cleanup: update the Preflight Checklist for LLMs after the initiative's changes land](./tickets/0031-cleanup-update-preflight-checklist.md)
+- [x] **#0032** — [Cleanup: re-render the Introduction preview images after the initiative's visual changes land](./tickets/0032-cleanup-rerender-introduction-preview-images.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 
