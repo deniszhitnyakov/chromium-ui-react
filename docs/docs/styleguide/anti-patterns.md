@@ -141,7 +141,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card>` (the library de
 
 **Wrong.** Page title is 32px bold.
 
-**Right.** The page title in Chromium is rendered by `Toolbar` at the `--cr-font-size-lg` (16px) weight-500 size. Section headers are `--cr-font-size-base` (14px) weight-500. There is no 32px in a native Chromium page. See [Typography](./typography.md).
+**Right.** The page title in Chromium is rendered by `Header` at the `--cr-font-size-lg` (16px) weight-500 size. Section headers are `--cr-font-size-base` (14px) weight-500. There is no 32px in a native Chromium page. See [Typography](./typography.md).
 
 ## 14. Custom focus ring
 
@@ -167,7 +167,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card>` (the library de
   overflow: 'hidden',
   background: 'var(--cr-fallback-color-surface)',
 }}>
-  <Toolbar
+  <Header
     title="Google Maps Scraper"
     actions={<IconButton aria-label="Settings" icon={<SettingsIcon />} />}
   />
@@ -191,7 +191,7 @@ Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrom
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Google Maps Scraper" />
+  <Header title="Google Maps Scraper" />
   <div style={{ flex: 1 }}>
     <PanelRow primary="Source" secondary="www.google.com · ready" end={<Badge variant="success">ready</Badge>} />
     <Divider subtle />
@@ -207,16 +207,16 @@ Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrom
 **Right (overflow menu at the far corner).** If the surface genuinely has 3+ one-off actions (a bookmarks / history manager), use a single `⋮` `IconButton` placed at the far right of the toolbar — **with the `SearchInput` or content between it and the title**, never butting up against the title. That matches the `chrome://bookmarks` shape.
 
 ```tsx live
-<Toolbar
+<Header
   title="Bookmarks"
   actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
-</Toolbar>
+</Header>
 ```
 
-**Rule.** On a Chromium-native surface, the `actions` slot of a `<Toolbar>` or `<PanelHeader>` is **not** a shelf for icon-button shortcuts next to the title. The default state is empty. You may add:
+**Rule.** On a Chromium-native surface, the `actions` slot of a `<Header>` or `<PanelHeader>` is **not** a shelf for icon-button shortcuts next to the title. The default state is empty. You may add:
 
 - **One** single `⋮` overflow `IconButton` at the far corner of a *full-page manager's* toolbar, with other content (usually a `SearchInput`) between it and the title — matching `chrome://bookmarks`.
 - A `Button variant="text"` like "Clear all" when the whole surface has exactly one bulk operation.
@@ -243,7 +243,7 @@ Chromium does put a small feedback `IconButton` next to some section labels in `
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
     <Divider subtle />
@@ -271,7 +271,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
     <Divider subtle />
@@ -462,7 +462,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 </div>
 ```
 
-**Right.** Use the matching component. `PanelHeader` already has the right height, the right padding, the right hairline (`--cr-divider-color`, matching Toolbar and Divider), and forwards a back button slot.
+**Right.** Use the matching component. `PanelHeader` already has the right height, the right padding, the right hairline (`--cr-divider-color`, matching Header and Divider), and forwards a back button slot.
 
 ```tsx live
 <div style={{ width: 320, border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 12, overflow: 'hidden' }}>
@@ -477,7 +477,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 </div>
 ```
 
-**Rule.** Whenever the library exposes a primitive for the structural chrome you are about to draw — `Toolbar` (or `Header`), `PanelHeader`, `Divider`, `Card` — reach for it. Inline reconstructions reliably diverge from the canonical token, the canonical sizes, or the canonical hairline, and ship the divergence to anyone who copies the example. The `var(--cr-divider-color)` token (introduced in #0002) names the hairline so even structural divs can read from it instead of `--cr-fallback-color-outline`.
+**Rule.** Whenever the library exposes a primitive for the structural chrome you are about to draw — `Header` (or `Header`), `PanelHeader`, `Divider`, `Card` — reach for it. Inline reconstructions reliably diverge from the canonical token, the canonical sizes, or the canonical hairline, and ship the divergence to anyone who copies the example. The `var(--cr-divider-color)` token (introduced in #0002) names the hairline so even structural divs can read from it instead of `--cr-fallback-color-outline`.
 
 ## 23. Unicode characters as icons
 

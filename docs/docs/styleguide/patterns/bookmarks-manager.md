@@ -8,7 +8,7 @@ format: mdx
 
 # Pattern — Bookmarks / item manager
 
-`chrome://bookmarks`, `chrome://history`, and similar manager surfaces share a shape: a `<Toolbar>` at the top with a search field, a left pane containing a tree or filter list, a resizable splitter, and a main pane with a wide row-list.
+`chrome://bookmarks`, `chrome://history`, and similar manager surfaces share a shape: a `<Header>` at the top with a search field, a left pane containing a tree or filter list, a resizable splitter, and a main pane with a wide row-list.
 
 Use this pattern whenever you have:
 
@@ -28,12 +28,12 @@ Use this pattern whenever you have:
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar
+  <Header
     title="Bookmarks"
     actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   >
     <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 400 }} />
-  </Toolbar>
+  </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 240,
@@ -103,7 +103,7 @@ Use this pattern whenever you have:
 
 ## What to copy from this
 
-- **Toolbar.** 56px, title on the left, `SearchInput` in the middle (`maxWidth: 400`), a single `⋮` overflow `IconButton` at the far right. **The `SearchInput` sits between the title and the icon** — the icon never butts up against the title. "Add bookmark" and other one-off actions live inside that overflow `Menu`, not as their own toolbar icons. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Header.** 56px, title on the left, `SearchInput` in the middle (`maxWidth: 400`), a single `⋮` overflow `IconButton` at the far right. **The `SearchInput` sits between the title and the icon** — the icon never butts up against the title. "Add bookmark" and other one-off actions live inside that overflow `Menu`, not as their own toolbar icons. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Tree pane.** 240px wide, 1px right border separating from main. No shadow, no background tint. `Menu role="tree"` is the right semantic.
 - **Main pane.** Scrollable, 24px padding, content column max-width 960px centered. This is wider than the settings page's 680px — because manager rows need horizontal room for URL + metadata.
 - **Row structure.** 16px favicon, 40–48px row height, primary is the title, secondary is the URL (short domain for the un-selected state, full URL when selected in Chromium). `IconButton` on the right for per-row actions.
@@ -154,7 +154,7 @@ Keep the empty state text-only (title + description + one action). No illustrati
 When items are selected, swap the toolbar into "selection mode":
 
 ```tsx live
-<Toolbar
+<Header
   title="3 selected"
   actions={
     <>
@@ -166,7 +166,7 @@ When items are selected, swap the toolbar into "selection mode":
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <IconButton aria-label="Close" icon={<CloseIcon />} />
-</Toolbar>
+</Header>
 ```
 
 - Title becomes the selection count.
@@ -197,4 +197,4 @@ The Chromium bookmarks manager supports sort order via a `Menu` inside the "more
 | Shell | `chrome/browser/resources/bookmarks/app.css` |
 | List / card | `chrome/browser/resources/bookmarks/list.css` (`--card-max-width: 960px`) |
 | Row | `chrome/browser/resources/bookmarks/item.css` |
-| Toolbar | `chrome/browser/resources/bookmarks/toolbar.css` |
+| Header | `chrome/browser/resources/bookmarks/toolbar.css` |

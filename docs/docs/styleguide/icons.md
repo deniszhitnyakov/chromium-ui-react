@@ -8,7 +8,7 @@ format: mdx
 
 # Icons
 
-`chromium-ui-react` does not ship icons. Components like `IconButton`, `Toolbar`, and `Menu` accept any `ReactNode` for their icon slots — but if your icons do not match the Chromium toolbar register, the surrounding library work is wasted. This page is the recommendation.
+`chromium-ui-react` does not ship icons. Components like `IconButton`, `Header`, and `Menu` accept any `ReactNode` for their icon slots — but if your icons do not match the Chromium toolbar register, the surrounding library work is wasted. This page is the recommendation.
 
 ## Recommendation: Material Symbols (outlined)
 
@@ -19,7 +19,7 @@ Defaults that match the library:
 - **Style:** Outlined.
 - **Weight:** 400.
 - **Size:** 20px in dense rows and `IconButton`s; 24px in headers and primary actions; 16px only for inline glyphs in body text.
-- **Colour:** `currentColor`. The icon inherits from its parent — let the surrounding component (Button, IconButton, ListItem, Toolbar) set the colour.
+- **Colour:** `currentColor`. The icon inherits from its parent — let the surrounding component (Button, IconButton, ListItem, Header) set the colour.
 
 ```tsx live
 <div style={{ display: 'flex', gap: 16, alignItems: 'center', color: 'var(--cr-fallback-color-on-surface)' }}>
@@ -51,7 +51,7 @@ Pick whichever fits your bundle. The library does not depend on any of them — 
 | Where | Size |
 |---|---|
 | `IconButton` (default) | 20px |
-| `Toolbar` action `IconButton` | 20px |
+| `Header` action `IconButton` | 20px |
 | `Button` `startIcon` / `endIcon` | 16px |
 | `ListItem` leading icon | 20px |
 | `Menu` item icon | 18–20px |

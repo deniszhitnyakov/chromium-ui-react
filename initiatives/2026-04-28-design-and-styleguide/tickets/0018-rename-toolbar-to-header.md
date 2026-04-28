@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0018 — Rename Toolbar component to Header"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (hard rename, no compatibility shim). Library: `packages/chromium-ui-react/src/components/Toolbar/` removed; new `Header/` folder with `Header.tsx`, `Header.css`, `index.ts`. Component / type / interface are `Header` / `HeaderProps`. CSS classes renamed `cr-toolbar*` → `cr-header*`. Token renamed `--cr-toolbar-height` → `--cr-header-height`. `src/index.ts` re-exports `Header`. Docs: `docs/docs/components/toolbar.md` removed, `header.md` written from scratch with the same example coverage plus a new "Header vs. PanelHeader" section. Sidebar entry updated. All `<Toolbar>` JSX in styleguide / patterns / samples / one-page / other component pages swept to `<Header>` via perl (capitalized only — lowercase "toolbar" in browser-toolbar prose left alone). `layout.md` "## The toolbar" subsection retitled "## The header" with explicit Header vs. PanelHeader distinction. `docs/src/css/custom.css` Infima override comment + selectors updated to `cr-header*`. README "Layout" row updated. Build green.
 
 ## Summary
 

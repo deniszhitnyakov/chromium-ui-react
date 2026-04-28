@@ -12,7 +12,7 @@ Every Chromium surface — settings, bookmarks, history, the side panel, an exte
 
 ```
 ┌─────────────────────────────────────────┐
-│  Toolbar                                │  fixed, ~56px
+│  Header                                │  fixed, ~56px
 ├─────────────────────────────────────────┤
 │                                         │
 │  Content (scrolls)                      │  flex: 1, overflow: auto
@@ -36,7 +36,7 @@ Opened from the toolbar icon. Small, fixed size.
 |---|---|
 | Width | 360–420px |
 | Height | 480–600px (max 600 before Chrome scrollbars kick in) |
-| Toolbar height | 56px |
+| Header height | 56px |
 | Scroll | Content region only |
 
 ```tsx live
@@ -50,7 +50,7 @@ Opened from the toolbar icon. Small, fixed size.
   overflow: 'hidden',
   background: 'var(--cr-fallback-color-surface)',
 }}>
-  <Toolbar title="Quick capture" />
+  <Header title="Quick capture" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <List>
       <ListItem primary="Save page" secondary="Current tab" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
@@ -85,7 +85,7 @@ Opened from the side-panel icon, occupies a column on the side of the browser ta
 |---|---|
 | Width | 360–400px (user-resizable in Chromium) |
 | Height | Full tab height |
-| Toolbar height | 56px |
+| Header height | 56px |
 | Scroll | Content region only |
 | Navigation | `PanelStack` drill-in — not a sidebar, not tabs |
 
@@ -93,7 +93,7 @@ Layout pattern:
 
 ```tsx
 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-  <Toolbar title="Reading list" />
+  <Header title="Reading list" />
   <PanelStack style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="main">{/* rows, ending with a Settings drill-in row */}</PanelView>
     <PanelView id="detail">{/* ... */}</PanelView>
@@ -111,12 +111,12 @@ Rendered in a browser tab. Behaves like `chrome://settings` — sidebar of secti
 |---|---|
 | Sidebar width | 240–280px |
 | Content max-width | **680px**, with equal gutters |
-| Toolbar height | 56px |
+| Header height | 56px |
 | Breakpoint | Below ~768px, the sidebar collapses into a hamburger menu |
 
 ```tsx
 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-  <Toolbar title="Settings" />
+  <Header title="Settings" />
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{ width: 260, borderRight: '1px solid var(--cr-fallback-color-outline)' }}>
       <Menu role="navigation">
@@ -140,9 +140,9 @@ The **680px content max-width** is the single most visually distinctive measurem
 
 Banner, floating button, or overlay injected by a content script into a host page. This is the one case where the shell bends — you do not have a toolbar, you are sharing the host page's chrome. Still, stay within the library's primitives (`Card`, `Toast`, `Dialog`), use tokens, and keep the surface small.
 
-## The toolbar
+## The header
 
-`<Toolbar>` is fixed at the top of every surface shape above. Rules:
+`<Header>` is fixed at the top of every surface shape above. (Distinct from `<PanelHeader>`, which is the *drill-in subview header* inside a `<PanelStack>` — see [PanelStack](../components/panel-stack.md). Pick `Header` for the top of the surface, `PanelHeader` for the top of a drill-in.) Rules:
 
 - **Height is 56px** — determined by the component. Do not wrap it in a container that forces a different height.
 - **Title is left-aligned.** If your surface is narrow (popup/side panel), no icon on the left. If wide (options page), optionally a hamburger or back arrow on the left.
@@ -150,20 +150,20 @@ Banner, floating button, or overlay injected by a content script into a host pag
 - **The `actions` slot defaults to empty.** `chrome://settings`, `chrome://history`, and a plain popup have *nothing* in this slot. The two narrow cases where you may use it: a single `⋮` overflow `IconButton` at the far right of a full-page manager's toolbar (with the `SearchInput` between it and the title — the `chrome://bookmarks` shape), or a single `Button variant="text"` like "Clear all" when the whole surface has exactly one bulk operation. Do **not** park icon-button shortcuts next to the title — see [Anti-patterns — IconButton glued to a title](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
 ```tsx live
-<Toolbar
+<Header
   title="Bookmarks"
   actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
-</Toolbar>
+</Header>
 ```
 
 Do **not** put:
 
 - Icon-button shortcuts (settings gear, "+ add", typography) immediately next to the title — demote them to drill-in rows inside the content area. See [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
-- A secondary title below the primary title (use `tall` variant with composed nodes — see [Toolbar](/components/toolbar) — but keep it rare).
-- A tab bar inside the toolbar — tabs go *below* it, as a separate strip.
+- A secondary title below the primary title (use `tall` variant with composed nodes — see [Header](/components/header) — but keep it rare).
+- A tab bar inside the header — tabs go *below* it, as a separate strip.
 - The app's logo — Chromium surfaces do not have logos. The title text is enough.
 
 ## The content region

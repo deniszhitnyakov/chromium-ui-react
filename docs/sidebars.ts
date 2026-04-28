@@ -24,7 +24,7 @@ const sidebars: SidebarsConfig = {
         'components/badge',
         'components/card',
         'components/divider',
-        'components/toolbar',
+        'components/header',
         'components/tabs',
         'components/menu',
         'components/spinner',

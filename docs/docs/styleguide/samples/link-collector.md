@@ -27,7 +27,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Link Collector" />
+  <Header title="Link Collector" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <Card variant="filled" style={{ margin: 16, borderRadius: 8 }}>
       <CardBody style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -143,9 +143,9 @@ The full-tab options page (opened from the `Options` drill-in row at the bottom 
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Link Collector — Options">
+  <Header title="Link Collector — Options">
     <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />
-  </Toolbar>
+  </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{ width: 240, borderRight: '1px solid var(--cr-fallback-color-outline)', padding: '12px 0', overflowY: 'auto' }}>
       <Menu role="navigation">

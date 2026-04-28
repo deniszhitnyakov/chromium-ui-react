@@ -53,11 +53,11 @@ All other `<hr>` attributes are forwarded. Ref goes to the `<hr>`.
 Use inside a flex row — you must give the parent a defined height for the divider to show:
 
 ```tsx
-<Toolbar>
+<Header>
   <Button variant="text">Save</Button>
   <Divider orientation="vertical" />
   <Button variant="text">Export</Button>
-</Toolbar>
+</Header>
 ```
 
 ## Subtle

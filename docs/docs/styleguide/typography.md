@@ -20,7 +20,7 @@ All sizes are `--cr-font-size-*` tokens. Do not invent values between or beyond 
 | `--cr-font-size-sm` | 12px | 400 | Secondary row text, hint text, timestamps, kbd shortcuts |
 | `--cr-font-size-md` | 13px | 400 | **Default body.** `ListItem` primary, menu items, button labels, link row titles |
 | `--cr-font-size-base` | 14px | 500 | Section titles, card titles, dialog body text |
-| `--cr-font-size-lg` | 16px | 500 | `Toolbar` title, `Dialog` title |
+| `--cr-font-size-lg` | 16px | 500 | `Header` title, `Dialog` title |
 | `--cr-font-size-xl` | 20px | 400 | Rare — only for large `settings-main`-style page headings on full-tab surfaces |
 | `--cr-font-size-2xl` | 24px | 400 | Do not use in functional surfaces. Reserved for marketing-like splash pages (which are off-brand for Chromium WebUI anyway) |
 

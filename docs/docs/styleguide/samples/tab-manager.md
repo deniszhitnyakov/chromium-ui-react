@@ -24,12 +24,12 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar
+  <Header
     title="Tab Manager"
     actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   >
     <SearchInput placeholder="Search tabs by title or URL" style={{ flex: 1, maxWidth: 400 }} />
-  </Toolbar>
+  </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 240,
@@ -159,7 +159,7 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
 - **Two-pane shell** from the Bookmarks manager pattern: 240px tree on the left, scrollable main column on the right with a 960px max-width — wider than settings (680px) because tab rows need horizontal room for URL + metadata.
 - **Tree pane is a flat `Menu role="tree"`**, no card, just a 1px right border. `MenuLabel` separates "Windows" from "Groups".
 - **Colored dots next to group names** are the only saturated-color spots in the UI — they mirror Chromium's tab-group chips. Use the `--cr-fallback-color-primary` token for the "active group" and explicit hex for other group colors (Chromium's group colors are fixed, not theme tokens).
-- **Toolbar actions slot has a single `⋮` overflow `IconButton` at the far corner** — with the `SearchInput` between it and the title, matching `chrome://bookmarks`. "New group", "Sort", and other one-off verbs live inside that overflow `Menu`. Do **not** line up three `IconButton`s next to the title — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Header actions slot has a single `⋮` overflow `IconButton` at the far corner** — with the `SearchInput` between it and the title, matching `chrome://bookmarks`. "New group", "Sort", and other one-off verbs live inside that overflow `Menu`. Do **not** line up three `IconButton`s next to the title — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Groups rendered as sections** in the main pane. Each section has an 11px all-caps header (count included) above an elevated card. This is the one place 11px all-caps is acceptable inside a manager: *per-group labeling* — analogous to the "Unread" / "Pages you've read" labels in the reading-list side panel.
 - **One overflow IconButton per row.** "Close tab" is the only always-visible action because closing is the manager's primary per-row verb (parallel to "mark as read" in reading list). Moving to group, pinning, muting — all go in a per-row overflow `⋮` in the real product.
 - **No per-row checkbox.** Selection is click-with-shift/cmd, just like `chrome://bookmarks` and `chrome://history`.
@@ -175,7 +175,7 @@ Click-and-drag or shift-click to select multiple tabs. The toolbar swaps into se
   overflow: 'hidden',
   background: 'var(--cr-fallback-color-surface)',
 }}>
-  <Toolbar
+  <Header
     title="5 selected"
     actions={
       <>
@@ -187,7 +187,7 @@ Click-and-drag or shift-click to select multiple tabs. The toolbar swaps into se
     }
   >
     <IconButton aria-label="Exit selection" icon={<CloseIcon />} />
-  </Toolbar>
+  </Header>
 </div>
 ```
 
@@ -278,7 +278,7 @@ No action button — there is nothing to do here yet. The empty state is purely 
 ## What makes this Chromium-native
 
 - ✅ Two-pane manager shell (tree + main), exactly the `chrome://bookmarks` shape.
-- ✅ 56px `<Toolbar>` with title + `SearchInput` (maxWidth 400) + a single `⋮` overflow `IconButton` at the far right.
+- ✅ 56px `<Header>` with title + `SearchInput` (maxWidth 400) + a single `⋮` overflow `IconButton` at the far right.
 - ✅ Tree pane flat (no card), 240px, 1px right border.
 - ✅ Main column centered, 960px max-width, 24px outer padding.
 - ✅ Row actions are `IconButton` only; multi-action rows use `⋮ More`.
@@ -293,9 +293,9 @@ Across all three sample extensions — Link Collector (popup + options), Reader 
 
 | Surface | Shell | Nav | Row unit |
 |---|---|---|---|
-| Popup | 380×520 bordered box + `Toolbar` | None / `PanelStack` | Row list inside form |
+| Popup | 380×520 bordered box + `Header` | None / `PanelStack` | Row list inside form |
 | Side panel | 360–400 wide + 48px custom header | `PanelStack` drill-in | `ListItem` with trailing `IconButton` |
-| Full-tab manager | Viewport + 56px `Toolbar` | 240px `Menu role="tree"` | `ListItem` inside elevated card |
-| Full-tab options | Viewport + 56px `Toolbar` | 240px `Menu role="navigation"` | `ListItem` inside elevated card, `<h2>` per section |
+| Full-tab manager | Viewport + 56px `Header` | 240px `Menu role="tree"` | `ListItem` inside elevated card |
+| Full-tab options | Viewport + 56px `Header` | 240px `Menu role="navigation"` | `ListItem` inside elevated card, `<h2>` per section |
 
 Pick the row-based shell appropriate to your surface and the rest follows.

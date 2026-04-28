@@ -30,7 +30,7 @@ Every Chromium-native surface has the same shell:
 
 ```
 ┌─────────────────────────────────┐
-│  Toolbar (title + actions)      │  ← cr-toolbar — 56px tall
+│  Header (title + actions)      │  ← cr-header — 56px tall
 ├─────────────────────────────────┤
 │                                 │
 │  Content                        │  ← scrollable region
@@ -40,8 +40,8 @@ Every Chromium-native surface has the same shell:
 └─────────────────────────────────┘
 ```
 
-- Use `<Toolbar title="..." />` at the top. **Never** replace it with a custom `<h1>` in a header div.
-- Content below scrolls. Toolbar stays fixed.
+- Use `<Header title="..." />` at the top. **Never** replace it with a custom `<h1>` in a header div.
+- Content below scrolls. Header stays fixed.
 - **The toolbar `actions` slot is empty by default.** Do not park a settings gear, a "+", or any other `IconButton` next to the title — see [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). A settings entry point is a drill-in `PanelRow` inside the content, not an icon in the header.
 - For popups and side panels: use `display: flex; flex-direction: column; height: 100vh` so the toolbar is pinned, content scrolls, footer pins.
 - For options pages: content max-width is **680px**, centered. Do not stretch settings to the full viewport.
@@ -78,7 +78,7 @@ Use only the library's `--cr-font-size-*` tokens. The full scale is: 11, 12, 13,
 | 12 | `--cr-font-size-sm` | Secondary text on rows, helper text |
 | 13 | `--cr-font-size-md` | **Chromium's default body font size** — `ListItem` primary, menu items, button labels |
 | 14 | `--cr-font-size-base` | Larger body, section titles |
-| 16 | `--cr-font-size-lg` | Toolbar title, dialog title |
+| 16 | `--cr-font-size-lg` | Header title, dialog title |
 | 20 | `--cr-font-size-xl` | Rarely — only for the `settings-main` root heading |
 | 24 | `--cr-font-size-2xl` | Never, in functional surfaces |
 
@@ -150,7 +150,7 @@ When an LLM-produced layout looks wrong, it is almost always one of:
 3. **Full-bleed dialog.** Add `maxWidth: 420` (or 480 for form dialogs).
 4. **Tabs used for navigation.** Replace with `Menu` or `PanelStack`.
 5. **Colored page background.** Remove; use `--cr-fallback-color-surface`.
-6. **Oversized title.** Reduce to `--cr-font-size-lg` in `<Toolbar>`.
+6. **Oversized title.** Reduce to `--cr-font-size-lg` in `<Header>`.
 7. **Settings gear (or any IconButton) in the header.** Demote to a `PanelRow` inside the content. See [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 
 These seven fixes resolve the majority of "doesn't look like Chromium" feedback.

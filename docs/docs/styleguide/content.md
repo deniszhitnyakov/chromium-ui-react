@@ -127,7 +127,7 @@ Avoid:
 | Row secondary | Sentence case |
 | Dialog title | Sentence case |
 | Toast | Sentence case |
-| Toolbar / Header title | Sentence case |
+| Header / Header title | Sentence case |
 | Tab label | Sentence case (and short — one word preferred) |
 
 There is no place in a Chromium-native UI for `Title Case` headings.

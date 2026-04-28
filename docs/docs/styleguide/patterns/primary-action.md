@@ -37,7 +37,7 @@ A typical "assembled from rows" extension side panel looks like this when you la
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
     <Divider subtle />
@@ -106,7 +106,7 @@ This is the strict form of [Anti-pattern #11](../anti-patterns.md#11-primary-col
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
     <Divider subtle />
@@ -140,7 +140,7 @@ Labelled correctly, placed incorrectly. The verb is buried in row 2 and competes
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Columns" secondary="4 of 9 visible" navigateTo="columns" />
     <Divider subtle />
@@ -182,7 +182,7 @@ When the primary's state flips (Start → Stop, Capture → Cancel), replace the
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Maps scraper" />
+  <Header title="Maps scraper" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <PanelRow primary="Scraping" secondary="Running · 42 of 120" end={<Spinner size={16} />} />
     <Divider subtle />

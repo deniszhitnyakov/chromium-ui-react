@@ -1,4 +1,4 @@
-.cr-toolbar {
+.cr-header {
   display: flex;
   align-items: center;
   height: var(--cr-sidepanel-header-height);
@@ -9,11 +9,11 @@
   flex-shrink: 0;
 }
 
-.cr-toolbar--tall {
-  height: var(--cr-toolbar-height);
+.cr-header--tall {
+  height: var(--cr-header-height);
 }
 
-.cr-toolbar__title {
+.cr-header__title {
   font-size: var(--cr-font-size-base);
   font-weight: var(--cr-font-weight-medium);
   color: var(--cr-primary-text-color);
@@ -24,7 +24,7 @@
   margin: 0;
 }
 
-.cr-toolbar__actions {
+.cr-header__actions {
   display: flex;
   align-items: center;
   gap: 4px;

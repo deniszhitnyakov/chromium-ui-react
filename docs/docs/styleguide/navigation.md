@@ -30,7 +30,7 @@ Expanded:
 | Full-tab options page, single area | 680px centered column + drill-in rows → router-backed subpages |
 | Full-tab options page, 3+ areas | Sidebar `Menu role="navigation"` + content column |
 | Switching between views of one data set | `Tabs` inside the content region |
-| Extensions, bookmarks manager, history | `Toolbar` + content, with filtering in the toolbar itself |
+| Extensions, bookmarks manager, history | `Header` + content, with filtering in the toolbar itself |
 
 ## 1. PanelStack — for narrow surfaces
 
@@ -171,7 +171,7 @@ Rules:
 
 - Tab labels are short (one or two words): Basic / Advanced. Not "Configure basic options."
 - Two or three tabs, rarely four, never five. Five tabs are a sidebar.
-- The tab strip is **below** the toolbar, not inside it. Do not nest tabs into `<Toolbar>`.
+- The tab strip is **below** the toolbar, not inside it. Do not nest tabs into `<Header>`.
 - Tabs apply to *one* area of content. Do not have a second row of tabs below the first.
 
 ## 4. Drill-in rows — for occasional subpages
@@ -210,7 +210,7 @@ The secondary line, where used, summarizes the current value — users learn sta
 
 ## Breadcrumbs
 
-Chromium does **not** use breadcrumbs in its WebUI. A subpage has a back arrow on the left of its toolbar (`<PanelHeader back />` or a custom `<IconButton icon={<Back />} />` + `<Toolbar title="…" />`). That is it.
+Chromium does **not** use breadcrumbs in its WebUI. A subpage has a back arrow on the left of its toolbar (`<PanelHeader back />` or a custom `<IconButton icon={<Back />} />` + `<Header title="…" />`). That is it.
 
 If you feel a breadcrumb would help, your subpage depth is probably too deep. Flatten.
 

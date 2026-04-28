@@ -25,7 +25,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Quick capture" />
+  <Header title="Quick capture" />
   <div style={{ flex: 1, overflowY: 'auto' }}>
     <Card variant="filled" style={{ margin: '16px', borderRadius: 8 }}>
       <CardBody style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -108,7 +108,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
 ## What to copy from this
 
 - **Dimensions.** 380×520. Chrome enforces a max popup size of 800×600; stay well under.
-- **Toolbar.** Standard 56px `<Toolbar>`. Title is the extension name — **nothing else in the actions slot.** No gear, no "+", no `⋮`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Header.** Standard 56px `<Header>`. Title is the extension name — **nothing else in the actions slot.** No gear, no "+", no `⋮`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Options entry point.** A drill-in `ListItem` (or `PanelRow`) at the bottom of the popup, leading to the full options page. Not an `IconButton` in the header.
 - **Content.** One column, no sidebar. Mix of card-wrapped context (the current-page info) and ungrouped controls (radios, checkboxes).
 - **Current-page card.** Use `Card variant="filled"` to visually group the "what you are about to act on" context without adding a shadow that would compete with the popup's own border.
@@ -133,7 +133,7 @@ For the first-run case before the extension has any state. One empty-state block
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Reading list" />
+  <Header title="Reading list" />
   <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
     <EmptyState
       title="No saved pages"
@@ -161,7 +161,7 @@ For popups with multiple items to pick from, use `PanelStack` inside the popup t
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Your bookmarks" />
+  <Header title="Your bookmarks" />
   <PanelStack defaultView="list" style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="list">
       <div style={{ flex: 1, overflowY: 'auto' }}>
@@ -212,7 +212,7 @@ When the popup is purely informational (e.g., ad blocker summarizing what was bl
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Ad blocker" />
+  <Header title="Ad blocker" />
   <div style={{ flex: 1, overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
     <Card variant="filled">
       <CardBody>
@@ -245,7 +245,7 @@ When the popup is purely informational (e.g., ad blocker summarizing what was bl
 ## Common popup mistakes
 
 - **Onboarding splash on every open.** The popup opens directly on the feature after first-run.
-- **Logo + tagline in the header.** The `<Toolbar title>` is enough.
+- **Logo + tagline in the header.** The `<Header title>` is enough.
 - **"Upgrade to Pro" pinned at the bottom.** Monetization UI belongs in a subpage or options, not the popup footer.
 - **Three-column layouts.** At 380px there is no room.
 - **Scroll in both directions.** Vertical only; never horizontal.

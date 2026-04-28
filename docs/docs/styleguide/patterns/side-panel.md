@@ -185,7 +185,7 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 ## Common side-panel mistakes
 
 - **One bare list on a flat panel surface.** Heterogeneous extension panels want the settings composition: each section is its own elevated card, with a sentence-case `<h2>` heading above it. The "no card" rule from earlier versions of this pattern was modelled on Chrome's single-list Reading List and does not generalise.
-- **Using `Toolbar` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
+- **Using `Header` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
 - **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Right-aligned or `size="sm"` primary action at the bottom.** The panel's single primary CTA is pinned at the bottom, centered, and full-size — see [Pattern — Primary action button](./primary-action.md) and [Anti-patterns #17](../anti-patterns.md#17-primary-action-buried-on-a-side-panel).
 - **Two-pane inside the side panel.** A side panel is already narrow — drill in, don't split.
@@ -198,5 +198,5 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 |---|---|
 | Panel shell | `chrome/browser/resources/side_panel/reading_list/reading_list_app.css` |
 | Tokens | `chrome/browser/resources/side_panel/shared/sp_shared_vars.css` |
-| Header | delegates to `cr-toolbar` with `--cr-sidepanel-header-height: 48px` |
+| Header | delegates to `cr-header` with `--cr-sidepanel-header-height: 48px` |
 | Row | `reading_list_item.css` (not fetched in research; structure inferred from conventions) |

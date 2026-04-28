@@ -22,9 +22,9 @@ This is the pattern a full-tab options page should follow. It is the closest rep
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <Toolbar title="Settings">
+  <Header title="Settings">
     <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />
-  </Toolbar>
+  </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 260,
@@ -136,7 +136,7 @@ This is the pattern a full-tab options page should follow. It is the closest rep
 
 Every measurement above is intentional. The ones worth calling out:
 
-- **Toolbar.** 56px tall (component default). Search field in the middle, `maxWidth: 400`. No shadow below the toolbar.
+- **Header.** 56px tall (component default). Search field in the middle, `maxWidth: 400`. No shadow below the toolbar.
 - **Sidebar.** 260px wide (Chromium uses 266; rounded to a nicer number here). Separated from content by a 1px right border, no shadow.
 - **Content column.** `max-width: 680px`, centered, with 24px gutters. Sections stack with `gap: 24`.
 - **Section header.** `<h2>` 14px weight-400 (regular!), letter-spacing 0.25px, above the card. Not inside.
@@ -163,14 +163,14 @@ Below a ~980px viewport (Chromium's `narrow-threshold`), the sidebar should coll
 ```tsx
 const narrow = useMediaQuery('(max-width: 980px)');
 
-<Toolbar
+<Header
   title={<>
     {narrow && <IconButton aria-label="Menu" icon={<MenuIcon />} onClick={openDrawer} style={{ marginRight: 8 }} />}
     <span>Settings</span>
   </>}
 >
   {!narrow && <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />}
-</Toolbar>
+</Header>
 {!narrow && <Sidebar />}
 ```
 

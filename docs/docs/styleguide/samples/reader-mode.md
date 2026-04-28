@@ -153,7 +153,7 @@ Side panels are closed by the browser's own "close" control (the chevron on the 
 
 ## What makes this Chromium-native
 
-- ✅ 48px side-panel header, title-only (not 56px `<Toolbar>`, no `IconButton`s next to the title).
+- ✅ 48px side-panel header, title-only (not 56px `<Header>`, no `IconButton`s next to the title).
 - ✅ `PanelStack` for settings drill-in.
 - ✅ Content region with its own typography, clearly separated from the UI chrome.
 - ✅ Row list of inline-control rows for settings.
@@ -163,7 +163,7 @@ Side panels are closed by the browser's own "close" control (the chevron on the 
 
 ## What to reuse
 
-Copy the 48px custom header code block if you are rolling a side-panel extension — the library does not ship a shorter `<Toolbar>` variant, so you compose one manually. Keep it **title-only**; demote any entry points (Settings, Typography, More) to drill-in rows inside the content, matching Chromium's reading-list / bookmarks side-panel shape.
+Copy the 48px custom header code block if you are rolling a side-panel extension — the library does not ship a shorter `<Header>` variant, so you compose one manually. Keep it **title-only**; demote any entry points (Settings, Typography, More) to drill-in rows inside the content, matching Chromium's reading-list / bookmarks side-panel shape.
 
 ```tsx
 <div style={{

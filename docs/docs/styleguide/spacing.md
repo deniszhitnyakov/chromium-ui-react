@@ -81,7 +81,7 @@ The guide below is prescriptive. Deviating is allowed but you should be able to 
 
 ### Inside a toolbar — 16
 
-- Toolbar horizontal padding: `--cr-space-4` (16px) on narrow surfaces, `--cr-space-6` (24px) on wide. `<Toolbar>` sets this for you — do not wrap in another padded container.
+- Header horizontal padding: `--cr-space-4` (16px) on narrow surfaces, `--cr-space-6` (24px) on wide. `<Header>` sets this for you — do not wrap in another padded container.
 
 ### Inside a dialog — 20/24
 
@@ -146,7 +146,7 @@ For full-tab options pages:
 - **Arbitrary `padding: 18px`**. Snap to the scale.
 - **`margin-top` on every third element** to add breathing room. Use `gap` on the parent flex container.
 - **Negative margins** to "tuck" things. If you need to tuck, the padding is wrong upstream.
-- **Padding on `<Toolbar>` or `<ListItem>` from the outside**. Both set their own padding — wrapping them in a padded container double-insets.
+- **Padding on `<Header>` or `<ListItem>` from the outside**. Both set their own padding — wrapping them in a padded container double-insets.
 - **`--cr-space-10` or larger for anything routine**. 40px exists for the empty-state illustration gap; that is its job.
 
 Ninety-five percent of a Chromium-native layout uses only `--cr-space-2` (8), `--cr-space-4` (16), and `--cr-space-6` (24). If you are reaching outside this triplet, check that you actually need to.

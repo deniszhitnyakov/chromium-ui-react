@@ -129,12 +129,12 @@ render(<FormDialogDemo />);
 `<SearchInput>` has its own visual language — pill-shaped, leading search icon, no standalone label. Use it in the toolbar or at the top of a list.
 
 ```tsx live
-<Toolbar
+<Header
   title="History"
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search history" style={{ flex: 1, maxWidth: 360 }} />
-</Toolbar>
+</Header>
 ```
 
 - Max-width ~360px. Never full-width — it becomes a form input visually.

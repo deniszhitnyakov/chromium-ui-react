@@ -76,7 +76,7 @@ import {
   Input, Textarea, SearchInput, Select,
   Badge,
   Card, CardHeader, CardBody, CardFooter, CardTitle, CardDescription,
-  Divider, Toolbar,
+  Divider, Header,
   Tabs, Tab, TabList, TabPanel, TabsSimple,
   Menu, MenuItem, MenuDivider, MenuLabel,
   Spinner, Progress,
@@ -249,7 +249,7 @@ Horizontal/vertical separator.
 
 ---
 
-### Toolbar
+### Header
 
 Side-panel / page header bar.
 
@@ -259,15 +259,15 @@ The `actions` slot is **empty by default** on a Chromium-native surface. Do not 
 
 ```tsx
 // Default: title-only (popups, side panels, settings pages)
-<Toolbar title="Settings" />
+<Header title="Settings" />
 
 // Full-tab manager: SearchInput in the middle, single ⋮ at the far right
-<Toolbar
+<Header
   title="Bookmarks"
   actions={<IconButton aria-label="More" icon={<MoreIcon />} />}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
-</Toolbar>
+</Header>
 ```
 
 ---
@@ -482,11 +482,11 @@ Give it an explicit `height` (or put it inside a `min-height: 0` flex parent) �
 
 ```tsx
 <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-  <Toolbar title="My extension" />
+  <Header title="My extension" />
   <PanelStack defaultView="main" style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="main">
       <ItemsList />
-      {/* Drill-in row for settings — not a gear in the Toolbar actions slot */}
+      {/* Drill-in row for settings — not a gear in the Header actions slot */}
       <PanelRow
         primary="Settings"
         secondary="Preferences, shortcuts, about"

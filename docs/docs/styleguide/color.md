@@ -19,7 +19,7 @@ Chromium WebUI is overwhelmingly neutral. Most of the surface is white or grey; 
 | **Primary text** | `--cr-fallback-color-on-surface` | Row primary, titles, button labels |
 | **Secondary text** | `--cr-fallback-color-on-surface-subtle` | Row secondary, hints, placeholders, "›" chevrons |
 | **Border (heavy)** | `--cr-fallback-color-outline` | Card outline, input border |
-| **Border (hairline)** | `--cr-divider-color` | Divider, Toolbar/Header bottom border, pinned-footer top border |
+| **Border (hairline)** | `--cr-divider-color` | Divider, Header/Header bottom border, pinned-footer top border |
 | **Primary accent** | `--cr-fallback-color-primary` | The single primary button, checked toggle, focus ring, links |
 | **Error** | `--cr-fallback-color-error` | Destructive button, inline error text |
 

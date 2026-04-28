@@ -12,7 +12,7 @@ export * from './components/Select';
 export * from './components/Badge';
 export * from './components/Card';
 export * from './components/Divider';
-export * from './components/Toolbar';
+export * from './components/Header';
 export * from './components/Tabs';
 export * from './components/Menu';
 export * from './components/Spinner';

@@ -114,7 +114,7 @@
 
   --cr-checked-color: var(--cr-fallback-color-primary);
 
-  /* Semantic alias: the quiet hairline used by Divider, Toolbar/Header bottom border,
+  /* Semantic alias: the quiet hairline used by Divider, Header bottom border,
      and the top border of pinned footers. Resolves to surface-variant in light and dark. */
   --cr-divider-color: var(--cr-fallback-color-surface-variant);
 
@@ -129,7 +129,7 @@
 
   /* ---- Layout & Spacing ---- */
   --cr-button-height:            36px;
-  --cr-toolbar-height:           56px;
+  --cr-header-height:            56px;
   --cr-sidepanel-header-height:  48px;
   --cr-icon-size:                20px;
   --cr-icon-ripple-size:         36px;

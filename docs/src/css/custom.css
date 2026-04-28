@@ -27,11 +27,11 @@
 }
 
 /* Infima's `.markdown h1:first-child` rule adds a vertical-rhythm margin-bottom
- * that leaks into every <Toolbar> inside a live preview (Toolbar renders an
+ * that leaks into every <Header> inside a live preview (Header renders an
  * <h1>, which is the first child of its own parent div). The leaking margin
  * pushes the title off-center inside the 48px header band. Defeat it locally —
- * the library's own `.cr-toolbar__title { margin: 0 }` is correct, the override
+ * the library's own `.cr-header__title { margin: 0 }` is correct, the override
  * is an Infima-inside-MDX artifact. */
-.theme-doc-markdown .cr-toolbar > .cr-toolbar__title {
+.theme-doc-markdown .cr-header > .cr-header__title {
   margin: 0;
 }

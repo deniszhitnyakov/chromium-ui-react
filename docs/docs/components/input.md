@@ -100,9 +100,9 @@ const [email, setEmail] = useState('');
 Full-width toolbar search:
 
 ```tsx
-<Toolbar>
+<Header>
   <SearchInput style={{ flex: 1 }} placeholder="Search history..." />
-</Toolbar>
+</Header>
 ```
 
 ## Form validation

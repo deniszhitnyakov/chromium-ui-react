@@ -103,7 +103,7 @@ Bundle with [Vite + `@crxjs/vite-plugin`](https://crxjs.dev/vite-plugin) (recomm
 | **Forms** | `Input`, `Textarea`, `SearchInput`, `Select`, `Checkbox`, `Radio`, `RadioGroup`, `Toggle` |
 | **Tags** | `Chip`, `Badge` |
 | **Surfaces** | `Card`, `CardHeader`, `CardBody`, `CardFooter`, `CardTitle`, `CardDescription` |
-| **Layout** | `Divider`, `Toolbar`, `List`, `ListItem` |
+| **Layout** | `Divider`, `Header`, `List`, `ListItem` |
 | **Navigation** | `Tabs`, `TabList`, `Tab`, `TabPanel`, `TabsSimple`, `Menu`, `MenuItem`, `MenuDivider`, `MenuLabel`, `PanelStack`, `PanelView`, `PanelHeader`, `PanelRow` |
 | **Feedback** | `Spinner`, `Progress`, `Toast`, `Dialog`, `Tooltip` |
 | **Empty** | `EmptyState` |

@@ -13,7 +13,7 @@ This section is not about what components exist — the [Components](/components
 
 ## Why this exists
 
-`chromium-ui-react` gives you the right pixels (`cr-button`, `cr-input`, `cr-toolbar`, `cr-link-row`-style list items, `PanelStack` drill-in) but does **not** prescribe composition. In practice, that freedom has produced extensions that use the right *components* with the wrong *layout*:
+`chromium-ui-react` gives you the right pixels (`cr-button`, `cr-input`, `cr-header`, `cr-link-row`-style list items, `PanelStack` drill-in) but does **not** prescribe composition. In practice, that freedom has produced extensions that use the right *components* with the wrong *layout*:
 
 - Cards floating on a tinted background, spaced like a marketing page.
 - Settings rows inside heavy bordered boxes.
@@ -53,7 +53,7 @@ When this styleguide says "Chromium-native," it means the visual language of the
 | Surface | Open at | Why it matters |
 |---|---|---|
 | Settings | `chrome://settings` | Section + row + subpage pattern |
-| Bookmarks manager | `chrome://bookmarks` | Toolbar + tree + list pattern |
+| Bookmarks manager | `chrome://bookmarks` | Header + tree + list pattern |
 | History | `chrome://history` | Grouped list + search pattern |
 | Downloads | `chrome://downloads` | Row with progress + actions pattern |
 | Reading list (side panel) | Side panel icon → Reading list | Compact list pattern |
