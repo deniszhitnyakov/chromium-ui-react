@@ -23,6 +23,7 @@ export * from './components/Link';
 export * from './components/List';
 export * from './components/EmptyState';
 export * from './components/PanelStack';
+export * from './components/Table';
 
 export { cn } from './utils/cn';
 export type { ClassValue } from './utils/cn';

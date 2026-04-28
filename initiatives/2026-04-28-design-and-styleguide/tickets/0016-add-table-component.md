@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0016 — Add a Table component (dense default, sticky-header option, automatic horizontal scroll)"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: compound API shipped as flat exports (`Table`, `TableHead`, `TableBody`, `TableRow`, `TableHeaderCell`, `TableCell`) following the `PanelStack` shape. `density` defaults to `'dense'` (12px text, 6px 12px padding); `density="regular"` switches to 13px text and 10px 16px padding. `stickyHeader` opt-in via `position: sticky; top: 0` on `<thead>` cells. Horizontal scroll handled automatically by the outer `cr-table-scroll` wrapper (`overflow-x: auto`) — `<table>` is `min-width: 100%` so it grows past the container when columns demand it. `TableRow` carries `interactive` / `selected` / `disabled` mirroring `ListItem` and `PanelRow`. `TableCell` and `TableHeaderCell` accept `align: 'start' | 'center' | 'end'`. Docs page at `docs/docs/components/table.md` registered in `sidebars.ts` with five live previews (default, density, sticky header, horizontal scroll in a 280px container, interactive selection). Visual verification confirmed `position: sticky/top: 0/z-index: 1` on `<th>` and 341 > 278 overflow on the narrow demo.
 
 ## Summary
 
