@@ -4,9 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0033** — [Table: doubled border between thead and the first tbody row](./tickets/0033-table-double-border-thead-tbody.md)
-- [ ] **#0034** — [Table: last tbody row is missing its bottom border, table reads as 'floating'](./tickets/0034-table-last-row-bottom-border.md)
-- [ ] **#0035** — [Table: default density should be 'regular', not 'dense'](./tickets/0035-table-default-density-regular.md)
 - [ ] **#0036** — [Link Collector sample: switch the 'Recently saved' list to a Table](./tickets/0036-link-collector-recently-saved-as-table.md)
 - [ ] **#0037** — [Settings page pattern: drop the dark right border on the sidebar nav](./tickets/0037-settings-page-sidebar-no-right-border.md)
 - [ ] **#0038** — [Side panel pattern: Card shadow reads too heavy](./tickets/0038-side-panel-card-shadow-too-heavy.md)
@@ -51,6 +48,9 @@ kanban-plugin: basic
 - [x] **#0030** — [Cleanup: regenerate the one-page LLM doc after the initiative's changes land](./tickets/0030-cleanup-regenerate-one-page-llm-doc.md)
 - [x] **#0031** — [Cleanup: update the Preflight Checklist for LLMs after the initiative's changes land](./tickets/0031-cleanup-update-preflight-checklist.md)
 - [x] **#0032** — [Cleanup: re-render the Introduction preview images after the initiative's visual changes land](./tickets/0032-cleanup-rerender-introduction-preview-images.md)
+- [x] **#0033** — [Table: doubled border between thead and the first tbody row](./tickets/0033-table-double-border-thead-tbody.md)
+- [x] **#0034** — [Table: last tbody row is missing its bottom border, table reads as 'floating'](./tickets/0034-table-last-row-bottom-border.md)
+- [x] **#0035** — [Table: default density should be 'regular', not 'dense'](./tickets/0035-table-default-density-regular.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

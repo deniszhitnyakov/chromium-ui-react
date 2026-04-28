@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. Removed `border-bottom` from `.cr-table__header-cell` and moved the hairline to `.cr-table__head` (a single `border-bottom: 1px solid var(--cr-divider-color)` on the `<thead>`). With `border-collapse: collapse`, the thead-level border is now the only line between header and the first body row. Verified visually on the deployed Live preview — the boundary reads as a single 1px hairline matching the dividers between body rows.
 
 ## Summary
 

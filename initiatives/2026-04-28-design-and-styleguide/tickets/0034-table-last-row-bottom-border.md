@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. Removed the `.cr-table__row:last-child .cr-table__cell { border-bottom: none; }` rule. Every body row, including the last, paints the same 1px `--cr-divider-color` hairline. The table now reads as a contained unit instead of "floating in air". Verified — `tbody tr:last-child td` paints `border-bottom: 1px solid rgb(225, 227, 234)` across all live previews.
 
 ## Summary
 

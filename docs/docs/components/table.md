@@ -2,13 +2,13 @@
 id: table
 title: Table
 slug: /components/table
-description: Semantic <table> primitive with a dense Chromium-faithful default, opt-in sticky header, and automatic horizontal scroll for narrow surfaces.
+description: Semantic <table> primitive with a regular Chromium-faithful default, opt-in dense density, opt-in sticky header, and automatic horizontal scroll for narrow surfaces.
 format: mdx
 ---
 
 # Table
 
-A thin, semantic wrapper over `<table>` for tabular data — scraper results, log viewers, inspector-style panels. Density defaults to `'dense'` (12px text, tight padding) so it fits side-panel widths without further tuning. The component renders an outer `overflow-x: auto` container automatically, so columns wider than the surface scroll horizontally instead of breaking the layout.
+A thin, semantic wrapper over `<table>` for tabular data — scraper results, log viewers, inspector-style panels. Density defaults to `'regular'` (13px text, roomy padding) for full-tab and options-page surfaces. Opt into `density="dense"` (12px text, tight padding) for side panels and other narrow surfaces. The component renders an outer `overflow-x: auto` container automatically, so columns wider than the surface scroll horizontally instead of breaking the layout.
 
 This is **not** a data-table — there is no sorting, no pagination, no filtering, no virtualisation. Compose those concerns above the primitive if you need them.
 
@@ -62,7 +62,7 @@ import {
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `density` | `'dense' \| 'regular'` | `'dense'` | Tight padding + 12px text vs. roomier 13px text |
+| `density` | `'regular' \| 'dense'` | `'regular'` | Roomy padding + 13px text vs. tight 12px text for narrow surfaces |
 | `stickyHeader` | `boolean` | `false` | Pin `<thead>` while the body scrolls. The container must bound the height. |
 | `wrapperClassName` | `string` | — | Class on the outer `overflow-x: auto` wrapper |
 
@@ -88,7 +88,7 @@ All other `<table>` attributes are forwarded. A `ref` is forwarded to the underl
 
 ```tsx live
 <>
-  <p style={{ marginBottom: 8 }}>Dense (default)</p>
+  <p style={{ marginBottom: 8 }}>Regular (default)</p>
   <Table>
     <TableHead>
       <TableRow>
@@ -101,8 +101,8 @@ All other `<table>` attributes are forwarded. A `ref` is forwarded to the underl
       <TableRow><TableCell>RecoveryImprovedCRX</TableCell><TableCell>2.3.1</TableCell></TableRow>
     </TableBody>
   </Table>
-  <p style={{ marginTop: 16, marginBottom: 8 }}>Regular</p>
-  <Table density="regular">
+  <p style={{ marginTop: 16, marginBottom: 8 }}>Dense</p>
+  <Table density="dense">
     <TableHead>
       <TableRow>
         <TableHeaderCell>Component</TableHeaderCell>
@@ -117,7 +117,7 @@ All other `<table>` attributes are forwarded. A `ref` is forwarded to the underl
 </>
 ```
 
-Choose `'regular'` only when the surface is a full-tab options page; everything narrower (popups, side panels, settings rows) uses `'dense'`.
+`'regular'` is the default — comfortable on full-tab options pages and any surface where vertical room is not scarce. Opt into `'dense'` for narrow surfaces like extension popups and side panels, or for log-style views where row count matters more than per-row breathing room.
 
 ## Sticky header
 
@@ -233,4 +233,4 @@ function InteractiveRows() {
 
 - **Faux-tables built from `<div>` rows.** Lose `<th>` semantics, lose copy-paste-as-tab-separated, lose vertical column alignment. Always reach for `<Table>` when the data is genuinely tabular.
 - **Zebra striping.** Not a Chromium pattern. Hairline row borders + hover-background are enough.
-- **Material-density rows on a side panel.** A 360px-wide side panel cannot afford 16–24px row padding. Default `density="dense"` keeps tables side-panel-friendly; `'regular'` is reserved for full-tab options pages.
+- **Default density on a side panel.** A 360px-wide side panel cannot afford the regular-density row padding. Opt into `density="dense"` for narrow surfaces; the default is regular density for full-tab and options-page use.

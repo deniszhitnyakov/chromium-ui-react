@@ -445,9 +445,9 @@ Structured row for list UIs (bookmarks, settings rows, command palette).
 
 ### Table
 
-Compound API over semantic `<table>` for tabular data — scraper results, log viewers, inspector panels. Dense default (12px text, 6px 12px padding) for narrow surfaces. Outer wrapper renders `overflow-x: auto` automatically — wider columns scroll horizontally. Opt-in `stickyHeader` requires the consumer to bound the height. **Not** a data-table: no sorting, no pagination, no virtualisation — compose those above this primitive.
+Compound API over semantic `<table>` for tabular data — scraper results, log viewers, inspector panels. Regular default (13px text, 10px 16px padding) for full-tab / options-page surfaces; opt into `density="dense"` (12px text, 6px 12px padding) for narrow surfaces like popups and side panels. Outer wrapper renders `overflow-x: auto` automatically — wider columns scroll horizontally. Opt-in `stickyHeader` requires the consumer to bound the height. **Not** a data-table: no sorting, no pagination, no virtualisation — compose those above this primitive.
 
-**Table props:** `density?: 'dense' | 'regular'` (default `'dense'`), `stickyHeader?: boolean`, `wrapperClassName?: string`, plus `<table>` attributes.
+**Table props:** `density?: 'regular' | 'dense'` (default `'regular'`), `stickyHeader?: boolean`, `wrapperClassName?: string`, plus `<table>` attributes.
 
 **TableRow props:** `interactive?: boolean`, `selected?: boolean`, `disabled?: boolean`.
 

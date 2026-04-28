@@ -10,10 +10,10 @@ import {
 import { cn } from '../../utils/cn';
 import './Table.css';
 
-export type TableDensity = 'dense' | 'regular';
+export type TableDensity = 'regular' | 'dense';
 
 export interface TableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 'border'> {
-  /** Row density. `'dense'` is the default — tight padding and 12px text for narrow surfaces. */
+  /** Row density. `'regular'` is the default — comfortable 13px text and 10px 16px padding. Opt into `'dense'` (12px text, 6px 12px padding) for narrow surfaces like side panels. */
   density?: TableDensity;
   /** Pin `<thead>` to the top while the body scrolls. Requires the consumer to bound the height. */
   stickyHeader?: boolean;
@@ -22,7 +22,7 @@ export interface TableProps extends Omit<TableHTMLAttributes<HTMLTableElement>, 
 }
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
-  { density = 'dense', stickyHeader, className, wrapperClassName, children, ...rest },
+  { density = 'regular', stickyHeader, className, wrapperClassName, children, ...rest },
   ref,
 ) {
   return (
@@ -31,7 +31,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
         ref={ref}
         className={cn(
           'cr-table',
-          density === 'regular' && 'cr-table--regular',
+          density === 'dense' && 'cr-table--dense',
           stickyHeader && 'cr-table--sticky',
           className,
         )}

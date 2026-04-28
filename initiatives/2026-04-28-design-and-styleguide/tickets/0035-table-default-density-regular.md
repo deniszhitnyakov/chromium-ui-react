@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (flip default). `Table.tsx`: `density = 'regular'` is the default; the `TableDensity` union order is `'regular' | 'dense'`. `Table.css`: the unmarked `.cr-table` rule paints regular geometry (13px text via `--cr-font-size-md`, 10px 16px padding); a new `.cr-table--dense` modifier opts down to 12px / 6px 12px. `docs/docs/components/table.md` Live preview now leads with the regular look; the Density section's example renders `<Table density="dense">` as the opt-in. The "default density on a side panel" anti-pattern updated to point at the new opt-in. `docs/docs/one-page.md` Table section updated. Verified in browser: default Table has `cr-table--dense` absent, `font-size: 13px`, `padding: 10px 16px`.
 
 ## Summary
 
