@@ -4,6 +4,14 @@ kanban-plugin: basic
 
 ## To Do
 
+- [ ] **#0033** — [Table: doubled border between thead and the first tbody row](./tickets/0033-table-double-border-thead-tbody.md)
+- [ ] **#0034** — [Table: last tbody row is missing its bottom border, table reads as 'floating'](./tickets/0034-table-last-row-bottom-border.md)
+- [ ] **#0035** — [Table: default density should be 'regular', not 'dense'](./tickets/0035-table-default-density-regular.md)
+- [ ] **#0036** — [Link Collector sample: switch the 'Recently saved' list to a Table](./tickets/0036-link-collector-recently-saved-as-table.md)
+- [ ] **#0037** — [Settings page pattern: drop the dark right border on the sidebar nav](./tickets/0037-settings-page-sidebar-no-right-border.md)
+- [ ] **#0038** — [Side panel pattern: Card shadow reads too heavy](./tickets/0038-side-panel-card-shadow-too-heavy.md)
+- [ ] **#0039** — [Extension Popup pattern: Settings entry is at the bottom, should be in the upper half (regression of #0026)](./tickets/0039-extension-popup-settings-entry-upper-half.md)
+- [ ] **#0040** — [Tab Manager sample: sidebar still rendered as elevated card; SearchInput not centred in the header](./tickets/0040-tab-manager-sidebar-card-and-search-centering.md)
 
 ## In Progress
 
