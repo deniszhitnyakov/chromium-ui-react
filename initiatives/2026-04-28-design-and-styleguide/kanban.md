@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0013** — [Badge: put 'neutral' first in the variants list and make it the default](./tickets/0013-badge-neutral-first.md)
 - [ ] **#0014** — [Card: 'elevated' should be the default variant (and shown first in the live preview)](./tickets/0014-card-elevated-as-default.md)
 - [ ] **#0015** — [Tabs: reduce default height — 48px is too tall for extension surfaces](./tickets/0015-tabs-reduce-default-height.md)
 - [ ] **#0016** — [Add a Table component (dense default, sticky-header option, automatic horizontal scroll)](./tickets/0016-add-table-component.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0010** — [Recommend Material Symbols / Material Design Icons; sweep all Unicode-icon examples in the docs](./tickets/0010-recommend-material-symbols-sweep-unicode-icons.md)
 - [x] **#0011** — [RadioGroup uncontrolled mode is broken: defaultValue is accepted but never wired](./tickets/0011-radio-group-uncontrolled-mode.md)
 - [x] **#0012** — [Drop Chip component — role overlaps with Badge / Button, no clear extension use case](./tickets/0012-drop-chip-component.md)
+- [x] **#0013** — [Badge: put 'neutral' first in the variants list and make it the default](./tickets/0013-badge-neutral-first.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

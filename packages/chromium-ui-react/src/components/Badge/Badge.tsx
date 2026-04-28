@@ -2,14 +2,14 @@ import { forwardRef, type HTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 import './Badge.css';
 
-export type BadgeVariant = 'default' | 'error' | 'success' | 'neutral' | 'warning';
+export type BadgeVariant = 'neutral' | 'info' | 'success' | 'warning' | 'error';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
 }
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
-  { variant = 'default', className, ...rest },
+  { variant = 'neutral', className, ...rest },
   ref,
 ) {
   return (
@@ -17,7 +17,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(function Badge(
       ref={ref}
       className={cn(
         'cr-badge',
-        variant !== 'default' && `cr-badge--${variant}`,
+        variant !== 'neutral' && `cr-badge--${variant}`,
         className,
       )}
       {...rest}

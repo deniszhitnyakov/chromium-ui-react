@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0013 — Badge: put 'neutral' first in the variants list and make it the default"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 2 + clarifying rename: `BadgeVariant` reordered to `'neutral' | 'info' | 'success' | 'warning' | 'error'`, default changed to `'neutral'`. The previous `'default'` (primary-blue outline) variant is now `'info'` — the rename makes the type read true (since "default" no longer means "the default variant"). CSS rules adjusted: `.cr-badge` now paints neutral grey, `.cr-badge--info` paints primary blue. Badge docs and one-page updated.
 
 ## Summary
 

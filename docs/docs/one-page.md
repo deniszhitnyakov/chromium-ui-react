@@ -201,7 +201,7 @@ Chromium-styled native `<select>`. Pass `options` for the 80% case.
 
 Small count indicator.
 
-**Props:** `variant?: 'default' | 'error' | 'success' | 'neutral' | 'warning'`, plus `<span>` attributes.
+**Props:** `variant?: 'neutral' | 'info' | 'success' | 'warning' | 'error'` (default `'neutral'`), plus `<span>` attributes. Outline-only by design — there is no solid fill. Reach for `<Badge>` (the neutral default) first; only escalate to a colored variant when the state is something the user must react to.
 
 ```tsx
 <Badge>12</Badge>
