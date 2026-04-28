@@ -22,7 +22,7 @@ function DialogDemo() {
         title="Delete this bookmark?"
         actions={
           <>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
             <Button variant="destructive" onClick={() => setOpen(false)}>Delete</Button>
           </>
         }
@@ -69,7 +69,7 @@ const [open, setOpen] = useState(false);
     title="Delete this bookmark?"
     actions={
       <>
-        <Button onClick={() => setOpen(false)}>Cancel</Button>
+        <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
         <Button variant="destructive" onClick={handleDelete}>Delete</Button>
       </>
     }

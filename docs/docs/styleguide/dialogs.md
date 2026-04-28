@@ -24,7 +24,7 @@ function ConfirmDemo() {
         title="Remove this bookmark?"
         actions={
           <>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
             <Button variant="destructive" onClick={() => setOpen(false)}>Remove</Button>
           </>
         }
@@ -48,6 +48,7 @@ Breakdown:
 - **Primary variant:**
   - `variant="action"` for non-destructive confirmations ("Save", "OK", "Continue").
   - `variant="destructive"` for destructive confirmations ("Remove", "Delete", "Clear all").
+- **Secondary (Cancel) variant:** follows the primary — `outlined` next to an `action` primary, `text` next to a `destructive` primary. See [Action-row pair](#action-row-pair) below.
 - **Dismissal:** Esc and backdrop click close. `<Dialog>` does both by default.
 
 ## Width guidelines
@@ -96,6 +97,42 @@ If your design system came from elsewhere and has "Primary on the left," you nee
 </Card>
 ```
 
+## Action-row pair
+
+The secondary's variant in a `[Cancel] [Primary]` pair is not free — it follows the primary:
+
+| Primary | Cancel | Visual rationale |
+|---|---|---|
+| `action` (filled blue pill) | `outlined` | Filled vs. outlined pill is already enough contrast — Cancel reads as the quieter affordance, primary wins. Matches Chromium native. |
+| `destructive` (red text on outlined pill) | `text` | An outlined Cancel next to a destructive pill produces two competing pills (one red-text, one blue-text). Switching Cancel to `text` removes the second pill so the destructive verb owns the row. |
+
+This is the one styleguide divergence from Chromium's actual confirmation dialogs (`chrome://settings/clearBrowserData`, `chrome://bookmarks` "Delete folder"), which use `outlined` Cancel even with destructive primaries. The library prefers the quieter Cancel because the operator's read is consistently that two pills compete for attention. The deviation is deliberate — the rule above is the one to follow.
+
+```tsx live
+<div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 420 }}>
+  <Card variant="outlined">
+    <CardHeader>
+      <CardTitle>Save changes?</CardTitle>
+      <CardDescription>Your edits to this entry haven't been saved yet.</CardDescription>
+    </CardHeader>
+    <CardFooter style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+      <Button>Cancel</Button>
+      <Button variant="action">Save</Button>
+    </CardFooter>
+  </Card>
+  <Card variant="outlined">
+    <CardHeader>
+      <CardTitle>Remove bookmark?</CardTitle>
+      <CardDescription>This will permanently remove "Docs — chromium-ui-react" from this device.</CardDescription>
+    </CardHeader>
+    <CardFooter style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+      <Button variant="text">Cancel</Button>
+      <Button variant="destructive">Remove</Button>
+    </CardFooter>
+  </Card>
+</div>
+```
+
 ## Three actions
 
 If you genuinely need three actions, they are almost always:
@@ -130,8 +167,8 @@ The canonical Chromium destructive pattern:
 
 - Title asks the question: "Remove this bookmark?"
 - Body names the item or count: "This will permanently remove *"Docs"* from this device." or "This will remove 247 bookmarks. This action can't be undone."
-- Cancel is outlined.
-- The destructive action uses `variant="destructive"` — solid red.
+- Cancel is `variant="text"` (see [Action-row pair](#action-row-pair) — non-destructive primaries pair with `outlined` Cancel; destructive primaries pair with `text` Cancel).
+- The destructive action uses `variant="destructive"` — error-colour text on a outlined pill.
 - The destructive verb is explicit: "Remove", "Delete", "Clear", "Sign out", never "OK" or "Yes."
 
 Never use a destructive dialog for reversible actions (undo via toast is often better — see below).

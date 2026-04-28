@@ -129,7 +129,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card>` (the library de
 
 **Wrong.** Every button uses `variant="action"` because "it looks friendlier."
 
-**Right.** Exactly one primary action per view. Everything else is `outlined` or `text`. A screen full of blue filled buttons has no primary.
+**Right.** Exactly one primary action per view. Everything else is `outlined` (next to an `action` primary) or `text` (next to a `destructive` primary, or anywhere the secondary should stay quiet). A screen full of blue filled buttons has no primary. See [anti-pattern #24](#24-non-text-cancel-next-to-a-destructive-primary) for the action-row rule.
 
 ## 12. Custom font family
 
@@ -504,6 +504,45 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 ```
 
 **Rule.** Icons are SVGs (Material Symbols outlined, 20px, weight 400). Unicode characters and emoji are not icons. See [Icons](./icons.md) for the full vocabulary recommendation.
+
+## 24. Non-text Cancel next to a destructive primary
+
+**Wrong.** Pairing a destructive primary with an `outlined` Cancel. Two pills next to each other — one red-text, one blue-text — read as "two competing actions" instead of "one verb the user came to confirm, plus an out". The eye doesn't pick the destructive verb fast enough, and the row reads gaudy.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 420 }}>
+  <CardHeader>
+    <CardTitle>Remove bookmark?</CardTitle>
+    <CardDescription>This will permanently remove "Docs — chromium-ui-react" from this device.</CardDescription>
+  </CardHeader>
+  <CardFooter style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+    <Button>Cancel</Button>
+    <Button variant="destructive">Remove</Button>
+  </CardFooter>
+</Card>
+```
+
+**Right.** Cancel is `variant="text"` whenever the primary is `destructive`. Cancel stays quiet, the destructive verb owns the row.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 420 }}>
+  <CardHeader>
+    <CardTitle>Remove bookmark?</CardTitle>
+    <CardDescription>This will permanently remove "Docs — chromium-ui-react" from this device.</CardDescription>
+  </CardHeader>
+  <CardFooter style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+    <Button variant="text">Cancel</Button>
+    <Button variant="destructive">Remove</Button>
+  </CardFooter>
+</Card>
+```
+
+**Rule.** In an action-row pair, the secondary's variant follows the primary:
+
+- Primary `action` (filled blue) → Cancel is `outlined` (matches Chromium native — pill outline against a filled pill is already visually distinct).
+- Primary `destructive` (red text on outlined pill) → Cancel is `text` (no border, quiet — the destructive verb wins the row).
+
+This is the one styleguide divergence from Chromium's confirmation dialogs (`chrome://settings/clearBrowserData`, `chrome://bookmarks` "Delete folder"), which use an outlined Cancel even next to destructive primaries. The library prefers a quieter Cancel in that pairing because the operator's read is consistently that two pills compete for attention. Everywhere else (settings forms, neutral confirmations, anything not destructive), the Chromium-native `outlined` Cancel stays.
 
 ---
 

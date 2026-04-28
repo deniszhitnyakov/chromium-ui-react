@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0017 — Action-row secondary (Cancel) should be variant='text', not outlined"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 3 (scoped rule): in an action-row pair, the secondary's variant follows the primary. `action` primary → `outlined` Cancel (matches Chromium native). `destructive` primary → `text` Cancel (the styleguide divergence — quieter Cancel keeps the destructive verb owning the row). New "Action-row pair" subsection landed in `dialogs.md` with a wide-pair live preview. New anti-pattern #24 ("Non-text Cancel next to a destructive primary") added to `anti-patterns.md` with wrong/right pair. Existing anti-pattern #11 rewritten to point at the new rule. Cancel-next-to-destructive examples updated across the docs: `principles.md` #4, `dialogs.md` (canonical confirmation), `components/dialog.md` (live preview + form-dialog snippet), `one-page.md` (Delete bookmark + Clear all), `samples/tab-manager.md` (Close tabs), `samples/link-collector.md` (Clear all). All `[Cancel] [Save]` / `[Cancel] [Capture]` / `[Cancel] [Add]` action pairs (with `action` primaries) intentionally left as `outlined` Cancel per the rule.
 
 ## Summary
 

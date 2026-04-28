@@ -55,7 +55,7 @@ Every Chromium confirmation has exactly two buttons, right-aligned, with the sec
     <CardDescription>This will permanently remove "Docs — chromium-ui-react" from this device.</CardDescription>
   </CardHeader>
   <CardFooter style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
-    <Button>Cancel</Button>
+    <Button variant="text">Cancel</Button>
     <Button variant="destructive">Remove</Button>
   </CardFooter>
 </Card>

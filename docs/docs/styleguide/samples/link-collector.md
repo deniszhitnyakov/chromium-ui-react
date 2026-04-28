@@ -250,7 +250,7 @@ function ClearAllDemo() {
         title="Clear all collections?"
         actions={
           <>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
             <Button variant="destructive" onClick={() => setOpen(false)}>Clear</Button>
           </>
         }

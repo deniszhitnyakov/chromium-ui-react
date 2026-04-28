@@ -212,7 +212,7 @@ function BulkCloseDemo() {
         title="Close 23 tabs?"
         actions={
           <>
-            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
             <Button variant="destructive" onClick={() => setOpen(false)}>Close tabs</Button>
           </>
         }

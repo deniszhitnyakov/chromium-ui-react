@@ -365,7 +365,7 @@ Modal dialog rendered into a portal on `document.body`.
   onClose={() => setOpen(false)}
   title="Delete bookmark?"
   actions={<>
-    <Button variant="outlined" onClick={() => setOpen(false)}>Cancel</Button>
+    <Button variant="text" onClick={() => setOpen(false)}>Cancel</Button>
     <Button variant="destructive" onClick={confirmDelete}>Delete</Button>
   </>}
 >
@@ -523,7 +523,7 @@ Give it an explicit `height` (or put it inside a `min-height: 0` flex parent) â€
   onClose={close}
   title="Clear all bookmarks?"
   actions={<>
-    <Button variant="outlined" onClick={close}>Cancel</Button>
+    <Button variant="text" onClick={close}>Cancel</Button>
     <Button variant="destructive" onClick={clearAll}>Clear</Button>
   </>}
 >
