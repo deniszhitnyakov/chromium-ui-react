@@ -54,11 +54,9 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
     </Card>
     <div style={{ padding: '0 16px' }}>
       <div style={{
-        fontSize: 11,
-        fontWeight: 500,
-        textTransform: 'uppercase',
-        letterSpacing: '0.06em',
-        color: 'var(--cr-fallback-color-on-surface-subtle)',
+        fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
         margin: '8px 0',
       }}>
         What to capture
@@ -70,11 +68,9 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
       </RadioGroup>
       <div style={{ height: 16 }} />
       <div style={{
-        fontSize: 11,
-        fontWeight: 500,
-        textTransform: 'uppercase',
-        letterSpacing: '0.06em',
-        color: 'var(--cr-fallback-color-on-surface-subtle)',
+        fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
         margin: '8px 0',
       }}>
         Include

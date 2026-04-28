@@ -142,12 +142,12 @@ render(<FormDialogDemo />);
 
 ## Grouped form sections
 
-For a multi-section form (e.g., "Profile" with name + bio + social links), compose sections the same way as settings: one card per section, one 11px all-caps label per section if groups exist.
+For a multi-section form (e.g., "Profile" with name + bio + social links), compose sections the same way as settings: one card per section, with a 14px regular-weight `<h2>` heading above each card. Sentence case — never ALL CAPS for section headings.
 
 ```tsx live
 <div style={{ maxWidth: 520, display: 'flex', flexDirection: 'column', gap: 24 }}>
   <div>
-    <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)', padding: '0 16px 8px' }}>
+    <div style={{ fontSize: 14, fontWeight: 400, color: 'var(--cr-fallback-color-on-surface)', padding: '8px 4px 4px' }}>
       Profile
     </div>
     <Card variant="outlined">
@@ -159,7 +159,7 @@ For a multi-section form (e.g., "Profile" with name + bio + social links), compo
     </Card>
   </div>
   <div>
-    <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)', padding: '0 16px 8px' }}>
+    <div style={{ fontSize: 14, fontWeight: 400, color: 'var(--cr-fallback-color-on-surface)', padding: '8px 4px 4px' }}>
       Links
     </div>
     <Card variant="outlined">

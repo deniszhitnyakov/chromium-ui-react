@@ -16,7 +16,7 @@ All sizes are `--cr-font-size-*` tokens. Do not invent values between or beyond 
 
 | Token | Size | Weight | Where it appears |
 |---|---|---|---|
-| `--cr-font-size-xs` | 11px | 500 | Inline badges, policy indicators, small-caps helper text. (Note: Chromium's actual `cr-form-field-label` is **10px** at 0.625rem — closer to `--cr-font-size-xs` than any other library token.) |
+| `--cr-font-size-xs` | 11px | 500 | Tiny inline labels, badges, kbd hints, the rare 10–11px caps form-field label *above a single input*. **Not** a section-grouping label; section titles use `--cr-font-size-base` weight 400 — see [Sections & rows](./sections-and-rows.md). |
 | `--cr-font-size-sm` | 12px | 400 | Secondary row text, hint text, timestamps, kbd shortcuts |
 | `--cr-font-size-md` | 13px | 400 | **Default body.** `ListItem` primary, menu items, button labels, link row titles |
 | `--cr-font-size-base` | 14px | 500 | Section titles, card titles, dialog body text |
@@ -33,7 +33,7 @@ Weight-500 ("medium") is the workhorse emphasis. Do not use weight-700 (bold) in
   <div style={{ fontSize: 14, fontWeight: 500 }}>14px medium — section title</div>
   <div style={{ fontSize: 13 }}>13px regular — default body (most common)</div>
   <div style={{ fontSize: 12, color: 'var(--cr-fallback-color-on-surface-subtle)' }}>12px subtle — secondary text, hints</div>
-  <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)' }}>11PX ALL CAPS — SECTION LABEL</div>
+  <div style={{ fontSize: 11, fontWeight: 500, color: 'var(--cr-fallback-color-on-surface-subtle)' }}>11px subtle — kbd hint, tiny label</div>
 </div>
 ```
 
@@ -91,21 +91,18 @@ Chromium's actual settings-section pattern: a plain `<h2>` at **14px weight 400*
 
 This is the canonical pattern in `chrome://settings` (see `settings_section.html`). Note that the section title is **regular weight, not medium** — that is the single most commonly missed detail.
 
-### The 11px label — use sparingly
+### The 11px caps label — form-field labels only
 
-The all-caps 11px label exists in some surfaces (menu group labels, inline form labels — the latter is actually 10px weight 500 in Chromium source). Do not use it to group sections on a settings page; that role belongs to the `<h2>` pattern above.
+The 11px (or 10px in Chromium source) caps label has exactly one Chromium-native use: above a single input on a form, where it acts as the field's accessible label. The library exposes this as the `.cr-label-small` utility — `text-transform: uppercase`, `letter-spacing: .4px`, weight 500. It is not a section-grouping label and must not be reached for as one.
 
 ```tsx live
-<div style={{
-  fontSize: 11,
-  fontWeight: 500,
-  textTransform: 'uppercase',
-  letterSpacing: '0.06em',
-  color: 'var(--cr-fallback-color-on-surface-subtle)',
-}}>
-  Recent
+<div style={{ maxWidth: 320 }}>
+  <div className="cr-label-small">Display name</div>
+  <Input placeholder="Your name" style={{ marginTop: 4 }} />
 </div>
 ```
+
+**Section grouping** uses the 14px regular `<h2>` pattern shown above, never the 11px caps label. This is the single most-confused rule in the library — see [Anti-pattern #21](./anti-patterns.md#21-all-caps-section-labels).
 
 ### Row primary + secondary
 
@@ -120,32 +117,6 @@ The all-caps 11px label exists in some surfaces (menu group labels, inline form 
 ```
 
 Primary is 13px `on-surface`. Secondary is 12px `on-surface-subtle`. This is applied automatically by `<ListItem>` — do not override.
-
-### All-caps section label
-
-Used to group sections above a card on options pages. The label lives **outside** the card.
-
-```tsx live
-<div style={{ maxWidth: 520 }}>
-  <div style={{
-    fontSize: 11,
-    fontWeight: 500,
-    textTransform: 'uppercase',
-    letterSpacing: '0.06em',
-    color: 'var(--cr-fallback-color-on-surface-subtle)',
-    padding: '0 16px 8px',
-  }}>
-    Appearance
-  </div>
-  <Card variant="outlined">
-    <List>
-      <ListItem primary="Theme" end={<Select options={[{ value: 'system', label: 'System' }]} />} />
-      <Divider subtle />
-      <ListItem primary="Show home button" end={<Toggle />} />
-    </List>
-  </Card>
-</div>
-```
 
 ## Line-height
 
@@ -164,7 +135,7 @@ Chromium surfaces rarely contain paragraphs of body text. When they do (e.g., a 
 - **Display sizes.** No 28, 32, 36, 48px text. Chromium does not have a display scale.
 - **Italic for emphasis.** Use weight-500 instead. Italic is reserved for cited titles in prose.
 - **Uppercase-everything buttons.** Button labels are sentence case.
-- **Letter-spacing experiments.** The only tracked text in Chromium is the 11px all-caps label (~0.06em). Nothing else gets tracked.
+- **Letter-spacing experiments.** The only tracked text in Chromium is the 10–11px caps form-field label (~0.4px). Nothing else gets tracked.
 - **Custom font imports.** See "The family" above — the fallback stack is the brand.
 - **Mixing 12 and 13 for the same role.** Pick one per row role and stick with it across your app.
 

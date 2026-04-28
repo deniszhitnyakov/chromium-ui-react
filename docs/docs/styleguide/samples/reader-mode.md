@@ -110,12 +110,10 @@ If you want a lighter-weight access point than drilling into the full settings v
     <div style={{ padding: '8px 16px', display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div>
         <div style={{
-          fontSize: 10,
-          fontWeight: 500,
-          letterSpacing: '0.4px',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           marginBottom: 8,
-          textTransform: 'uppercase',
         }}>
           Font
         </div>
@@ -127,12 +125,10 @@ If you want a lighter-weight access point than drilling into the full settings v
       </div>
       <div>
         <div style={{
-          fontSize: 10,
-          fontWeight: 500,
-          letterSpacing: '0.4px',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           marginBottom: 8,
-          textTransform: 'uppercase',
         }}>
           Size
         </div>

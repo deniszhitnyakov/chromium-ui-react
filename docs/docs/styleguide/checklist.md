@@ -51,7 +51,7 @@ Every Chromium-native surface has the same shell:
 Compose the content as a **vertical stack of rows inside one or more cards**. In Chromium:
 
 - A "section" is a `Card variant="outlined"` containing a `List` of `ListItem`s.
-- Sections may have a small all-caps label above them (13px, medium-weight, subtle color) — not inside the card.
+- Sections may have a 14px regular-weight `<h2>` heading above them, sentence case — not inside the card. **Never** an ALL CAPS label.
 - Rows are separated by `<Divider subtle />`.
 - Rows have one of three layouts:
   - `primary` + `end={<Toggle />}` for boolean settings.
@@ -74,7 +74,7 @@ Use only the library's `--cr-font-size-*` tokens. The full scale is: 11, 12, 13,
 
 | Size | Token | Use |
 |---|---|---|
-| 11 | `--cr-font-size-xs` | All-caps section labels, tiny badges |
+| 11 | `--cr-font-size-xs` | Tiny inline labels, badges, kbd hints. **Not** for section labels — section labels are 14px regular. |
 | 12 | `--cr-font-size-sm` | Secondary text on rows, helper text |
 | 13 | `--cr-font-size-md` | **Chromium's default body font size** — `ListItem` primary, menu items, button labels |
 | 14 | `--cr-font-size-base` | Larger body, section titles |

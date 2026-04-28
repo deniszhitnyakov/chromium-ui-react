@@ -66,10 +66,8 @@
 }
 
 .cr-menu__label {
-  padding: 4px 16px;
-  font-size: var(--cr-font-size-xs);
+  padding: 8px 16px 4px;
+  font-size: var(--cr-font-size-sm);
   font-weight: var(--cr-font-weight-medium);
-  letter-spacing: .4px;
-  text-transform: uppercase;
   color: var(--cr-secondary-text-color);
 }

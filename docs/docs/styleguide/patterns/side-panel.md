@@ -39,11 +39,9 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
           <SearchInput placeholder="Search reading list" />
         </div>
         <div style={{
-          fontSize: 11,
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           padding: '16px 16px 8px',
         }}>
           Unread
@@ -71,11 +69,9 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
           />
         </List>
         <div style={{
-          fontSize: 11,
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           padding: '16px 16px 8px',
         }}>
           Pages you've read
@@ -107,7 +103,7 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
 - **Header height.** **48px**, not 56px. Chromium uses `--cr-sidepanel-header-height: 48px` — the side panel header is one notch shorter than the main toolbar.
 - **Header title.** 14px weight-500, `padding-left: 16px`. Nothing else in the header — no gear, no "+", no `⋮`. Row-level actions live on the rows; a single "Add current tab" control (if needed) is an `EmptyState` / footer `Button`, not a header icon. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Search in the panel.** Placed immediately below the header, in a small horizontal gutter. `--cr-space-2` (8px) vertical, `--cr-space-4` (16px) horizontal.
-- **Group labels.** 11px all-caps, weight-500, letter-spacing 0.06em, `on-surface-subtle`. Side panels *do* use this pattern (unlike full settings pages, where `<h2>` is the norm). Padding `16px 16px 8px`.
+- **Group labels.** 14px regular-weight, sentence case, on-surface colour. Same shape as a settings-page `<h2>`. Padding `8px 16px 4px`. Side panels are *not* an exception to the no-ALL-CAPS rule — see [Anti-pattern #21](../anti-patterns.md#21-all-caps-section-labels).
 - **Rows.** Standard `ListItem` with primary + secondary + trailing `IconButton`. 48px or 64px min-height depending on sublabel presence. Per-row `IconButton`s are fine — they sit *inside* rows, not in the header.
 - **No card.** Side panels do not wrap their lists in cards — the panel itself is the card.
 
@@ -202,7 +198,7 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 - **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Right-aligned or `size="sm"` primary action at the bottom.** The panel's single primary CTA is pinned at the bottom, centered, and full-size — see [Pattern — Primary action button](./primary-action.md) and [Anti-patterns #17](../anti-patterns.md#17-primary-action-buried-on-a-side-panel).
 - **Two-pane inside the side panel.** A side panel is already narrow — drill in, don't split.
-- **Tabs at the top.** Use `PanelStack` or the 11px all-caps group labels.
+- **Tabs at the top.** Use `PanelStack` for sub-views, or 14px sentence-case group headings for in-place grouping.
 - **Large icons on rows.** 16px favicons or 16px leading icons. Nothing larger.
 
 ## Mapping to Chromium source

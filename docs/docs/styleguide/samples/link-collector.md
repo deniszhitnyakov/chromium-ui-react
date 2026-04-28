@@ -74,11 +74,9 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
       </div>
     </div>
     <div style={{
-      fontSize: 11,
-      fontWeight: 500,
-      textTransform: 'uppercase',
-      letterSpacing: '0.06em',
-      color: 'var(--cr-fallback-color-on-surface-subtle)',
+      fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
       padding: '24px 16px 8px',
     }}>
       Recently saved

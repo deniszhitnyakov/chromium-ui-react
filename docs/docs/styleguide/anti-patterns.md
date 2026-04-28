@@ -394,6 +394,53 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 
 **Rule.** Aim for one word; two is acceptable when the verb genuinely needs a noun ("Save changes", "Add account", "Restore defaults"). Three or more is wrong. See [Content & labels — Button labels](./content.md#button-labels) for the canonical Chromium verb list.
 
+## 21. ALL CAPS section labels
+
+**Wrong.** Sections grouped under 11px ALL CAPS letter-spaced headings — the recipe survives in older Material designs but is not how Chromium settings group anything.
+
+```tsx live
+<div style={{ maxWidth: 520 }}>
+  <div style={{
+    fontSize: 11,
+    fontWeight: 500,
+    textTransform: 'uppercase',
+    letterSpacing: '0.06em',
+    color: 'var(--cr-fallback-color-on-surface-subtle)',
+    padding: '0 16px 8px',
+  }}>
+    APPEARANCE
+  </div>
+  <Card variant="outlined">
+    <List>
+      <ListItem primary="Theme" end={<Select options={[{ value: 'sys', label: 'System' }]} />} />
+    </List>
+  </Card>
+</div>
+```
+
+**Right.** A plain 14px regular-weight `<h2>` (or `<div>` with the same shape) above the card. Sentence case. No tracking. Same colour as body text. This is what `chrome://settings`, `chrome://bookmarks`, and `chrome://downloads` actually do.
+
+```tsx live
+<div style={{ maxWidth: 520 }}>
+  <h2 style={{
+    fontSize: 14,
+    fontWeight: 400,
+    color: 'var(--cr-fallback-color-on-surface)',
+    margin: '0 0 12px 4px',
+    padding: '8px 0 4px',
+  }}>
+    Appearance
+  </h2>
+  <Card variant="outlined">
+    <List>
+      <ListItem primary="Theme" end={<Select options={[{ value: 'sys', label: 'System' }]} />} />
+    </List>
+  </Card>
+</div>
+```
+
+**Rule.** Section labels are sentence case at 14px regular weight. The 11px caps recipe (`.cr-label-small`) survives only as a form-field-label utility — used above a single input, never above a card or list. Reaching for it as a section label is the single most visible "this is older Material, not Chromium" tell. See [Typography — section title](./typography.md#section-title--description).
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.

@@ -49,14 +49,17 @@ The source template is `settings_section.html` — see [Chromium source referenc
 
 That is the Chromium settings block — four rows, one elevated card, one h2 above. Copy this shape. It is the right answer for probably 80% of extension settings UIs.
 
-## 11px all-caps label — a different pattern
+## ALL CAPS labels — only above an input
 
-The 11px uppercase label (sometimes seen on MDC surfaces) is **not** how Chromium settings groups sections. Chromium uses the plain 14px-weight-400 `<h2>` shown above. The 11px all-caps feel does exist inside Chromium — for example in `cr_form_field_label` at 10px (yes, **10px**) with weight 500 and letter-spacing 0.4px — but that is a form-field label above an input, not a group header above a card.
+Chromium does have a small ALL CAPS label, but it lives in exactly one place: **above a single form input**, where it acts as the field's accessible label. The library's `.cr-label-small` utility (10–11px, weight 500, letter-spacing 0.4px, uppercase) exists for that one use.
 
-Pick based on context:
+It is **not** how Chromium settings groups sections. The section heading above a card is a plain 14px regular-weight `<h2>` in sentence case, full stop. Reaching for the 11px caps recipe to label a section, a card, or a side-panel block is the single most visible "this is older Material, not Chromium" tell — see [Anti-pattern #21](./anti-patterns.md#21-all-caps-section-labels).
 
-- Group of sections on a settings page → **14px weight-400 `<h2>` above each card**.
-- Label above a standalone input or group of inputs inside a card → **10px weight-500 letter-spaced label** (see [Forms](./forms.md)).
+In short:
+
+- Group of sections on a settings page → **14px weight-400 `<h2>` above each card**, sentence case.
+- Label above a standalone input → `.cr-label-small` (10–11px, caps), one input only.
+- Anywhere else → no label, or a sentence-case heading at the appropriate body size.
 
 ## The three canonical rows
 
@@ -141,7 +144,7 @@ Multiple sections stack with `--cr-space-6` (24px) between them. Each section ha
 ```tsx live
 <div style={{ maxWidth: 520, display: 'flex', flexDirection: 'column', gap: 'var(--cr-space-6)' }}>
   <div>
-    <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)', padding: '0 16px 8px' }}>
+    <div style={{ fontSize: 14, fontWeight: 400, color: 'var(--cr-fallback-color-on-surface)', padding: '8px 4px 4px' }}>
       Appearance
     </div>
     <Card variant="outlined">
@@ -153,7 +156,7 @@ Multiple sections stack with `--cr-space-6` (24px) between them. Each section ha
     </Card>
   </div>
   <div>
-    <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)', padding: '0 16px 8px' }}>
+    <div style={{ fontSize: 14, fontWeight: 400, color: 'var(--cr-fallback-color-on-surface)', padding: '8px 4px 4px' }}>
       On startup
     </div>
     <Card variant="outlined">
@@ -167,7 +170,7 @@ Multiple sections stack with `--cr-space-6` (24px) between them. Each section ha
     </Card>
   </div>
   <div>
-    <div style={{ fontSize: 11, fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--cr-fallback-color-on-surface-subtle)', padding: '0 16px 8px' }}>
+    <div style={{ fontSize: 14, fontWeight: 400, color: 'var(--cr-fallback-color-on-surface)', padding: '8px 4px 4px' }}>
       Advanced
     </div>
     <Card variant="outlined">

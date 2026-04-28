@@ -72,12 +72,10 @@
   text-transform: uppercase;
 }
 .cr-section-header {
-  font-size: var(--cr-font-size-xs);
-  font-weight: var(--cr-font-weight-medium);
-  line-height: 16px;
-  letter-spacing: .8px;
-  text-transform: uppercase;
-  color: var(--cr-secondary-text-color);
+  font-size: var(--cr-font-size-base);
+  font-weight: var(--cr-font-weight-regular);
+  line-height: 20px;
+  color: var(--cr-primary-text-color);
   padding: var(--cr-space-2) var(--cr-space-4) var(--cr-space-1);
 }
 

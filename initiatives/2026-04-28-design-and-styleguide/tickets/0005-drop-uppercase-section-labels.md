@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0005 — Drop ALL CAPS section labels everywhere; sentence case is the Chromium-native default"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 2: `.cr-label-small` retained as form-field-label utility (uppercase + 0.4px tracking), but `text-transform: uppercase` removed from `.cr-section-header`, `Tabs.css`, and `Menu.css`. All inline 11px-caps recipes across docs swept to 14px sentence case. `sections-and-rows.md` ↔ `patterns/side-panel.md` contradiction resolved (both pages now say sentence case unconditionally). Anti-pattern #21 added. `checklist.md` and `typography.md` rewritten to make the form-field-label-only scope explicit.
 
 ## Summary
 

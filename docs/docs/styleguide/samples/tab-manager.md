@@ -54,11 +54,9 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
     <main style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
       <div style={{ maxWidth: 960, margin: '0 auto' }}>
         <div style={{
-          fontSize: 11,
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           padding: '0 4px 8px',
         }}>
           Chromium UI · 4 tabs
@@ -100,11 +98,9 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
           </List>
         </Card>
         <div style={{
-          fontSize: 11,
-          fontWeight: 500,
-          textTransform: 'uppercase',
-          letterSpacing: '0.06em',
-          color: 'var(--cr-fallback-color-on-surface-subtle)',
+          fontSize: 14,
+          fontWeight: 400,
+          color: 'var(--cr-fallback-color-on-surface)',
           padding: '8px 4px 8px',
         }}>
           Ungrouped · 10 tabs
