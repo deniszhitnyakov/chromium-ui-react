@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0025 — Primary-action running-state replacement: Stop button is variant='destructive', not outlined"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. `patterns/primary-action.md` Running-state replacement live preview switched from `<Button variant="outlined">Stop</Button>` to `<Button variant="destructive">Stop</Button>`. The accompanying prose now reads `variant="destructive"` and adds one sentence explaining the colour signal ("Stop interrupts useful in-flight work, so the colour carries that meaning rather than reading as a neutral Cancel"). The "Two filled primaries at once is always wrong" sentence is preserved — the no-stacking, single-footer-discipline part of the rule is unchanged. No other Stop / Abort buttons surfaced in `grep '>Stop<'` across the docs.
 
 ## Summary
 

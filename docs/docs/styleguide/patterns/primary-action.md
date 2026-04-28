@@ -196,12 +196,12 @@ When the primary's state flips (Start → Stop, Capture → Cancel), replace the
     display: 'flex',
     justifyContent: 'center',
   }}>
-    <Button variant="outlined">Stop</Button>
+    <Button variant="destructive">Stop</Button>
   </div>
 </div>
 ```
 
-`Stop` during a running operation is `variant="outlined"`, still centered, still the only action on screen. Two filled primaries at once is always wrong.
+`Stop` during a running operation is `variant="destructive"` — outlined error-colour, still centered, still the only action on screen. Stop interrupts useful in-flight work, so the colour carries that meaning rather than reading as a neutral "Cancel". Two filled primaries at once is always wrong.
 
 ### No primary at all
 
