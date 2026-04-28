@@ -57,21 +57,22 @@ The shell is content-first; the header and the pinned footer are opt-in based on
 
 Compose the content as a **vertical stack of rows inside one or more cards**. In Chromium:
 
-- A "section" is a `Card variant="outlined"` containing a `List` of `ListItem`s.
+- A "section" is a `<Card>` (default `elevated` — Chromium-faithful subtle elevation-2 shadow) containing a `<List>` of `<ListItem>`s, or a stack of dedicated row primitives like `<ToggleRow>`.
+- **Side panels are composed the same way** — each section is its own elevated `<Card>` with a sentence-case `<h2>` heading above it. The bare-list shape was modelled on Chrome's Reading List and does not generalise.
 - Sections may have a 14px regular-weight `<h2>` heading above them, sentence case — not inside the card. **Never** an ALL CAPS label.
 - Rows are separated by `<Divider subtle />`.
-- Rows have one of three layouts:
-  - `primary` + `end={<Toggle />}` for boolean settings.
-  - `primary` + `secondary` + `end={<span>›</span>}` + `interactive` for drill-in rows.
-  - `primary` + `end={<Select ... />}` for enum settings.
+- Common row shapes (not exhaustive — see [Sections & rows — Common row shapes](./sections-and-rows.md#common-row-shapes)):
+  - **Toggle row** — use `<ToggleRow primary="..." secondary="..." defaultChecked />`. The whole row is one click target. *Do not* use `<ListItem end={<Toggle />}>` for toggle-only rows — it swallows clicks outside the switch.
+  - **Drill-in row** — `primary` + `secondary` + chevron + `interactive` (or `<PanelRow navigateTo="...">` inside a `PanelStack`).
+  - **Inline-control row** — `primary` + `end={<Select />}` (or `<Input />`) for enum / short free-form values.
+  - Plus **read-only value**, **status / progress** (Spinner / Progress), **status badge**, **action row** (single `Button variant="text"` in `end`).
+- **Settings entry row** is labelled exactly `Settings` (one word, sentence case — never `Options` / `Preferences` / `Reader settings`) and placed in the **upper half** of the surface (typically the first 1–3 rows after the primary status / verb). See [Pattern — Settings entry](./patterns/settings-entry.md).
 
 ```tsx
-<Card variant="outlined">
-  <List>
-    <ListItem primary="Notifications" secondary="Allow notifications" end={<Toggle defaultChecked />} />
-    <Divider subtle />
-    <ListItem primary="Sync" end={<Toggle />} />
-  </List>
+<Card>
+  <ToggleRow primary="Notifications" secondary="Allow notifications" defaultChecked />
+  <Divider subtle />
+  <ToggleRow primary="Sync" />
 </Card>
 ```
 
@@ -111,10 +112,11 @@ Do not write dark-mode media queries. The tokens handle it.
 
 Any time the user has a primary/secondary action pair:
 
-- Put them in a **right-aligned row** at the bottom of the surface or dialog.
+- Put them in a **right-aligned row** at the bottom of the surface or dialog. Side-panel surfaces are the exception — see [Pattern — Primary action button](./patterns/primary-action.md) for the centred-in-pinned-footer rule there.
 - Order: `[Cancel] [Primary]`. Not the other way around.
 - Exactly two buttons. If you have a third, move it into a Menu behind an `IconButton`.
-- Primary is `variant="action"`. Destructive is `variant="destructive"`. Secondary is default (outlined) or `variant="text"`.
+- Primary is `variant="action"`. Destructive is `variant="destructive"`. Stop / abort verbs (interrupting in-flight work) are also `variant="destructive"`.
+- **Cancel's variant follows the primary.** Next to an `action` primary, Cancel is `outlined` (Chromium-native — pill outline against a filled pill is enough contrast). Next to a `destructive` primary, Cancel is `variant="text"` (the library divergence — quieter Cancel keeps the destructive verb owning the row). See [Anti-pattern #24](./anti-patterns.md#24-non-text-cancel-next-to-a-destructive-primary).
 - Buttons are content-sized — there is no `fullWidth` prop. Stretching a button edge-to-edge produces a banner, not a control.
 - **Labels are one word, two when the verb genuinely needs a noun.** `Save`, `Cancel`, `Add`, `Remove`, `Sync`, `Continue`. `Save changes` and `Add account` are acceptable. `Start new scrape`, `Enrich visible leads`, `Save and continue` are wrong — pick a tighter verb or move the noun into the surface around the button. See [Content & labels — Button labels](./content.md#button-labels).
 
@@ -142,7 +144,11 @@ Before you declare a layout complete, run through this:
 - [ ] Is the focus ring the default one (no custom `:focus-visible` override)?
 - [ ] Did you avoid adding icons to every row?
 - [ ] Are badges defaulting to `variant="neutral"` for informational labels, with colored variants reserved for states the user must react to (and never stacked down a whole column)?
-- [ ] **Is the toolbar `actions` slot empty, or at most a single far-right `⋮` with content between it and the title?** No settings gear, no "+", no typography icon glued to the heading.
+- [ ] **Is the header `actions` slot empty, or at most a single far-right `⋮` with content between it and the title?** No settings gear, no "+", no typography icon glued to the heading.
+- [ ] If the surface is an extension side panel, **is there no in-panel `<Header>`?** Chrome paints a system header above the iframe. (`PanelHeader` for drill-in subviews is fine.)
+- [ ] If a `Settings` row exists, is it labelled exactly `Settings` (not `Options` / `Reader Settings`) and placed in the upper half of the surface?
+- [ ] Are toggle-only rows using `<ToggleRow>` (whole row clickable), not `<ListItem end={<Toggle />}>`?
+- [ ] Are icons real SVGs (Material Symbols outlined, 20px, weight 400) — never Unicode glyphs like `⋮` `↻` `✓` or emoji?
 - [ ] If there is navigation, is it the right primitive (`PanelStack` / `Menu` / `Tabs`)?
 - [ ] No gradient, no illustration, no marketing copy, no emoji in labels?
 
@@ -159,5 +165,12 @@ When an LLM-produced layout looks wrong, it is almost always one of:
 5. **Colored page background.** Remove; use `--cr-fallback-color-surface`.
 6. **Oversized title.** Reduce to `--cr-font-size-lg` in `<Header>`.
 7. **Settings gear (or any IconButton) in the header.** Demote to a `PanelRow` inside the content. See [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+8. **Full-width primary action.** Stretching a button edge-to-edge produces a banner. Buttons are content-sized; use [Pattern — Primary action button](./patterns/primary-action.md) for the side-panel pinned-footer shape. See [Anti-patterns #19](./anti-patterns.md#19-full-width-primary-action-in-a-narrow-footer).
+9. **Settings entry buried at the bottom.** Move it to the upper half (typically the first 1–3 rows after the primary status). Label it exactly `Settings`. See [Anti-patterns #26](./anti-patterns.md#26-settings-entry-buried-at-the-bottom-of-the-surface).
+10. **In-panel `<Header>` in a side-panel extension.** Chrome paints a system header above the iframe — drop the in-panel one. See [Anti-patterns #25](./anti-patterns.md#25-in-panel-header-in-a-side-panel-extension).
+11. **ALL CAPS section labels.** Use sentence case 14px regular `<h2>` above each card. The 11px caps recipe is for the narrow `cr-form-field-label` use only. See [Anti-patterns #21](./anti-patterns.md#21-all-caps-section-labels).
+12. **Unicode characters as icons.** `⋮` `↻` `✓` `🔒` render at inconsistent sizes / weights / baselines per OS. Use Material Symbols outlined (20px / weight 400) SVGs. See [Anti-patterns #23](./anti-patterns.md#23-unicode-characters-as-icons).
+13. **`<ListItem end={<Toggle />}>` for a toggle-only row.** Use `<ToggleRow>` so the whole row is clickable. See [Anti-patterns #18](./anti-patterns.md#18-toggle-parked-inside-listitemend).
+14. **Cancel as `outlined` next to a destructive primary.** Switch Cancel to `variant="text"` so the destructive verb owns the row. (`outlined` Cancel is correct next to an `action` primary.) See [Anti-patterns #24](./anti-patterns.md#24-non-text-cancel-next-to-a-destructive-primary).
 
-These seven fixes resolve the majority of "doesn't look like Chromium" feedback.
+These fixes resolve the majority of "doesn't look like Chromium" feedback.

@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0031 — Cleanup: update the Preflight Checklist for LLMs after the initiative's changes land"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 2 (per-step diff). Step 3 (Composition) rewritten: side panels now treated the same as settings (card-per-section); ToggleRow recommended for toggle-only rows; row-shape catalogue expanded to call out read-only / progress / status badge / action shapes; Settings entry naming + upper-half placement spelled out with a link to the new pattern. Step 6 (Action rows) gains the scoped Cancel-variant rule (outlined next to action, text next to destructive) plus an explicit Stop=destructive note. Step 8 (Final pass) gains four new bullets — side-panel header ban, Settings naming/placement, ToggleRow over ListItem-with-Toggle, Material Symbols over Unicode glyphs. "Common failure modes" expanded from 7 to 14 entries: full-width primary, buried Settings, in-panel header, ALL CAPS labels, Unicode icons, ListItem-with-Toggle, non-text Cancel — each linked to the matching anti-pattern.
 
 > **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the checklist is already current. Every numbered step gets a deliberate diff-against-substantive-tickets pass; "Common failure modes" is reviewed for additions. Finding nothing to change is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
 
