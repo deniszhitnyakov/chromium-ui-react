@@ -18,11 +18,12 @@ Chromium WebUI is overwhelmingly neutral. Most of the surface is white or grey; 
 | **Nested / tinted background** | `--cr-fallback-color-surface-1` | Subtle grouping, filled inputs, hovered card |
 | **Primary text** | `--cr-fallback-color-on-surface` | Row primary, titles, button labels |
 | **Secondary text** | `--cr-fallback-color-on-surface-subtle` | Row secondary, hints, placeholders, "›" chevrons |
-| **Border** | `--cr-fallback-color-outline` | Card outline, divider, input border |
+| **Border (heavy)** | `--cr-fallback-color-outline` | Card outline, input border |
+| **Border (hairline)** | `--cr-divider-color` | Divider, Toolbar/Header bottom border, pinned-footer top border |
 | **Primary accent** | `--cr-fallback-color-primary` | The single primary button, checked toggle, focus ring, links |
 | **Error** | `--cr-fallback-color-error` | Destructive button, inline error text |
 
-That is **seven roles**. You should be able to describe every colored pixel in your UI as one of these seven.
+That is **eight roles**. You should be able to describe every colored pixel in your UI as one of these eight. The two border roles are deliberate: the *heavy* outline gives a card or input its visual edge; the *hairline* divider is the quiet seam between rows of the same surface and bracketing chrome (Header bottom, pinned-footer top). Mixing them produces the kind of one-pixel asymmetry the eye keeps re-noticing.
 
 ## Surface hierarchy
 

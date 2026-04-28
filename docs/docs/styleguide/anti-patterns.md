@@ -283,7 +283,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'center',
   }}>

@@ -175,7 +175,7 @@ For a multi-section form (e.g., "Profile" with name + bio + social links), compo
 Settings pages do not have a "Save" footer — changes apply as they happen. A form page (like a profile edit) *does* have a footer:
 
 ```tsx
-<div style={{ padding: 16, borderTop: '1px solid var(--cr-fallback-color-outline)', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+<div style={{ padding: 16, borderTop: '1px solid var(--cr-divider-color)', display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
   <Button>Cancel</Button>
   <Button variant="action">Save</Button>
 </div>

@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0002 — Pinned-footer top border should match Divider color, not Card outline"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — directions 1 + 2 combined: introduced `--cr-divider-color` semantic alias (resolves to `--cr-fallback-color-surface-variant` in light and dark), Toolbar / Divider read from it, and all 9 styleguide live previews now use `var(--cr-divider-color)` for the pinned-footer top border. `color.md` row split into "Border (heavy)" / "Border (hairline)" so the rule has a name.
 
 ## Summary
 

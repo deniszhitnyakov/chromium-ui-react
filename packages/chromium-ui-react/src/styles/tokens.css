@@ -114,6 +114,10 @@
 
   --cr-checked-color: var(--cr-fallback-color-primary);
 
+  /* Semantic alias: the quiet hairline used by Divider, Toolbar/Header bottom border,
+     and the top border of pinned footers. Resolves to surface-variant in light and dark. */
+  --cr-divider-color: var(--cr-fallback-color-surface-variant);
+
   /* ---- State Colors ---- */
   --cr-hover-background-color:                      rgba(var(--cr-fallback-color-on-surface-rgb), .06);
   --cr-active-background-color:                     rgba(var(--cr-fallback-color-on-surface-rgb), .10);

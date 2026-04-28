@@ -4,7 +4,7 @@
   height: var(--cr-sidepanel-header-height);
   padding: 0 4px 0 16px;
   background: var(--cr-fallback-color-surface);
-  border-bottom: 1px solid var(--cr-fallback-color-surface-variant);
+  border-bottom: 1px solid var(--cr-divider-color);
   gap: 8px;
   flex-shrink: 0;
 }

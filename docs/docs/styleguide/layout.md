@@ -64,7 +64,7 @@ Opened from the toolbar icon. Small, fixed size.
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'flex-end',
     gap: 'var(--cr-space-2)',

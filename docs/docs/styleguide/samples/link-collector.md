@@ -111,7 +111,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'flex-end',
     gap: 'var(--cr-space-2)',

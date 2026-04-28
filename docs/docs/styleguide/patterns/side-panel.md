@@ -159,7 +159,7 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
           <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="React" secondary="react.dev" interactive />
         </List>
       </div>
-      <div style={{ padding: 'var(--cr-space-4)', borderTop: '1px solid var(--cr-fallback-color-outline)', display: 'flex', justifyContent: 'center' }}>
+      <div style={{ padding: 'var(--cr-space-4)', borderTop: '1px solid var(--cr-divider-color)', display: 'flex', justifyContent: 'center' }}>
         <Button variant="action">Add bookmark</Button>
       </div>
     </PanelView>

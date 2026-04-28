@@ -98,7 +98,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'flex-end',
     gap: 'var(--cr-space-2)',

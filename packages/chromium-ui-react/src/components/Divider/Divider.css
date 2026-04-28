@@ -1,7 +1,7 @@
 .cr-divider {
   display: block;
   height: 1px;
-  background: var(--cr-fallback-color-surface-variant);
+  background: var(--cr-divider-color);
   border: none;
   margin: 0;
   flex-shrink: 0;

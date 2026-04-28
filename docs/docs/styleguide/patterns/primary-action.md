@@ -157,7 +157,7 @@ Labelled correctly, placed incorrectly. The verb is buried in row 2 and competes
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'center',
   }}>
@@ -195,7 +195,7 @@ On a narrow panel or with a long label, prefer full-width — the action itself 
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
   }}>
     <Button variant="action" fullWidth>Enrich visible leads</Button>
   </div>
@@ -227,7 +227,7 @@ When the primary's state flips (Start → Stop, Capture → Cancel), replace the
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-fallback-color-outline)',
+    borderTop: '1px solid var(--cr-divider-color)',
     display: 'flex',
     justifyContent: 'center',
   }}>
