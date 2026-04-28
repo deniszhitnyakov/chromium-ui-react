@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0028 — Track every library deviation from Chromium source on the chromium-reference page"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 3 (deviations table at the bottom + intro rewrite). `chromium-reference.md` opening prose rewritten to frame Chromium as the *baseline*, the library as the *shipped value*, and deviations as deliberately catalogued. New "## Deliberate deviations" section at the end with two subsections: a "Value-shaped" table (Tabs height, ALL CAPS labels, action-row Cancel, SearchInput border, Card default, Badge default, Toolbar→Header rename, side-panel composition, in-panel header ban, Tonal removal — 10 rows) and a "Shape-shaped" bullet list (centred primary on side panel, Settings entry placement+naming, no fullWidth, Stop=destructive, sidebar Menu flat). Each deviation cites its implementing ticket. Direction 3's per-table extra columns deferred — every numerical deviation already maps to an existing standalone table elsewhere on the page, and adding columns would have widened tables uncomfortably; the bottom catalogue keeps everything inspectable in one place. Maintenance rule added to `CLAUDE.md`: every deviation-introducing PR updates this page in the same commit.
 
 ## Summary
 

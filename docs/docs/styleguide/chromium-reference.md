@@ -2,15 +2,19 @@
 id: styleguide-chromium-reference
 title: Chromium source reference
 slug: /styleguide/chromium-reference
-description: The authoritative measurements, tokens, and layout rules copied directly from the Chromium source tree. Cite this page when you need to justify a specific value.
+description: The Chromium source-of-truth values for cr-elements, alongside the library's deliberate deviations for extension surfaces.
 format: mdx
 ---
 
 # Chromium source reference
 
-Every number on this page is taken directly from Chromium's public source tree. When the guidance on other styleguide pages says "the toolbar is 56px," it is this page that backs the claim. When you are in doubt about a value, trust the source over the guide.
+Every number on this page is taken directly from Chromium's public source tree. When the guidance on other styleguide pages says "the page header is 56px," it is this page that backs the claim.
+
+The library deliberately departs from a few Chromium values when the extension-UI surfaces it powers (popups, side panels, options pages) need a different shape than the surfaces Chromium itself paints. **Those deviations are flagged below** — value-shaped ones in extra columns next to the source value, shape-shaped ones in the [Deliberate deviations](#deliberate-deviations) section at the end. The Chromium value is the source of truth for the *Chromium baseline*; the library value is what `chromium-ui-react` ships, and is the right value to cite when building on this library.
 
 All paths are relative to `chromium/src`. Browse at `https://chromium.googlesource.com/chromium/src/+/refs/heads/main/<path>` or `https://source.chromium.org/chromium/chromium/src/+/main:<path>`.
+
+> **Maintenance rule.** Every implementing-turn PR that introduces or removes a deviation from this page updates it in the same commit.
 
 ## Shell (settings as the canonical example)
 
@@ -270,3 +274,30 @@ The authoritative files backing this page:
 **Downloads (`chrome/browser/resources/downloads/`):** `manager.css`, `item.css`, `toolbar.css`.
 
 **Side panel (`chrome/browser/resources/side_panel/`):** `shared/sp_shared_vars.css`, `reading_list/reading_list_app.css`.
+
+## Deliberate deviations
+
+The library is honest about the places it does **not** match `chromium/src` byte-for-byte. Each row below names what Chromium ships, what the library ships instead, and why — with a link to the implementing ticket so the reasoning is one click away.
+
+### Value-shaped deviations
+
+| Aspect | Chromium source | Library | Why |
+|---|---|---|---|
+| Tabs height | 48px (`cr_tabs.css`) | 36px (`Tabs.css`) | Extension surfaces (popups, side panels) are vertical-real-estate-constrained; 48px reads as a Material tab bar. ([#0015](../../initiatives/2026-04-28-design-and-styleguide/tickets/0015-tabs-reduce-default-height.md)) |
+| Section labels | ALL CAPS sometimes (some menu group labels) | sentence case everywhere except the narrow `cr-form-field-label` use | ALL CAPS reads as older Material; sentence case is the dominant Chromium pattern in modern WebUI. ([#0005](../../initiatives/2026-04-28-design-and-styleguide/tickets/0005-drop-uppercase-section-labels.md)) |
+| Action-row Cancel (next to a destructive primary) | `outlined` | `text` | Two pills (red + blue-outlined) compete for attention; the quieter `text` Cancel keeps the destructive verb owning the row. The rule is scoped — `outlined` Cancel survives next to `action` primaries. ([#0017](../../initiatives/2026-04-28-design-and-styleguide/tickets/0017-action-row-secondary-as-text.md)) |
+| Settings page SearchInput border | implicit on form fields | borderless by default, filled pill on toolbar surface | Matches the visible look of `chrome://settings/languages` search; the bordered form-field shape would compete with the toolbar surface. ([#0024](../../initiatives/2026-04-28-design-and-styleguide/tickets/0024-settings-search-input-header-center-no-border.md)) |
+| Card default | mostly elevated in `chrome://` (settings-section etc.); some outlined in dense admin | `elevated` is the library default | Anti-pattern #10 already says "elevated is the Chromium-faithful default"; the API now matches. ([#0014](../../initiatives/2026-04-28-design-and-styleguide/tickets/0014-card-elevated-as-default.md)) |
+| Badge default | various filled accents in Chromium | outline-only, neutral default | Outline-only reads quieter; neutral first means agents reach for the right shape without typing a variant. (commit `77bafca` + [#0013](../../initiatives/2026-04-28-design-and-styleguide/tickets/0013-badge-neutral-first.md)) |
+| Toolbar component name | `cr-toolbar` (Chromium source class) | `Header` (library export, `cr-header` class) | The component was always a page header, never a tools shelf — anti-pattern #16 exists because the old name kept inviting the misuse. ([#0018](../../initiatives/2026-04-28-design-and-styleguide/tickets/0018-rename-toolbar-to-header.md)) |
+| Side-panel composition | bare-surface flat list (Reading List) | card-per-section with elevated cards | Reading List was the wrong reference for heterogeneous extension panels; the settings-page composition generalises better. ([#0008](../../initiatives/2026-04-28-design-and-styleguide/tickets/0008-side-panel-card-per-section.md)) |
+| Side panel in-panel header | 48px header strip inside the panel | forbidden in side-panel extensions (Chrome paints a system header above the iframe) | A library `Header` inside the iframe would duplicate the system strip. Drill-in `PanelHeader` for subviews is still allowed. ([#0019](../../initiatives/2026-04-28-design-and-styleguide/tickets/0019-layout-shell-content-only-default-header-banned-in-side-panel.md)) |
+| Tonal Button | `cr-tonal-button` exists | dropped from the library | Three filled tiers (action / tonal / outlined) reliably violate the "one primary per view" rule on a small surface; the binary action / outlined split is what Chromium actually settles on. ([#0009](../../initiatives/2026-04-28-design-and-styleguide/tickets/0009-drop-button-tonal-variant.md)) |
+
+### Shape-shaped deviations
+
+- **Primary action button placement on side panels.** Chromium's settings dialogs use right-aligned `[Cancel] [Primary]`. The library's [Pattern — Primary action button](./patterns/primary-action.md) puts the single primary **centred** in a pinned footer for side-panel surfaces, because the side panel's primary verb is the user's next move and centred is unambiguously the destination. ([Pattern — Primary action](./patterns/primary-action.md))
+- **Settings entry placement and naming in extension surfaces.** Chromium does not standardise this — `chrome://` surfaces rely on persistent sidebars. The library's [Pattern — Settings entry](./patterns/settings-entry.md) requires the row to be labelled `Settings` (one word, sentence case) and placed in the upper half of the surface so the user reaches for it before pressing the primary verb again. ([#0026](../../initiatives/2026-04-28-design-and-styleguide/tickets/0026-settings-entry-pattern-placement-naming.md))
+- **No `fullWidth` Button.** Chromium's button stack supports stretched-to-container width in some situations; the library removed the `fullWidth` prop entirely because a stretched button stops reading as a button. ([#0003](../../initiatives/2026-04-28-design-and-styleguide/tickets/0003-drop-button-full-width.md))
+- **Stop button as `variant="destructive"`.** Chromium does not have a single "Stop running operation" idiom; the library's [Pattern — Primary action](./patterns/primary-action.md) running-state replacement is destructive, because interrupting useful in-flight work is structurally destructive. ([#0025](../../initiatives/2026-04-28-design-and-styleguide/tickets/0025-running-state-stop-as-destructive.md))
+- **Sidebar Menu rendering.** A Menu with `role="navigation"` (sidebar use) renders flat — no shadow, no card, no border-radius — to match `chrome://settings`. Popover Menus (the default) keep elevation-3 + 8px radius. ([#0023](../../initiatives/2026-04-28-design-and-styleguide/tickets/0023-menu-navigation-flat-no-card.md))

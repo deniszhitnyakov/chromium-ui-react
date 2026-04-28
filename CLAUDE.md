@@ -48,6 +48,7 @@ initiatives/
 - Ticket lifecycle: `open → in-progress → done` (or `wontfix`). The ticket file's `status:` and the kanban card column are bumped **in the same commit** as the work itself.
 - `TIMELINE.md` is updated **in the same commit** that creates or closes an initiative.
 - `glossary.md` is updated **in the same commit** that introduces a new term.
+- `docs/docs/styleguide/chromium-reference.md` is updated **in the same commit** that introduces or removes a deliberate deviation from `chromium/src` (the page's "Deliberate deviations" section is the catalogue of differences and must stay in sync with the styleguide / library).
 - Canonical content language: **English** (matches the public docs site). Identifiers (folder names, file names, YAML keys, code) are always English. Operator-facing communication is per the operator's stated preference — that is independent of document content language.
 
 **Packing workflow** (turning an operator-surfaced problem into a tracked unit of work):
