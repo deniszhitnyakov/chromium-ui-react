@@ -15,6 +15,8 @@ initiative: 2026-04-28-design-and-styleguide
 
 **open**
 
+> **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes one-page is already current. The full top-to-bottom re-read of `one-page.md` against the live state of every component and styleguide page happens; finding nothing to change is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
+
 ## Summary
 
 [`docs/docs/one-page.md`](docs/docs/one-page.md) is the library's LLM-facing single-page reference — a flat dump of every component's API summary, every styleguide rule in capsule form, every recommended pattern. Agents (the operator's own coding agents, third-party tooling, anyone evaluating the library) load this page as their primary context. After the substantive tickets in this initiative land, the one-page will lie in dozens of places: it will list `Toolbar` instead of `Header`, document a `tonal` Button variant that no longer exists, recommend `fullWidth` for narrow popups, present the Badge `appearance` prop that was already removed by commit `77bafca`, and so on. Regenerate it.

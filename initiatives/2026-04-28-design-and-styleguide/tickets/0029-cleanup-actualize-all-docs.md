@@ -15,6 +15,8 @@ initiative: 2026-04-28-design-and-styleguide
 
 **open**
 
+> **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the substantive tickets left anything to clean up. The whole-docs top-to-bottom sweep happens; finding nothing to change is a valid outcome, but the sweep itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
+
 ## Summary
 
 The Design & Styleguide Refinement initiative is producing ~25+ tickets that touch component APIs, default values, styleguide prose, anti-patterns, patterns, and samples. Each implementing turn updates the docs that are *immediately in scope* — but cross-cutting effects (a renamed component referenced from a sample three folders away, an anti-pattern entry made obsolete by a default change, prose that now says one thing while a freshly-landed live preview says another) inevitably accumulate. This ticket is the cleanup pass: a deliberate, dedicated sweep of the entire docs site after the substantive tickets have landed, to catch what the per-ticket implementations missed. It exists specifically because the operator asked for it, and because cleanup tickets are the most-skipped kind of work — naming this one explicitly raises its priority.

@@ -15,6 +15,8 @@ initiative: 2026-04-28-design-and-styleguide
 
 **open**
 
+> **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the showcase images still look right. The showcase content gets a deliberate review against the post-initiative library state, then the images are re-rendered (or explicitly re-confirmed as still-correct, with the file version bumped to `.v3` for cache-busting either way). Finding the existing images already correct is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
+
 ## Summary
 
 The library's Introduction page ([`docs/docs/intro.md`](docs/docs/intro.md)) embeds two showcase screenshots — `showcase-light.v2.png` and `showcase-dark.v2.png` ([lines 24, 32](docs/docs/intro.md#L24)) — that are the first visual the reader sees on the deployed docs site. After this initiative lands its visual changes (Badge outline-only, Card elevated default, Tabs shorter, Select / Input geometry tightened, sidebar Menu flat, ALL CAPS section labels gone, side-panel composition restructured, etc.), the existing showcase images will no longer match the library they purport to showcase. Re-render them.

@@ -15,6 +15,8 @@ initiative: 2026-04-28-design-and-styleguide
 
 **open**
 
+> **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the checklist is already current. Every numbered step gets a deliberate diff-against-substantive-tickets pass; "Common failure modes" is reviewed for additions. Finding nothing to change is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
+
 ## Summary
 
 [`docs/docs/styleguide/checklist.md`](docs/docs/styleguide/checklist.md) is the LLM-facing pre-flight checklist — the "read this before generating any layout" page that codifies the styleguide's rules into a short, prescriptive sequence (Identify the surface → Shell → Composition → Typography → Color → Action rows → Navigation → Final pass). It is one of two pages explicitly written for LLMs (the other is `one-page.md`, tracked by #0030), and like the one-page it goes stale every time a substantive ticket lands. The checklist has already been edited mid-initiative (when #0005 / #0017 / etc. updated specific bullets), but the structural shape — the surface table, the Shell step, the per-step rules — needs a deliberate end-of-initiative pass to absorb everything. This ticket is that pass.
