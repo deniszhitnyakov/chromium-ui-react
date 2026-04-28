@@ -38,9 +38,19 @@ There is **no** primary artifact (`vision.md` / `rfc.md` / `plan.md`) — this i
 ## Working agreement
 
 - The operator surfaces a problem from the prototype (or from review of the library / docs).
-- The agent **packs the problem as a kanban card under "To Do"** — one short title plus a 1–2 sentence "what hurts and why" hook. **No implementation in the same turn.**
+- The agent **packs the problem as a kanban card under "To Do"** — one short title plus a 1–2 sentence "what hurts and why" hook, plus a long-form ticket file under `tickets/`. **No implementation in the same turn.**
 - The operator decides priority and triggers implementation explicitly.
 - When implementation starts: card moves To Do → In Progress, work happens, then card moves In Progress → Done **in the same commit** as the code/docs change. At most one card In Progress at a time.
+
+## Definition of Done (initiative-level)
+
+This initiative cannot be moved to `approved` in `TIMELINE.md` until **all** of the following are true:
+
+- Every substantive ticket in `tickets/` (every `#NNNN` not in the cleanup quartet below) is `done` or `wontfix`.
+- The four mandatory cleanup tickets — **#0029** (actualise all docs), **#0030** (regenerate one-page LLM doc), **#0031** (update Preflight Checklist), **#0032** (re-render Introduction preview images) — are all `done`. These run as verification gates regardless of whether prior implementing turns appear to have already taken care of their work; finding nothing to change in any of them is a valid outcome, but the gate itself is not optional. See each ticket's "Mandatory verification gate" note in its `## Status` section.
+- `TIMELINE.md` is updated to flip this initiative from `in-progress` to `approved` in the same commit that closes the last ticket.
+
+The cleanup quartet is non-negotiable because cleanup work is the most-skipped step of any non-trivial change set, and this initiative produces enough cross-cutting fallout that drift between docs, the LLM-facing artifacts, and the visual showcase is the default outcome unless explicitly verified at the end.
 
 ## How to read this folder
 
