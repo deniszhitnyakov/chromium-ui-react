@@ -4,12 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository shape
 
-npm workspaces monorepo with two workspaces:
+npm workspaces monorepo with two workspaces, plus an internal-docs folder:
 
 - `packages/chromium-ui-react/` — the published library (React + CSS, built with Vite).
 - `docs/` — Docusaurus 3 site that also consumes the library via workspace link (`"chromium-ui-react": "*"`).
+- `initiatives/` — internal project journal (Initiative-Driven Documenting framework). Not a workspace, not published. See section below.
 
 Install once from the repo root (`npm install`); the workspace link means the docs site imports the library source directly during `dev:docs`, but a production `build:docs` needs the library's `dist/` to exist first.
+
+## Initiative-driven internal docs (`initiatives/`)
+
+This repository uses the [Initiative-Driven Documenting](https://github.com/ztnkv/initiative-driven-docs-framework) framework for its internal project journal — visions, decisions, plans, and the in-flight reasoning behind library / styleguide / docs changes. Distinct from `docs/`:
+
+- **`docs/`** — public Docusaurus site (component reference for library *consumers*).
+- **`initiatives/`** — internal journal (project memory for *contributors*, human and AI). Lives at the repo root specifically to avoid colliding with the Docusaurus workspace; the rationale and full navigation are in [`initiatives/README.md`](./initiatives/README.md).
+
+Layout:
+
+```
+initiatives/
+├── README.md                              # Navigation + why the folder is `initiatives/` not `docs/`
+├── glossary.md                            # Shared vocabulary (Chromium surfaces, library terms, framework terms)
+├── TIMELINE.md                            # Chronological register of every initiative
+└── YYYY-MM-DD-<kebab-name>/               # One folder per initiative
+    ├── README.md                          # Goal, status, artifacts
+    ├── journal.md                         # Reverse-chronological log
+    ├── kanban.md                          # Optional Obsidian Kanban — three columns (To Do / In Progress / Done)
+    └── decisions/NNNN-<kebab>.md          # Optional ADRs, numbered per-initiative
+```
+
+**Source of truth for current work:** the most recent initiative under `initiatives/` with status `in-progress`, or — if none — the most recent `approved` one. Start at [`initiatives/TIMELINE.md`](./initiatives/TIMELINE.md).
+
+**Conventions:**
+
+- Every Markdown file in `initiatives/` opens with a YAML front-matter block: `title`, `status`, `created`, `updated`, `authors`, `type`, `language`.
+- Initiative folder names: `YYYY-MM-DD-<kebab-name>/` (start date, lowercase, hyphens). Alphabetical sort = chronological order.
+- Initiative lifecycle: `planned → in-progress → approved → superseded`.
+- `TIMELINE.md` is updated **in the same commit** that creates or closes an initiative.
+- `glossary.md` is updated **in the same commit** that introduces a new term.
+- Canonical content language: **English** (matches the public docs site). Identifiers (folder names, file names, YAML keys, code) are always English. Operator-facing communication is per the operator's stated preference — that is independent of document content language.
+
+**Kanban workflow** (when an initiative has a `kanban.md`):
+
+1. Three columns only: **To Do**, **In Progress**, **Done**. The Obsidian-Kanban front-matter (`kanban-plugin: basic`) lets Obsidian render the file as a board; in any other viewer it reads as a plain checklist.
+2. New problem → packed as a To Do card by the agent (1-line title plus a short "what hurts and why" hook). **Packing is not implementation** — the agent does not start coding in the same turn unless the operator explicitly requests it.
+3. Starting work on a card: move it To Do → In Progress *before* the work begins. **At most one card In Progress at a time.**
+4. Finishing a card: move it In Progress → Done **in the same commit** as the code/docs change it covers.
+
+**Not shipped to npm.** `initiatives/` lives at the repo root, outside `packages/chromium-ui-react/`. The library's `package.json` uses an explicit `files` allowlist (`dist`, `src/styles`, `README.md`, `LICENSE`), so initiative content cannot reach the npm tarball even by accident. The folder *does* ship to GitHub — the repository is its public artifact.
 
 ## Common commands
 
