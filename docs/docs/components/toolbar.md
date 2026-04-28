@@ -13,7 +13,7 @@ format: mdx
 ```tsx live
 <Toolbar
   title="Bookmarks"
-  actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+  actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />

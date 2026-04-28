@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0010** — [Recommend Material Symbols / Material Design Icons; sweep all Unicode-icon examples in the docs](./tickets/0010-recommend-material-symbols-sweep-unicode-icons.md)
 - [ ] **#0011** — [RadioGroup uncontrolled mode is broken: defaultValue is accepted but never wired](./tickets/0011-radio-group-uncontrolled-mode.md)
 - [ ] **#0012** — [Drop Chip component — role overlaps with Badge / Button, no clear extension use case](./tickets/0012-drop-chip-component.md)
 - [ ] **#0013** — [Badge: put 'neutral' first in the variants list and make it the default](./tickets/0013-badge-neutral-first.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0007** — [Drop the SearchInput from the side-panel pattern; it's not a required ingredient](./tickets/0007-drop-search-from-side-panel-pattern.md)
 - [x] **#0008** — [Side panel: each section is its own elevated Card with the heading above it (mirror settings-page)](./tickets/0008-side-panel-card-per-section.md)
 - [x] **#0009** — [Drop Button 'tonal' variant — redundant against outlined / action](./tickets/0009-drop-button-tonal-variant.md)
+- [x] **#0010** — [Recommend Material Symbols / Material Design Icons; sweep all Unicode-icon examples in the docs](./tickets/0010-recommend-material-symbols-sweep-unicode-icons.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

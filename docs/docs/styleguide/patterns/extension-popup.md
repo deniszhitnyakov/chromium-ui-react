@@ -167,7 +167,7 @@ For popups with multiple items to pick from, use `PanelStack` inside the popup t
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <List>
           <ListItem
-            icon={<span>🌐</span>}
+            icon={<GlobeIcon />}
             primary="Chromium UI React"
             secondary="ztnkv.github.io"
             interactive
@@ -176,7 +176,7 @@ For popups with multiple items to pick from, use `PanelStack` inside the popup t
           />
           <Divider subtle />
           <ListItem
-            icon={<span>🌐</span>}
+            icon={<GlobeIcon />}
             primary="Docusaurus"
             secondary="docusaurus.io"
             interactive
@@ -184,7 +184,7 @@ For popups with multiple items to pick from, use `PanelStack` inside the popup t
           />
           <Divider subtle />
           <ListItem
-            icon={<span>🌐</span>}
+            icon={<GlobeIcon />}
             primary="React"
             secondary="react.dev"
             interactive

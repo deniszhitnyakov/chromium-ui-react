@@ -26,7 +26,7 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
 }}>
   <Toolbar
     title="Tab Manager"
-    actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+    actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   >
     <SearchInput placeholder="Search tabs by title or URL" style={{ flex: 1, maxWidth: 400 }} />
   </Toolbar>
@@ -39,16 +39,16 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
     }}>
       <Menu role="tree">
         <MenuLabel>Windows</MenuLabel>
-        <MenuItem icon={<span>🪟</span>} selected>This window (14)</MenuItem>
-        <MenuItem icon={<span>🪟</span>}>Laptop (7)</MenuItem>
+        <MenuItem icon={<HomeIcon />} selected>This window (14)</MenuItem>
+        <MenuItem icon={<HomeIcon />}>Laptop (7)</MenuItem>
         <MenuDivider />
         <MenuLabel>Groups</MenuLabel>
         <MenuItem icon={<span style={{ color: 'var(--cr-fallback-color-primary)' }}>●</span>}>Chromium UI (4)</MenuItem>
         <MenuItem icon={<span style={{ color: '#e8710a' }}>●</span>}>Recipes (3)</MenuItem>
         <MenuItem icon={<span style={{ color: '#1e8e3e' }}>●</span>}>Reading (5)</MenuItem>
         <MenuDivider />
-        <MenuItem icon={<span>🕒</span>}>Recently closed</MenuItem>
-        <MenuItem icon={<span>💤</span>}>Sleeping tabs</MenuItem>
+        <MenuItem icon={<InfoIcon />}>Recently closed</MenuItem>
+        <MenuItem icon={<InfoIcon />}>Sleeping tabs</MenuItem>
       </Menu>
     </nav>
     <main style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
@@ -64,36 +64,36 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
         <Card variant="elevated" style={{ marginBottom: 16 }}>
           <List>
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Chromium UI React — Overview"
               secondary="ztnkv.github.io/chromium-ui-react"
               interactive
               selected
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Styleguide — Principles"
               secondary="ztnkv.github.io/chromium-ui-react/styleguide/principles"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Component — PanelStack"
               secondary="ztnkv.github.io/chromium-ui-react/components/panel-stack"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Tokens reference"
               secondary="ztnkv.github.io/chromium-ui-react/tokens"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
           </List>
         </Card>
@@ -108,43 +108,43 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
         <Card variant="elevated">
           <List>
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="React"
               secondary="react.dev"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="TypeScript: Documentation"
               secondary="typescriptlang.org"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="MDN — CSS custom properties"
               secondary="developer.mozilla.org"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Figma — Chromium design tokens"
               secondary="figma.com/file/…"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
             <Divider subtle />
             <ListItem
-              icon={<span style={{ fontSize: 14 }}>🌐</span>}
+              icon={<GlobeIcon size={14} />}
               primary="Hacker News"
               secondary="news.ycombinator.com"
               interactive
-              end={<IconButton aria-label="Close tab" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              end={<IconButton aria-label="Close tab" icon={<CloseIcon size={14} />} />}
             />
           </List>
         </Card>
@@ -179,14 +179,14 @@ Click-and-drag or shift-click to select multiple tabs. The toolbar swaps into se
     title="5 selected"
     actions={
       <>
-        <IconButton aria-label="Close selected" icon={<span>✕</span>} />
-        <IconButton aria-label="Move to group" icon={<span>📁</span>} />
-        <IconButton aria-label="Bookmark all" icon={<span>☆</span>} />
-        <IconButton aria-label="More" icon={<span>⋮</span>} />
+        <IconButton aria-label="Close selected" icon={<CloseIcon />} />
+        <IconButton aria-label="Move to group" icon={<FolderIcon />} />
+        <IconButton aria-label="Bookmark all" icon={<StarIcon />} />
+        <IconButton aria-label="More" icon={<MoreVertIcon />} />
       </>
     }
   >
-    <IconButton aria-label="Exit selection" icon={<span>✕</span>} />
+    <IconButton aria-label="Exit selection" icon={<CloseIcon />} />
   </Toolbar>
 </div>
 ```

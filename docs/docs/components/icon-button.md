@@ -12,10 +12,10 @@ format: mdx
 
 ```tsx live
 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-  <IconButton aria-label="Refresh" icon={<span style={{fontSize:16}}>↻</span>} />
-  <IconButton aria-label="More" icon={<span style={{fontSize:16}}>⋮</span>} variant="filled" />
-  <IconButton aria-label="Close" icon={<span style={{fontSize:16}}>✕</span>} size="sm" />
-  <IconButton aria-label="Edit" icon={<span style={{fontSize:16}}>✎</span>} size="lg" />
+  <IconButton aria-label="Refresh" icon={<RefreshIcon size={18} />} />
+  <IconButton aria-label="More" icon={<MoreVertIcon size={18} />} variant="filled" />
+  <IconButton aria-label="Close" icon={<CloseIcon size={14} />} size="sm" />
+  <IconButton aria-label="Edit" icon={<EditIcon />} size="lg" />
 </div>
 ```
 

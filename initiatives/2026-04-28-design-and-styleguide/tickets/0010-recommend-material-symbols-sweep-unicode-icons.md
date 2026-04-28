@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0010 — Recommend Material Symbols / Material Design Icons; sweep all Unicode-icon examples in the docs"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 + ReactLiveScope helper: new `docs/docs/styleguide/icons.md` recommends Material Symbols outlined / weight 400 / 20px and lists the three import mechanisms; `docs/src/theme/ReactLiveScope/icons.tsx` ships ~28 inline-SVG icon components consumed by every live preview. Anti-pattern #23 added. All `icon={<span>X</span>}` Unicode replacements swept across `docs/docs/`. Library workspace remains icon-free — no new dependencies, no icon assets in the npm tarball.
 
 ## Summary
 

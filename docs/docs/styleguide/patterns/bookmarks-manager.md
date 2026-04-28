@@ -30,7 +30,7 @@ Use this pattern whenever you have:
 }}>
   <Toolbar
     title="Bookmarks"
-    actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+    actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   >
     <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 400 }} />
   </Toolbar>
@@ -42,57 +42,57 @@ Use this pattern whenever you have:
       overflowY: 'auto',
     }}>
       <Menu role="tree">
-        <MenuItem icon={<span>📂</span>} selected>Bookmarks bar</MenuItem>
-        <MenuItem icon={<span>📁</span>}>Work</MenuItem>
-        <MenuItem icon={<span>📁</span>}>Recipes</MenuItem>
-        <MenuItem icon={<span>📁</span>}>Reading</MenuItem>
+        <MenuItem icon={<FolderIcon />} selected>Bookmarks bar</MenuItem>
+        <MenuItem icon={<FolderIcon />}>Work</MenuItem>
+        <MenuItem icon={<FolderIcon />}>Recipes</MenuItem>
+        <MenuItem icon={<FolderIcon />}>Reading</MenuItem>
         <MenuDivider />
-        <MenuItem icon={<span>📂</span>}>Other bookmarks</MenuItem>
-        <MenuItem icon={<span>📂</span>}>Mobile bookmarks</MenuItem>
+        <MenuItem icon={<FolderIcon />}>Other bookmarks</MenuItem>
+        <MenuItem icon={<FolderIcon />}>Mobile bookmarks</MenuItem>
       </Menu>
     </nav>
     <main style={{ flex: 1, overflowY: 'auto', padding: 24 }}>
       <Card variant="elevated" style={{ margin: '0 auto', maxWidth: 960 }}>
         <List>
           <ListItem
-            icon={<span style={{ fontSize: 14 }}>🌐</span>}
+            icon={<GlobeIcon size={14} />}
             primary="Chromium UI React"
             secondary="ztnkv.github.io/chromium-ui-react"
             interactive
-            end={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+            end={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
           />
           <Divider subtle />
           <ListItem
-            icon={<span style={{ fontSize: 14 }}>🌐</span>}
+            icon={<GlobeIcon size={14} />}
             primary="Docusaurus — Build optimized websites quickly"
             secondary="docusaurus.io"
             interactive
             selected
-            end={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+            end={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
           />
           <Divider subtle />
           <ListItem
-            icon={<span style={{ fontSize: 14 }}>🌐</span>}
+            icon={<GlobeIcon size={14} />}
             primary="React"
             secondary="react.dev"
             interactive
-            end={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+            end={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
           />
           <Divider subtle />
           <ListItem
-            icon={<span style={{ fontSize: 14 }}>🌐</span>}
+            icon={<GlobeIcon size={14} />}
             primary="Chromium Design — Fundamentals"
             secondary="chromium.org/Home/user-experience"
             interactive
-            end={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+            end={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
           />
           <Divider subtle />
           <ListItem
-            icon={<span style={{ fontSize: 14 }}>🌐</span>}
+            icon={<GlobeIcon size={14} />}
             primary="HTML Living Standard"
             secondary="html.spec.whatwg.org"
             interactive
-            end={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+            end={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
           />
         </List>
       </Card>
@@ -158,14 +158,14 @@ When items are selected, swap the toolbar into "selection mode":
   title="3 selected"
   actions={
     <>
-      <IconButton aria-label="Delete" icon={<span>🗑️</span>} />
-      <IconButton aria-label="Move" icon={<span>📁</span>} />
-      <IconButton aria-label="More" icon={<span>⋮</span>} />
+      <IconButton aria-label="Delete" icon={<TrashIcon />} />
+      <IconButton aria-label="Move" icon={<FolderIcon />} />
+      <IconButton aria-label="More" icon={<MoreVertIcon />} />
     </>
   }
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
-  <IconButton aria-label="Close" icon={<span>✕</span>} />
+  <IconButton aria-label="Close" icon={<CloseIcon />} />
 </Toolbar>
 ```
 

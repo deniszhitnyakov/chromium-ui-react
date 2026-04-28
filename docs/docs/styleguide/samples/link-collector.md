@@ -83,14 +83,14 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
     </div>
     <List>
       <ListItem
-        icon={<span style={{ fontSize: 12 }}>🌐</span>}
+        icon={<GlobeIcon size={14} />}
         primary="A Case Study on Fixing a Memory Leak"
         secondary="v8.dev · 3 min ago"
         interactive
       />
       <Divider subtle />
       <ListItem
-        icon={<span style={{ fontSize: 12 }}>🌐</span>}
+        icon={<GlobeIcon size={14} />}
         primary="Settling the 3xx redirect debate"
         secondary="jakearchibald.com · 1 h ago"
         interactive

@@ -120,9 +120,9 @@ Rendered in a browser tab. Behaves like `chrome://settings` — sidebar of secti
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{ width: 260, borderRight: '1px solid var(--cr-fallback-color-outline)' }}>
       <Menu role="navigation">
-        <MenuItem icon={<span>☆</span>} selected>Appearance</MenuItem>
-        <MenuItem icon={<span>🔒</span>}>Privacy</MenuItem>
-        <MenuItem icon={<span>🔔</span>}>Notifications</MenuItem>
+        <MenuItem icon={<StarIcon />} selected>Appearance</MenuItem>
+        <MenuItem icon={<LockIcon />}>Privacy</MenuItem>
+        <MenuItem icon={<NotificationIcon />}>Notifications</MenuItem>
       </Menu>
     </nav>
     <main style={{ flex: 1, overflowY: 'auto', padding: 'var(--cr-space-6) 0' }}>
@@ -152,7 +152,7 @@ Banner, floating button, or overlay injected by a content script into a host pag
 ```tsx live
 <Toolbar
   title="Bookmarks"
-  actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+  actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />

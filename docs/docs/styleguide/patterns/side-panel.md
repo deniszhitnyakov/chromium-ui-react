@@ -39,21 +39,21 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
                 primary="The Elements of Typographic Style"
                 secondary="practicaltypography.com · 12 min read"
                 interactive
-                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+                end={<IconButton aria-label="Mark as read" icon={<CheckIcon size={14} />} />}
               />
               <Divider subtle />
               <ListItem
                 primary="Settling the 3xx redirect debate once and for all"
                 secondary="jakearchibald.com · 8 min read"
                 interactive
-                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+                end={<IconButton aria-label="Mark as read" icon={<CheckIcon size={14} />} />}
               />
               <Divider subtle />
               <ListItem
                 primary="Why The Sudden Rise of TypeScript?"
                 secondary="bytecodealliance.org · 15 min read"
                 interactive
-                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+                end={<IconButton aria-label="Mark as read" icon={<CheckIcon size={14} />} />}
               />
             </List>
           </Card>
@@ -70,14 +70,14 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
                 primary="Things You Should Never Do, Part I"
                 secondary="joelonsoftware.com · 6 min read"
                 interactive
-                end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+                end={<IconButton aria-label="Delete" icon={<CloseIcon size={14} />} />}
               />
               <Divider subtle />
               <ListItem
                 primary="A Case Study on Fixing a Memory Leak"
                 secondary="v8.dev · 10 min read"
                 interactive
-                end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+                end={<IconButton aria-label="Delete" icon={<CloseIcon size={14} />} />}
               />
             </List>
           </Card>
@@ -116,19 +116,19 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
       <PanelHeader title="Bookmarks" />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <PanelRow
-          icon={<span>📁</span>}
+          icon={<FolderIcon />}
           primary="Bookmarks bar"
           secondary="12 items"
           navigateTo="bar"
         />
         <PanelRow
-          icon={<span>📁</span>}
+          icon={<FolderIcon />}
           primary="Other bookmarks"
           secondary="47 items"
           navigateTo="other"
         />
         <PanelRow
-          icon={<span>📁</span>}
+          icon={<FolderIcon />}
           primary="Mobile bookmarks"
           secondary="3 items"
           navigateTo="mobile"
@@ -139,11 +139,11 @@ For a bookmarks side panel (folders → children), wire in `PanelStack` drill-in
       <PanelHeader title="Bookmarks bar" back />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <List>
-          <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="Chromium UI React" secondary="ztnkv.github.io" interactive />
+          <ListItem icon={<GlobeIcon size={14} />} primary="Chromium UI React" secondary="ztnkv.github.io" interactive />
           <Divider subtle />
-          <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="Docusaurus" secondary="docusaurus.io" interactive />
+          <ListItem icon={<GlobeIcon size={14} />} primary="Docusaurus" secondary="docusaurus.io" interactive />
           <Divider subtle />
-          <ListItem icon={<span style={{ fontSize: 14 }}>🌐</span>} primary="React" secondary="react.dev" interactive />
+          <ListItem icon={<GlobeIcon size={14} />} primary="React" secondary="react.dev" interactive />
         </List>
       </div>
       <div style={{ padding: 'var(--cr-space-4)', borderTop: '1px solid var(--cr-divider-color)', display: 'flex', justifyContent: 'center' }}>

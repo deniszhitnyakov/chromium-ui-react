@@ -169,7 +169,7 @@ A settings card has a **subtle elevation-2 shadow** — `<Card variant="elevated
 }}>
   <Toolbar
     title="Google Maps Scraper"
-    actions={<IconButton aria-label="Settings" icon={<span>⚙</span>} />}
+    actions={<IconButton aria-label="Settings" icon={<SettingsIcon />} />}
   />
   <div style={{ padding: 16, color: 'var(--cr-fallback-color-on-surface-subtle)', fontSize: 13 }}>
     (panel body)
@@ -209,7 +209,7 @@ Looks harmless until you open `chrome://settings`, `chrome://history`, or `chrom
 ```tsx live
 <Toolbar
   title="Bookmarks"
-  actions={<IconButton aria-label="More" icon={<span>⋮</span>} />}
+  actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   style={{ border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 8 }}
 >
   <SearchInput placeholder="Search bookmarks" style={{ flex: 1, maxWidth: 320 }} />
@@ -478,6 +478,32 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 ```
 
 **Rule.** Whenever the library exposes a primitive for the structural chrome you are about to draw — `Toolbar` (or `Header`), `PanelHeader`, `Divider`, `Card` — reach for it. Inline reconstructions reliably diverge from the canonical token, the canonical sizes, or the canonical hairline, and ship the divergence to anyone who copies the example. The `var(--cr-divider-color)` token (introduced in #0002) names the hairline so even structural divs can read from it instead of `--cr-fallback-color-outline`.
+
+## 23. Unicode characters as icons
+
+**Wrong.** Reaching for `⋮`, `↻`, `✓`, `✕`, `›`, `🔒`, `🔔`, `📁` to fill an `icon` slot. The glyphs render at inconsistent baselines, weights, and sizes per OS; emoji renders as colourful raster on most platforms. Either way, the surface stops looking Chromium-native and starts looking like a generic webapp built from system fonts.
+
+```tsx live
+<div style={{ display: 'flex', gap: 8 }}>
+  <IconButton aria-label="Refresh" icon={<RefreshIcon size={18} />} />
+  <IconButton aria-label="More" icon={<MoreVertIcon size={18} />} />
+  <IconButton aria-label="Close" icon={<CloseIcon size={14} />} />
+  <IconButton aria-label="Lock" icon={<LockIcon size={14} />} />
+</div>
+```
+
+**Right.** Use [Material Symbols](./icons.md) (outlined, weight 400, 20px) — the same icon family the actual Chromium WebUI uses. The docs preview scope ships a small set of inline-SVG components for the most common icons; in real apps, copy SVGs from the [Material Symbols catalogue](https://fonts.google.com/icons) or import from `@material-symbols/svg-400`.
+
+```tsx live
+<div style={{ display: 'flex', gap: 8 }}>
+  <IconButton aria-label="Refresh" icon={<RefreshIcon />} />
+  <IconButton aria-label="More" icon={<MoreVertIcon />} />
+  <IconButton aria-label="Close" icon={<CloseIcon />} />
+  <IconButton aria-label="Lock" icon={<LockIcon />} />
+</div>
+```
+
+**Rule.** Icons are SVGs (Material Symbols outlined, 20px, weight 400). Unicode characters and emoji are not icons. See [Icons](./icons.md) for the full vocabulary recommendation.
 
 ---
 
