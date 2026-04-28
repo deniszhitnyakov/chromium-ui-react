@@ -185,8 +185,8 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 ## Common side-panel mistakes
 
 - **One bare list on a flat panel surface.** Heterogeneous extension panels want the settings composition: each section is its own elevated card, with a sentence-case `<h2>` heading above it. The "no card" rule from earlier versions of this pattern was modelled on Chrome's single-list Reading List and does not generalise.
-- **Using `Header` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
-- **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
+- **Top-of-surface `<Header>` inside the panel.** Forbidden — Chrome paints a system header (icon + extension name) above the iframe, so an in-panel `Header` duplicates it. See [Anti-patterns #25](../anti-patterns.md#25-in-panel-header-in-a-side-panel-extension). Drill-in subview headers via `<PanelHeader>` inside `<PanelStack>` are still allowed because they sit below the surface root.
+- **`IconButton`s in the `PanelHeader` next to the title.** The drill-in header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Right-aligned or `size="sm"` primary action at the bottom.** The panel's single primary CTA is pinned at the bottom, centered, and full-size — see [Pattern — Primary action button](./primary-action.md) and [Anti-patterns #17](../anti-patterns.md#17-primary-action-buried-on-a-side-panel).
 - **Two-pane inside the side panel.** A side panel is already narrow — drill in, don't split.
 - **Tabs at the top.** Use `PanelStack` for sub-views, or 14px sentence-case group headings for in-place grouping.

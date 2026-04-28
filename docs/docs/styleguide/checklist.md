@@ -26,24 +26,31 @@ The surface dictates every layout rule that follows. If you cannot name the surf
 
 ## Step 2 — Shell
 
-Every Chromium-native surface has the same shell:
+The shell is content-first; the header and the pinned footer are opt-in based on the surface:
 
 ```
 ┌─────────────────────────────────┐
-│  Header (title + actions)      │  ← cr-header — 56px tall
+│  Header (opt-in)                │  ← cr-header — 56px when present
 ├─────────────────────────────────┤
 │                                 │
-│  Content                        │  ← scrollable region
+│  Content (mandatory)            │  ← scrollable region
 │                                 │
 ├─────────────────────────────────┤
-│  Footer actions (optional)      │  ← only for popups with a single primary action
+│  Footer actions (opt-in)        │  ← only for popups with a single primary action
 └─────────────────────────────────┘
 ```
 
-- Use `<Header title="..." />` at the top. **Never** replace it with a custom `<h1>` in a header div.
-- Content below scrolls. Header stays fixed.
-- **The toolbar `actions` slot is empty by default.** Do not park a settings gear, a "+", or any other `IconButton` next to the title — see [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). A settings entry point is a drill-in `PanelRow` inside the content, not an icon in the header.
-- For popups and side panels: use `display: flex; flex-direction: column; height: 100vh` so the toolbar is pinned, content scrolls, footer pins.
+| Surface | Header | Footer |
+|---|---|---|
+| Extension popup | Optional | Optional |
+| Extension **side panel** | **Forbidden** (Chrome paints a system header above the iframe — duplicating it inside is [Anti-pattern #25](./anti-patterns.md#25-in-panel-header-in-a-side-panel-extension)). `PanelHeader` for drill-in subviews remains allowed. | Optional |
+| Full-tab options page | Recommended | Rare (settings save inline) |
+| In-page injected UI | Rarely | Rare |
+
+- When you do render a header, use `<Header title="..." />`. **Never** replace it with a custom `<h1>` in a header div.
+- Content below scrolls. Header (when present) stays fixed.
+- **The header `actions` slot is empty by default.** Do not park a settings gear, a "+", or any other `IconButton` next to the title — see [Anti-patterns #16](./anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header). A settings entry point is a drill-in `PanelRow` inside the content, not an icon in the header.
+- For popups and side panels: use `display: flex; flex-direction: column; height: 100vh` so the (optional) header is pinned, content scrolls, footer pins.
 - For options pages: content max-width is **680px**, centered. Do not stretch settings to the full viewport.
 
 ## Step 3 — Composition

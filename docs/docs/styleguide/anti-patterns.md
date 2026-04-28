@@ -544,6 +544,86 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 
 This is the one styleguide divergence from Chromium's confirmation dialogs (`chrome://settings/clearBrowserData`, `chrome://bookmarks` "Delete folder"), which use an outlined Cancel even next to destructive primaries. The library prefers a quieter Cancel in that pairing because the operator's read is consistently that two pills compete for attention. Everywhere else (settings forms, neutral confirmations, anything not destructive), the Chromium-native `outlined` Cancel stays.
 
+## 25. In-panel header in a side-panel extension
+
+**Wrong.** A side-panel extension renders a `<Header title="My extension" />` immediately under the system header. Chrome already paints the extension's icon and name above the iframe, so the user sees two visually similar horizontal bars stacked — the system strip and a duplicate library header underneath.
+
+```tsx live
+<div style={{ width: 360, border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 12, overflow: 'hidden' }}>
+  {/* Mock of the Chrome system strip — outside the extension's HTML root */}
+  <div style={{
+    height: 36,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '0 12px',
+    borderBottom: '1px solid var(--cr-divider-color)',
+    background: 'var(--cr-fallback-color-surface-1)',
+    fontSize: 12,
+    color: 'var(--cr-fallback-color-on-surface-subtle)',
+  }}>
+    <span aria-hidden style={{
+      width: 16,
+      height: 16,
+      borderRadius: 4,
+      background: 'var(--cr-fallback-color-primary)',
+      display: 'inline-block',
+    }} />
+    Reading list
+    <span style={{ flex: 1 }} />
+    <span aria-hidden>×</span>
+  </div>
+  {/* The duplicate header inside the extension's iframe */}
+  <Header title="Reading list" />
+  <div style={{ padding: 16, color: 'var(--cr-fallback-color-on-surface-subtle)', fontSize: 13 }}>
+    (panel body)
+  </div>
+</div>
+```
+
+**Right.** Skip the in-panel `<Header>` entirely — the system strip already labels the surface. Open the panel directly on its content. `PanelHeader` for *drill-in* subviews is still allowed: it sits structurally below the surface root, not at the very top, so it does not duplicate the system strip.
+
+```tsx live
+<div style={{ width: 360, border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 12, overflow: 'hidden' }}>
+  {/* Mock of the Chrome system strip */}
+  <div style={{
+    height: 36,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '0 12px',
+    borderBottom: '1px solid var(--cr-divider-color)',
+    background: 'var(--cr-fallback-color-surface-1)',
+    fontSize: 12,
+    color: 'var(--cr-fallback-color-on-surface-subtle)',
+  }}>
+    <span aria-hidden style={{
+      width: 16,
+      height: 16,
+      borderRadius: 4,
+      background: 'var(--cr-fallback-color-primary)',
+      display: 'inline-block',
+    }} />
+    Reading list
+    <span style={{ flex: 1 }} />
+    <span aria-hidden>×</span>
+  </div>
+  {/* Panel body — straight into content */}
+  <div style={{ padding: 16 }}>
+    <h2 style={{ fontSize: 14, fontWeight: 400, margin: '0 0 12px 0', padding: '0 4px' }}>Unread</h2>
+    <Card variant="elevated">
+      <List>
+        <ListItem primary="The Elements of Typographic Style" secondary="practicaltypography.com" interactive />
+        <Divider subtle />
+        <ListItem primary="A Case Study on Fixing a Memory Leak" secondary="v8.dev" interactive />
+      </List>
+    </Card>
+  </div>
+</div>
+```
+
+**Rule.** Extension side panels never render a top-of-surface `<Header>` — Chrome paints one for them. Other surfaces (popup, options page, in-page UI) keep `Header` as opt-in per the [Layout & shell](./layout.md) recommendation table. `PanelHeader` for drill-in subviews stays allowed everywhere.
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.

@@ -2,27 +2,36 @@
 id: styleguide-layout
 title: Layout & shell
 slug: /styleguide/layout
-description: The shell every Chromium WebUI page shares — toolbar, scrollable content, optional footer, with the measurements and proportions to match.
+description: The shell every Chromium WebUI page shares — content is mandatory; header and footer are opt-in based on the surface.
 format: mdx
 ---
 
 # Layout & shell
 
-Every Chromium surface — settings, bookmarks, history, the side panel, an extension popup — is built from the same three-part shell:
+Chromium surfaces — settings, bookmarks, history, the side panel, an extension popup — share a common shell, but only the **content region is mandatory**. The header and the pinned footer-actions are opt-in based on what the surface needs:
 
 ```
 ┌─────────────────────────────────────────┐
-│  Header                                │  fixed, ~56px
+│  Header (opt-in)                        │  ~56px when present
 ├─────────────────────────────────────────┤
 │                                         │
-│  Content (scrolls)                      │  flex: 1, overflow: auto
+│  Content (mandatory, scrolls)           │  flex: 1, overflow: auto
 │                                         │
 ├─────────────────────────────────────────┤
-│  Footer actions (optional, pinned)      │  ~56–64px
+│  Footer actions (opt-in, pinned)        │  ~56–64px when present
 └─────────────────────────────────────────┘
 ```
 
-Matching the outer proportions of this shell is the first thing your reader's eye picks up. Get it right and almost everything inside the shell will read as native. Get it wrong (a 96px marketing header, no toolbar, centered everything) and nothing below can rescue it.
+What "opt-in" looks like per surface:
+
+| Surface | Header | Footer | Notes |
+|---|---|---|---|
+| Extension popup | Optional | Optional | Many popups skip the header (the icon-launched context already labels the surface). Footer present only when there is exactly one primary action. |
+| Extension **side panel** | **Forbidden** | Optional | Chrome paints a system header (icon + extension name) above the iframe — an in-panel `<Header>` would duplicate it. `PanelHeader` for drill-in subviews remains allowed. |
+| Full-tab options page | Recommended | Rare | Matches `chrome://settings`. Settings save inline, so a footer is unusual. |
+| In-page injected UI | Rarely | Rare | The host page already provides the chrome; only render what your feature actually needs. |
+
+Matching the outer proportions of *whatever* the surface includes is the first thing your reader's eye picks up. Get the shell right and almost everything inside it will read as native. Get it wrong (a 96px marketing header, a duplicated in-panel header, centred everything) and nothing below can rescue it.
 
 ## The surfaces
 
@@ -142,7 +151,7 @@ Banner, floating button, or overlay injected by a content script into a host pag
 
 ## The header
 
-`<Header>` is fixed at the top of every surface shape above. (Distinct from `<PanelHeader>`, which is the *drill-in subview header* inside a `<PanelStack>` — see [PanelStack](../components/panel-stack.md). Pick `Header` for the top of the surface, `PanelHeader` for the top of a drill-in.) Rules:
+`<Header>` is the top-of-surface strip — **opt-in everywhere except the side panel, where it is forbidden** (Chrome's system header already labels the extension). Distinct from `<PanelHeader>`, which is the *drill-in subview header* inside a `<PanelStack>` (see [PanelStack](../components/panel-stack.md)) and remains allowed in side panels because it sits structurally below the surface root. Rules when you do render it:
 
 - **Height is 56px** — determined by the component. Do not wrap it in a container that forces a different height.
 - **Title is left-aligned.** If your surface is narrow (popup/side panel), no icon on the left. If wide (options page), optionally a hamburger or back arrow on the left.

@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0019 — Layout shell is content-only by default; header / footer are opt-in; header is forbidden in side-panel extensions"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (rule + sweep). `layout.md` opening rewritten: content is mandatory, header/footer opt-in, with a per-surface recommendation table (popup / side panel / options page / in-page UI). "## The header" subsection now opens with the side-panel ban and the Header/PanelHeader distinction. `checklist.md` Step 2 rewritten with the same per-surface table and updated bullet wording. New anti-pattern #25 in `anti-patterns.md` ("In-panel header in a side-panel extension") with a wrong/right pair that mocks Chrome's system strip and shows the duplicated header next to the corrected content-first panel. `patterns/side-panel.md` "Common mistakes" bullet retitled to ban top-of-surface `Header` in the panel (was "Use the 48px custom header") and the IconButton bullet retargeted at `PanelHeader`. PanelHeader for drill-in subviews remains explicitly allowed everywhere.
 
 ## Summary
 
