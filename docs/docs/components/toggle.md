@@ -62,17 +62,17 @@ const [syncEnabled, setSyncEnabled] = useState(true);
 
 ## Inline in a settings row
 
-Common pattern for a settings list — label on the left, toggle on the right:
+For the most common case — a settings row whose only trailing control is the toggle — reach for [`ToggleRow`](/components/toggle-row) instead. It wraps the row in a single `<label>` so clicking anywhere on the text flips the switch, and it paints a hover fill across the whole row. That is the Chromium-native behaviour.
 
 ```tsx
-<ListItem
+<ToggleRow
   primary="Enable notifications"
   secondary="Get desktop alerts for new messages"
-  end={<Toggle aria-label="Enable notifications" defaultChecked />}
+  defaultChecked
 />
 ```
 
-In that layout, hide the component's own text label and rely on `aria-label` — otherwise you'd have the label appearing twice.
+A bare `Toggle` inside `<ListItem end={…}>` is *visually* the same row but *behaviourally* inert outside the switch itself — the rest of the row swallows clicks silently. Use `ListItem + Toggle` only when the row mixes the toggle with other inline controls.
 
 ## Accessibility
 

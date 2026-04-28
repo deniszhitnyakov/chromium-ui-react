@@ -31,17 +31,15 @@ Every example here is something a good-faith developer (or LLM) has shipped usin
 </div>
 ```
 
-**Right.** One card, multiple rows, shared divider.
+**Right.** One card, multiple rows, shared divider — using [`ToggleRow`](../components/toggle-row.md) so the whole row is one click target.
 
 ```tsx live
 <Card variant="outlined" style={{ maxWidth: 520 }}>
-  <List>
-    <ListItem primary="Notifications" secondary="Allow notifications from this extension" end={<Toggle defaultChecked />} />
-    <Divider subtle />
-    <ListItem primary="Sync" secondary="Sync your data across devices" end={<Toggle />} />
-    <Divider subtle />
-    <ListItem primary="Auto-start" secondary="Launch this extension on browser startup" end={<Toggle />} />
-  </List>
+  <ToggleRow primary="Notifications" secondary="Allow notifications from this extension" defaultChecked />
+  <Divider subtle />
+  <ToggleRow primary="Sync" secondary="Sync your data across devices" />
+  <Divider subtle />
+  <ToggleRow primary="Auto-start" secondary="Launch this extension on browser startup" />
 </Card>
 ```
 
@@ -295,6 +293,28 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 ```
 
 **Rule.** On an extension **side panel** (only — not popup, not options page, not dialog), the single primary action is pinned at the bottom, centered, full-size, and alone. This is an extension-specific departure from Chromium's `[Cancel] [Primary]` right-aligned footer, justified by the aha-moment cost of a buried CTA. Full reasoning, scope, and variants in [Pattern — Primary action button](./patterns/primary-action.md).
+
+## 18. Toggle parked inside `ListItem.end`
+
+**Wrong.** A settings row uses `<ListItem … end={<Toggle />}>`. Visually it looks identical to a Chromium row; behaviourally only the switch is clickable, the rest of the row swallows pointer events.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <List>
+    <ListItem primary="Auto-resume on scroll" secondary="Continue scraping when the page scrolls" end={<Toggle defaultChecked />} />
+  </List>
+</Card>
+```
+
+**Right.** Use [`<ToggleRow>`](../components/toggle-row.md). The whole row is one `<label>` — clicking the primary text, secondary text, or icon all flip the switch, and the row paints a hover fill on pointer-over.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <ToggleRow primary="Auto-resume on scroll" secondary="Continue scraping when the page scrolls" defaultChecked />
+</Card>
+```
+
+**Rule.** Whenever a row's only trailing control is an on/off switch, reach for `ToggleRow`. The `ListItem + Toggle` composition is reserved for rows that mix the switch with other inline controls — there the loss of click-anywhere is the explicit trade-off.
 
 ---
 

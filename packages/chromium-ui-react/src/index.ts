@@ -6,6 +6,7 @@ export * from './components/IconButton';
 export * from './components/Checkbox';
 export * from './components/Radio';
 export * from './components/Toggle';
+export * from './components/ToggleRow';
 export * from './components/Input';
 export * from './components/Select';
 export * from './components/Chip';

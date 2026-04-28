@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0001 — Toggle rows: whole row clickable + row-level hover"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction (1) implemented: a new `ToggleRow` primitive (`<label>`-wrapped row, single click target via native HTML association, row-level hover fill). Anti-pattern #18 added; `sections-and-rows.md` Toggle row example switched to `ToggleRow`; the per-component `toggle.md` "Inline in a settings row" section now points at `ToggleRow`.
 
 ## Summary
 

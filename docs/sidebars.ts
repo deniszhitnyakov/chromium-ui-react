@@ -18,6 +18,7 @@ const sidebars: SidebarsConfig = {
         'components/checkbox',
         'components/radio',
         'components/toggle',
+        'components/toggle-row',
         'components/input',
         'components/select',
         'components/chip',

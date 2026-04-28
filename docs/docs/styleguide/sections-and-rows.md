@@ -37,9 +37,9 @@ The source template is `settings_section.html` — see [Chromium source referenc
     <List>
       <ListItem primary="Theme" secondary="System default" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
       <Divider subtle />
-      <ListItem primary="Show home button" end={<Toggle defaultChecked />} />
+      <ToggleRow primary="Show home button" defaultChecked />
       <Divider subtle />
-      <ListItem primary="Show bookmarks bar" end={<Toggle />} />
+      <ToggleRow primary="Show bookmarks bar" />
       <Divider subtle />
       <ListItem primary="Font size" end={<Select options={[{ value: 'md', label: 'Medium (recommended)' }]} />} />
     </List>
@@ -64,24 +64,21 @@ Almost every row in Chromium fits one of three shapes. Learn to recognize them; 
 
 ### 1. Toggle row
 
-A single boolean setting. Primary label on the left, optional secondary description below, `<Toggle>` on the right.
+A single boolean setting. Primary label on the left, optional secondary description below, switch on the right. Use [`<ToggleRow>`](../components/toggle-row.md) — it wraps the row in a `<label>` so the entire row is one click target and paints a hover fill, the way `chrome://settings` does.
 
 ```tsx live
 <Card variant="outlined" style={{ maxWidth: 520 }}>
-  <List>
-    <ListItem primary="Enable notifications" end={<Toggle defaultChecked />} />
-    <Divider subtle />
-    <ListItem
-      primary="Sync across devices"
-      secondary="Requires you to be signed in"
-      end={<Toggle />}
-    />
-  </List>
+  <ToggleRow primary="Enable notifications" defaultChecked />
+  <Divider subtle />
+  <ToggleRow
+    primary="Sync across devices"
+    secondary="Requires you to be signed in"
+  />
 </Card>
 ```
 
-- Clicking anywhere in the row should flip the toggle (pass the click through). For full correctness, wrap the row in a label or bind `onClick` on the row to invert state.
-- Never put the toggle on the left. Controls are on the right.
+- Reach for `ToggleRow` whenever the trailing control is *only* a switch. `ListItem + Toggle` looks the same but swallows clicks outside the switch — that's the Chromium-native rule violated.
+- Never put the switch on the left. Controls are on the right.
 - Keep the secondary line to one sentence. If it is longer, it belongs in a subpage.
 
 ### 2. Drill-in row
@@ -151,8 +148,8 @@ Multiple sections stack with `--cr-space-6` (24px) between them. Each section ha
       <List>
         <ListItem primary="Theme" end={<Select options={[{ value: 'sys', label: 'System' }]} />} />
         <Divider subtle />
-        <ListItem primary="Show home button" end={<Toggle defaultChecked />} />
       </List>
+      <ToggleRow primary="Show home button" defaultChecked />
     </Card>
   </div>
   <div>
