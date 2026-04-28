@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0022** — [Sections-and-rows: expand the canonical row vocabulary beyond toggle / drill-in / inline-control](./tickets/0022-expanded-row-vocabulary.md)
 - [ ] **#0023** — [Menu in role='navigation' (sidebar): drop shadow + radius, render flat to match native chrome://settings](./tickets/0023-menu-navigation-flat-no-card.md)
 - [ ] **#0024** — [Settings-page SearchInput: center in the header, drop the border (match native chrome://settings)](./tickets/0024-settings-search-input-header-center-no-border.md)
 - [ ] **#0025** — [Primary-action running-state replacement: Stop button is variant='destructive', not outlined](./tickets/0025-running-state-stop-as-destructive.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0019** — [Layout shell is content-only by default; header / footer are opt-in; header is forbidden in side-panel extensions](./tickets/0019-layout-shell-content-only-default-header-banned-in-side-panel.md)
 - [x] **#0020** — [Select: bring height, border, border-radius, and font-size in line with native Chrome](./tickets/0020-select-native-geometry.md)
 - [x] **#0021** — [Input / Textarea: align height, border-radius, and font-size with the new Select](./tickets/0021-input-textarea-geometry-align-with-select.md)
+- [x] **#0022** — [Sections-and-rows: expand the canonical row vocabulary beyond toggle / drill-in / inline-control](./tickets/0022-expanded-row-vocabulary.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

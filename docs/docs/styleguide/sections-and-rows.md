@@ -61,9 +61,27 @@ In short:
 - Label above a standalone input → `.cr-label-small` (10–11px, caps), one input only.
 - Anywhere else → no label, or a sentence-case heading at the appropriate body size.
 
-## The three canonical rows
+## Common row shapes
 
-Almost every row in Chromium fits one of three shapes. Learn to recognize them; then compose any settings surface as a sequence of these three.
+`PanelRow` and `ListItem` accept the same slot vocabulary — `icon` / `avatar` (leading), `primary` (top label), `secondary` (helper line below), `end` (trailing control). Anything composable from those slots is a valid row; the shapes below are the ones that recur the most. Treat them as a starting catalogue, not a closed set.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <ToggleRow primary="Notifications" defaultChecked />
+  <Divider subtle />
+  <ListItem primary="Site Settings" secondary="Controls what information sites can use" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
+  <Divider subtle />
+  <ListItem primary="Search engine" end={<Select options={[{ value: 'g', label: 'Google' }]} />} />
+  <Divider subtle />
+  <ListItem primary="Default browser" end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>Yes</span>} />
+  <Divider subtle />
+  <ListItem primary="Indexing files" secondary="47 of 120" end={<Spinner size="sm" />} />
+  <Divider subtle />
+  <ListItem primary="Background sync" secondary="Last run 2 min ago" end={<Badge variant="success">Healthy</Badge>} />
+  <Divider subtle />
+  <ListItem primary="Disconnect account" end={<Button variant="text" size="sm">Disconnect</Button>} />
+</Card>
+```
 
 ### 1. Toggle row
 
@@ -136,6 +154,130 @@ A row with a `Select`, `Input`, or `RadioGroup` inline on the right (rather than
 - Used when the value space is small (2–6 enums) and doesn't need a subpage.
 - Inline `Input` is acceptable for short free-form values (a URL, a number). For longer free-form (textarea-needed), drill in.
 - Never inline a multi-line Textarea.
+
+### 4. Read-only value row
+
+A row showing a value the user cannot change inline — version strings, current state, an environment fact. Primary on the left, value as plain `--cr-secondary-text-color` text in `end`.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <List>
+    <ListItem
+      primary="Default browser"
+      end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>Yes</span>}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="Version"
+      end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>1.4.2 (stable)</span>}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="Connected to"
+      secondary="Wi-Fi · 192.168.1.42"
+    />
+  </List>
+</Card>
+```
+
+- Value-on-the-right is the more "settings-summary" shape; primary + secondary is the more "info row" shape with no `end` slot at all.
+- Do **not** wrap a read-only string in a disabled `Input` to make it look editable-but-disabled. Read-only is its own shape — a span, no input chrome.
+
+### 5. Status / progress row
+
+A row reporting background work. `Spinner` (circular, indeterminate) in `end` for "still happening, no ETA"; `Progress` (horizontal bar) in `secondary` for "x of y".
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <List>
+    <ListItem
+      primary="Background sync"
+      secondary="Syncing now…"
+      end={<Spinner size="sm" />}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="Indexing files"
+      secondary={
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 4 }}>
+          <Progress value={47} max={120} />
+          <span>47 of 120</span>
+        </div>
+      }
+    />
+  </List>
+</Card>
+```
+
+- Pick `Spinner` when the work has no progress signal (network call, indexing in progress without a count).
+- Pick `Progress` when there is an integer ratio worth showing (file 47 of 120, MB downloaded, percent complete).
+- For one-row-per-task lists (downloads, syncs), `ListItem` accepts a `<Progress>` in `secondary` cleanly — wrap it in a small flex stack if you also want the count text below.
+
+### 6. Status badge row
+
+A row describing an item or system that has a discrete state. Primary + secondary on the left, a `Badge` in `end` carrying the state.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <List>
+    <ListItem
+      primary="Background sync"
+      secondary="Last run 2 min ago"
+      end={<Badge variant="success">Healthy</Badge>}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="API key rotation"
+      secondary="Due tomorrow"
+      end={<Badge variant="warning">Soon</Badge>}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="Auth token"
+      secondary="Refresh failed"
+      end={<Badge variant="error">Error</Badge>}
+    />
+  </List>
+</Card>
+```
+
+- The Badge is the *state*, not the *count* — pick the variant that names the user's required reaction (none / soon / now). See [Badge](../components/badge.md) for the full variant list.
+- The default `<Badge>` (neutral) is the right pick when the state is just a tag, not a status that demands attention.
+
+### 7. Action row
+
+A row that exposes one verb on the right — "Reset", "Disconnect", "Reconnect". The verb is `Button variant="text"` (small, quiet). For destructive verbs, leave the button text-styled but set the colour explicitly via `variant="text"` + the destructive intent stays in the prose ("Disconnect account") rather than the colour.
+
+```tsx live
+<Card variant="outlined" style={{ maxWidth: 520 }}>
+  <List>
+    <ListItem
+      primary="Connected account"
+      secondary="alex@example.com"
+      end={<Button variant="text" size="sm">Disconnect</Button>}
+    />
+    <Divider subtle />
+    <ListItem
+      primary="Saved searches"
+      secondary="12 saved"
+      end={<Button variant="text" size="sm">Manage</Button>}
+    />
+  </List>
+</Card>
+```
+
+- One verb per row, max. Two trailing buttons in the same row competes for attention — drill in to a subpage instead.
+- For a destructive verb on a row, prefer pulling the user into a confirmation `Dialog` first (per [Dialogs](./dialogs.md)) rather than firing destructive actions directly from a settings row.
+
+### Other shapes
+
+The slot vocabulary supports more than the seven shapes above — anything composing `icon` / `avatar` / `primary` / `secondary` / `end` is a row. Common further shapes you may compose without a separate entry here:
+
+- **Avatar-leading row** — `avatar` slot with a 24–32px avatar, used in account / collaborator / favicon rows. See `ListItem`'s `avatar` prop.
+- **Icon + drill-in row** — `icon` (a 16px Material Symbol) + `primary` + chevron `end`, used in chrome-style category rows.
+- **Multi-line content row** — `secondary` accepts a `ReactNode`, so it can hold a small stack (Progress + label, two paragraphs, an inline Badge under the secondary line). Keep this rare — three-line rows quickly turn into mini-cards and should usually be promoted to their own surface.
+
+The point of this catalogue is not to enumerate every possible row; it is to show that the shapes you reach for naturally are already supported.
 
 ## Grouping
 

@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0022 — Sections-and-rows: expand the canonical row vocabulary beyond toggle / drill-in / inline-control"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 2 (expand prose + visual gallery). `sections-and-rows.md` section retitled "## Common row shapes" with an opening paragraph clarifying the slot vocabulary (`icon`/`avatar`/`primary`/`secondary`/`end`) is the actual primitive — the listed shapes are starting points, not a closed set. New gallery preview at the top stacks 7 representative rows in one Card. Four new shape entries appended after the original three: read-only value row (settings-summary value on the right + primary+secondary "info row"), status / progress row (Spinner-in-end for indeterminate, Progress in secondary for x-of-y), status badge row (post-#0013 outline-only Badge variants), action row (single `Button variant="text"` in `end`). Closing "Other shapes" subsection points at avatar-leading / icon+drill-in / multi-line content compositions without giving them dedicated entries. Verified 1 error Badge / 2 Spinners / 1 Progress all render in the live previews.
 
 ## Summary
 
