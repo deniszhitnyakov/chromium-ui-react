@@ -27,9 +27,6 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
     <PanelView id="main">
       <PanelHeader title="Reading list" />
       <div style={{ flex: 1, overflowY: 'auto' }}>
-        <div style={{ padding: 'var(--cr-space-2) var(--cr-space-4)' }}>
-          <SearchInput placeholder="Search reading list" />
-        </div>
         <div style={{
           fontSize: 14,
           fontWeight: 400,
@@ -94,10 +91,10 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
 - **Width.** 360–400px fixed. Chromium's side panel is user-resizable; your code does not need to be.
 - **Header height.** **48px**, not 56px. Chromium uses `--cr-sidepanel-header-height: 48px` — the side panel header is one notch shorter than the main toolbar.
 - **Header title.** 14px weight-500, `padding-left: 16px`. Nothing else in the header — no gear, no "+", no `⋮`. Row-level actions live on the rows; a single "Add current tab" control (if needed) is an `EmptyState` / footer `Button`, not a header icon. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
-- **Search in the panel.** Placed immediately below the header, in a small horizontal gutter. `--cr-space-2` (8px) vertical, `--cr-space-4` (16px) horizontal.
 - **Group labels.** 14px regular-weight, sentence case, on-surface colour. Same shape as a settings-page `<h2>`. Padding `8px 16px 4px`. Side panels are *not* an exception to the no-ALL-CAPS rule — see [Anti-pattern #21](../anti-patterns.md#21-all-caps-section-labels).
 - **Rows.** Standard `ListItem` with primary + secondary + trailing `IconButton`. 48px or 64px min-height depending on sublabel presence. Per-row `IconButton`s are fine — they sit *inside* rows, not in the header.
 - **No card.** Side panels do not wrap their lists in cards — the panel itself is the card.
+- **Search is optional, not default.** Most extension side panels do not need search. If yours does (Bookmarks-shaped, History-shaped — long scrollable lists), drop a `<SearchInput />` in a `--cr-space-2` / `--cr-space-4` (8/16px) gutter directly under the header. The Reading-list example above does *not* show search; that omission is deliberate.
 
 ## Subpage navigation
 

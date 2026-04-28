@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0007 — Drop the SearchInput from the side-panel pattern; it's not a required ingredient"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: stripped `<SearchInput>` from the canonical Reading-list example, dropped the "Search in the panel" bullet from "What to copy from this", and added a single one-line bullet noting search is optional with a brief recipe for the cases where it applies.
 
 ## Summary
 
