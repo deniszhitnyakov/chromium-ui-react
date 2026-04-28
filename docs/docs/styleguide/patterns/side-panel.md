@@ -26,60 +26,62 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
   <PanelStack defaultView="main" style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="main">
       <PanelHeader title="Reading list" />
-      <div style={{ flex: 1, overflowY: 'auto' }}>
-        <div style={{
-          fontSize: 14,
-          fontWeight: 400,
-          color: 'var(--cr-fallback-color-on-surface)',
-          padding: '16px 16px 8px',
-        }}>
-          Unread
-        </div>
-        <List>
-          <ListItem
-            primary="The Elements of Typographic Style"
-            secondary="practicaltypography.com · 12 min read"
-            interactive
-            end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
-          />
-          <Divider subtle />
-          <ListItem
-            primary="Settling the 3xx redirect debate once and for all"
-            secondary="jakearchibald.com · 8 min read"
-            interactive
-            end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
-          />
-          <Divider subtle />
-          <ListItem
-            primary="Why The Sudden Rise of TypeScript?"
-            secondary="bytecodealliance.org · 15 min read"
-            interactive
-            end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
-          />
-        </List>
-        <div style={{
-          fontSize: 14,
-          fontWeight: 400,
-          color: 'var(--cr-fallback-color-on-surface)',
-          padding: '16px 16px 8px',
-        }}>
-          Pages you've read
-        </div>
-        <List>
-          <ListItem
-            primary="Things You Should Never Do, Part I"
-            secondary="joelonsoftware.com · 6 min read"
-            interactive
-            end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
-          />
-          <Divider subtle />
-          <ListItem
-            primary="A Case Study on Fixing a Memory Leak"
-            secondary="v8.dev · 10 min read"
-            interactive
-            end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
-          />
-        </List>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '12px', display: 'flex', flexDirection: 'column', gap: 'var(--cr-space-5)' }}>
+        <section>
+          <h2 style={{
+            fontSize: 14, fontWeight: 400,
+            color: 'var(--cr-fallback-color-on-surface)',
+            margin: '0 0 8px 4px', padding: '4px 0',
+          }}>Unread</h2>
+          <Card variant="elevated" padding="none">
+            <List>
+              <ListItem
+                primary="The Elements of Typographic Style"
+                secondary="practicaltypography.com · 12 min read"
+                interactive
+                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+              />
+              <Divider subtle />
+              <ListItem
+                primary="Settling the 3xx redirect debate once and for all"
+                secondary="jakearchibald.com · 8 min read"
+                interactive
+                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+              />
+              <Divider subtle />
+              <ListItem
+                primary="Why The Sudden Rise of TypeScript?"
+                secondary="bytecodealliance.org · 15 min read"
+                interactive
+                end={<IconButton aria-label="Mark as read" icon={<span style={{ fontSize: 12 }}>✓</span>} />}
+              />
+            </List>
+          </Card>
+        </section>
+        <section>
+          <h2 style={{
+            fontSize: 14, fontWeight: 400,
+            color: 'var(--cr-fallback-color-on-surface)',
+            margin: '0 0 8px 4px', padding: '4px 0',
+          }}>Pages you've read</h2>
+          <Card variant="elevated" padding="none">
+            <List>
+              <ListItem
+                primary="Things You Should Never Do, Part I"
+                secondary="joelonsoftware.com · 6 min read"
+                interactive
+                end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              />
+              <Divider subtle />
+              <ListItem
+                primary="A Case Study on Fixing a Memory Leak"
+                secondary="v8.dev · 10 min read"
+                interactive
+                end={<IconButton aria-label="Delete" icon={<span style={{ fontSize: 12 }}>✕</span>} />}
+              />
+            </List>
+          </Card>
+        </section>
       </div>
     </PanelView>
   </PanelStack>
@@ -93,7 +95,7 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
 - **Header title.** 14px weight-500, `padding-left: 16px`. Nothing else in the header — no gear, no "+", no `⋮`. Row-level actions live on the rows; a single "Add current tab" control (if needed) is an `EmptyState` / footer `Button`, not a header icon. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Group labels.** 14px regular-weight, sentence case, on-surface colour. Same shape as a settings-page `<h2>`. Padding `8px 16px 4px`. Side panels are *not* an exception to the no-ALL-CAPS rule — see [Anti-pattern #21](../anti-patterns.md#21-all-caps-section-labels).
 - **Rows.** Standard `ListItem` with primary + secondary + trailing `IconButton`. 48px or 64px min-height depending on sublabel presence. Per-row `IconButton`s are fine — they sit *inside* rows, not in the header.
-- **No card.** Side panels do not wrap their lists in cards — the panel itself is the card.
+- **Card per section.** Each section is its own elevated card with the heading above it — same composition as `chrome://settings`. The panel surface holds the cards; cards hold the rows. Sections sit `--cr-space-5` (20px) apart vertically. (Earlier versions of this pattern said "no card, the panel is the card" — that was modelled on Chrome's built-in Reading List, which is a single homogeneous list. Heterogeneous extension panels want the settings shape.)
 - **Search is optional, not default.** Most extension side panels do not need search. If yours does (Bookmarks-shaped, History-shaped — long scrollable lists), drop a `<SearchInput />` in a `--cr-space-2` / `--cr-space-4` (8/16px) gutter directly under the header. The Reading-list example above does *not* show search; that omission is deliberate.
 
 ## Subpage navigation
@@ -182,7 +184,7 @@ If you reuse the settings-page spacing (24px gaps, 20px padding) in a side panel
 
 ## Common side-panel mistakes
 
-- **Wrapping the list in a `Card`.** The panel itself is the card. Do not nest.
+- **One bare list on a flat panel surface.** Heterogeneous extension panels want the settings composition: each section is its own elevated card, with a sentence-case `<h2>` heading above it. The "no card" rule from earlier versions of this pattern was modelled on Chrome's single-list Reading List and does not generalise.
 - **Using `Toolbar` at 56px height.** Use the 48px custom header or `<PanelHeader>`.
 - **`IconButton`s in the header next to the title.** The 48px header is title-only. Row actions live on rows; the view's single primary action lives in a centered footer (see [Pattern — Primary action button](./primary-action.md)). See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Right-aligned or `size="sm"` primary action at the bottom.** The panel's single primary CTA is pinned at the bottom, centered, and full-size — see [Pattern — Primary action button](./primary-action.md) and [Anti-patterns #17](../anti-patterns.md#17-primary-action-buried-on-a-side-panel).

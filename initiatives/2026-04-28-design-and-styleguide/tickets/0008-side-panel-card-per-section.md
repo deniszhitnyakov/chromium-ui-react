@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0008 — Side panel: each section is its own elevated Card with the heading above it (mirror settings-page)"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: canonical Reading-list example rewritten as `<section>` + sentence-case `<h2>` + `<Card variant="elevated" padding="none">`. "No card" rule replaced with "Card per section" bullet; "Wrapping the list in a Card" mistake rewritten to flag the inverse — flat list on bare surface for heterogeneous panels.
 
 ## Summary
 

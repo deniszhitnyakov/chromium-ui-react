@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0008** — [Side panel: each section is its own elevated Card with the heading above it (mirror settings-page)](./tickets/0008-side-panel-card-per-section.md)
 - [ ] **#0009** — [Drop Button 'tonal' variant — redundant against outlined / action](./tickets/0009-drop-button-tonal-variant.md)
 - [ ] **#0010** — [Recommend Material Symbols / Material Design Icons; sweep all Unicode-icon examples in the docs](./tickets/0010-recommend-material-symbols-sweep-unicode-icons.md)
 - [ ] **#0011** — [RadioGroup uncontrolled mode is broken: defaultValue is accepted but never wired](./tickets/0011-radio-group-uncontrolled-mode.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0005** — [Drop ALL CAPS section labels everywhere; sentence case is the Chromium-native default](./tickets/0005-drop-uppercase-section-labels.md)
 - [x] **#0006** — [Side-panel header bottom border should match Divider color (use PanelHeader, not a hand-rolled div)](./tickets/0006-side-panel-header-border.md)
 - [x] **#0007** — [Drop the SearchInput from the side-panel pattern; it's not a required ingredient](./tickets/0007-drop-search-from-side-panel-pattern.md)
+- [x] **#0008** — [Side panel: each section is its own elevated Card with the heading above it (mirror settings-page)](./tickets/0008-side-panel-card-per-section.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 
