@@ -4,7 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0015** — [Tabs: reduce default height — 48px is too tall for extension surfaces](./tickets/0015-tabs-reduce-default-height.md)
 - [ ] **#0016** — [Add a Table component (dense default, sticky-header option, automatic horizontal scroll)](./tickets/0016-add-table-component.md)
 - [ ] **#0017** — [Action-row secondary (Cancel) should be variant='text', not outlined](./tickets/0017-action-row-secondary-as-text.md)
 - [ ] **#0018** — [Rename Toolbar component to Header](./tickets/0018-rename-toolbar-to-header.md)
@@ -43,6 +42,7 @@ kanban-plugin: basic
 - [x] **#0012** — [Drop Chip component — role overlaps with Badge / Button, no clear extension use case](./tickets/0012-drop-chip-component.md)
 - [x] **#0013** — [Badge: put 'neutral' first in the variants list and make it the default](./tickets/0013-badge-neutral-first.md)
 - [x] **#0014** — [Card: 'elevated' should be the default variant (and shown first in the live preview)](./tickets/0014-card-elevated-as-default.md)
+- [x] **#0015** — [Tabs: reduce default height — 48px is too tall for extension surfaces](./tickets/0015-tabs-reduce-default-height.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

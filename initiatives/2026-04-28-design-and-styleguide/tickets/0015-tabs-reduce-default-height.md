@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0015 — Tabs: reduce default height — 48px is too tall for extension surfaces"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 2: tab height reduced from 48px to 36px (compact-but-readable middle ground), horizontal padding tightened from 16px to 14px, font size dropped one notch (`--cr-font-size-base` → `--cr-font-size-md`). Tab strip bottom border switched to `--cr-divider-color` (introduced in #0002) for consistency with Toolbar / Header / pinned-footer hairlines.
 
 ## Summary
 

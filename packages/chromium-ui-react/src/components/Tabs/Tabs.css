@@ -1,7 +1,7 @@
 .cr-tabs {
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid var(--cr-fallback-color-surface-variant);
+  border-bottom: 1px solid var(--cr-divider-color);
   background: var(--cr-fallback-color-surface);
   flex-shrink: 0;
   overflow-x: auto;
@@ -12,14 +12,14 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 48px;
-  padding: 0 16px;
+  height: 36px;
+  padding: 0 14px;
   border: none;
   border-bottom: 2px solid transparent;
   background: transparent;
   color: var(--cr-secondary-text-color);
   font-family: var(--cr-font-family);
-  font-size: var(--cr-font-size-base);
+  font-size: var(--cr-font-size-md);
   font-weight: var(--cr-font-weight-medium);
   cursor: pointer;
   white-space: nowrap;
