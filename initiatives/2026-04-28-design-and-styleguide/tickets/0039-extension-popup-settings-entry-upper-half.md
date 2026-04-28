@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. The `Settings` drill-in row in the Extension Popup pattern's live preview was moved out of the bottom of the form block and re-rendered as a standalone `<List>` directly under the current-page card, above the "What to capture" / "Include" controls. The "What to copy" prose was rewritten — the bullet now points at [Pattern — Settings entry](./settings-entry.md) and explicitly calls out the upper-half placement instead of the old bottom-of-popup wording.
 
 ## Summary
 

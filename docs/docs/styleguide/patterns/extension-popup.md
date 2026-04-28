@@ -52,7 +52,15 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
         </div>
       </CardBody>
     </Card>
-    <div style={{ padding: '0 16px' }}>
+    <List style={{ padding: '0 16px' }}>
+      <ListItem
+        primary="Settings"
+        secondary="Default format, shortcut, destinations"
+        interactive
+        end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
+      />
+    </List>
+    <div style={{ padding: '8px 16px 0' }}>
       <div style={{
         fontSize: 14,
           fontWeight: 400,
@@ -80,16 +88,6 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
         <Checkbox defaultChecked label="Page metadata" />
         <Checkbox label="Images" />
       </div>
-      <div style={{ height: 16 }} />
-      <List>
-        <Divider subtle />
-        <ListItem
-          primary="Settings"
-          secondary="Default format, shortcut, destinations"
-          interactive
-          end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}
-        />
-      </List>
     </div>
   </div>
   <div style={{
@@ -109,7 +107,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
 
 - **Dimensions.** 380×520. Chrome enforces a max popup size of 800×600; stay well under.
 - **Header.** Standard 56px `<Header>`. Title is the extension name — **nothing else in the actions slot.** No gear, no "+", no `⋮`. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
-- **Options entry point.** A drill-in `ListItem` (or `PanelRow`) at the bottom of the popup, leading to the full options page. Not an `IconButton` in the header.
+- **Settings entry point.** A drill-in `ListItem` (or `PanelRow`) labelled exactly `Settings`, placed in the **upper half** of the popup body — directly under the current-page card, above the form controls. See [Pattern — Settings entry](./settings-entry.md). Not an `IconButton` in the header, not buried at the bottom of the popup.
 - **Content.** One column, no sidebar. Mix of card-wrapped context (the current-page info) and ungrouped controls (radios, checkboxes).
 - **Current-page card.** Use `Card variant="filled"` to visually group the "what you are about to act on" context without adding a shadow that would compete with the popup's own border.
 - **Group labels.** 11px all-caps — the pattern is acceptable in popups because there is no `<h2>` hierarchy competing.

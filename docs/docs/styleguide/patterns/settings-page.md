@@ -30,7 +30,6 @@ This is the pattern a full-tab options page should follow. It is the closest rep
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 260,
-      borderRight: '1px solid var(--cr-fallback-color-outline)',
       padding: '12px 0',
       overflowY: 'auto',
     }}>
@@ -139,7 +138,7 @@ This is the pattern a full-tab options page should follow. It is the closest rep
 Every measurement above is intentional. The ones worth calling out:
 
 - **Header.** 56px tall (component default). Search field **centered** in the toolbar (`flex: 1` spacer + a fixed-width `<SearchInput>`), `width: 360`. No shadow below the header. The SearchInput itself paints **no border** by default — just the filled pill on the toolbar surface, matching native `chrome://settings`.
-- **Sidebar.** 260px wide (Chromium uses 266; rounded to a nicer number here). Separated from content by a 1px right border, no shadow.
+- **Sidebar.** 260px wide (Chromium uses 266; rounded to a nicer number here). **No right border, no shadow** — native `chrome://settings` uses the implicit gutter to separate sidebar from main content, not a stroke.
 - **Content column.** `max-width: 680px`, centered, with 24px gutters. Sections stack with `gap: 24`.
 - **Section header.** `<h2>` 14px weight-400 (regular!), letter-spacing 0.25px, above the card. Not inside.
 - **Section card.** `variant="elevated"` — has the subtle `--cr-elevation-2` shadow that Chromium's `settings-section` uses. No outline.

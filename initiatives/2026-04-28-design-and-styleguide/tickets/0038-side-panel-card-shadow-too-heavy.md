@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (side-panel-local) implemented as a small Card API extension. New `Card.elevation: 1 | 2` prop (default `2`); when `variant="elevated"` and `elevation={1}`, paints `--cr-elevation-1` instead of `--cr-elevation-2`. CSS modifier `cr-card--elevation-1` opts down. Side-panel pattern's section cards now render `<Card elevation={1}>`; same change applied to the side-panel example in the new Settings entry pattern. Settings-page pattern is **not** affected — its cards still use elevation-2 via the default. Card docs page gains the new prop in the props table; side-panel pattern's Notes lists the elevation-1 rule as one of its measurements. Verified — side-panel cards render `box-shadow` matching `--cr-elevation-1`, classes `cr-card cr-card--elevation-1`.
 
 ## Summary
 

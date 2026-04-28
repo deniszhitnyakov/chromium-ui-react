@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (replace List with Table). Recently-saved block in the popup live preview now renders as `<Table density="dense">` with three columns (Title, Source, When). Rows are interactive. 14px sentence-case heading remains above the table. Design-decisions prose updated. Verified — table rendered with `cr-table--dense` class and 2 body rows on the deployed sample.
 
 ## Summary
 

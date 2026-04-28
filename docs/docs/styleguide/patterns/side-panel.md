@@ -33,7 +33,7 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
             color: 'var(--cr-fallback-color-on-surface)',
             margin: '0 0 8px 4px', padding: '4px 0',
           }}>Unread</h2>
-          <Card variant="elevated" padding="none">
+          <Card elevation={1} padding="none">
             <List>
               <ListItem
                 primary="The Elements of Typographic Style"
@@ -64,7 +64,7 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
             color: 'var(--cr-fallback-color-on-surface)',
             margin: '0 0 8px 4px', padding: '4px 0',
           }}>Pages you've read</h2>
-          <Card variant="elevated" padding="none">
+          <Card elevation={1} padding="none">
             <List>
               <ListItem
                 primary="Things You Should Never Do, Part I"
@@ -161,6 +161,7 @@ Notes:
 - `<PanelHeader>` replaces the hand-rolled 48px header when you use `PanelStack` — it is 48px tall and has the back arrow built in.
 - The header is title-only. Context-specific actions ("Add bookmark" on a folder view) belong in the content area — a centered footer `Button` for the view's single primary action (see [Pattern — Primary action button](./primary-action.md)), or per-row `IconButton`s for row operations. Do not hang icon buttons off the `PanelHeader` — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - Icons on rows are acceptable in a side-panel context (favicon, folder icon). They are 16px, leading.
+- **Section cards use `elevation={1}`, not the default `2`.** A 360px-wide column makes the standard elevation-2 shadow read as too heavy under each card. The `<Card elevation={1}>` opt-in (subtle `--cr-elevation-1` shadow) keeps the cards visibly grouped without "puffing them up" off the panel surface. The settings-page pattern keeps elevation-2 — the wider card column absorbs the heavier shadow.
 
 ## The panel's primary action
 

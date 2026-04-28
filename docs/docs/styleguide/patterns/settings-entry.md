@@ -94,7 +94,7 @@ Native Chrome WebUI does not face this problem because `chrome://settings`-style
   background: 'var(--cr-fallback-color-surface)',
 }}>
   <div style={{ flex: 1, overflowY: 'auto', padding: 16, display: 'flex', flexDirection: 'column', gap: 16 }}>
-    <Card variant="elevated">
+    <Card elevation={1}>
       <List>
         <ListItem primary="Capture mode" secondary="Selection only" interactive end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>} />
         <Divider subtle />
@@ -102,7 +102,7 @@ Native Chrome WebUI does not face this problem because `chrome://settings`-style
       </List>
     </Card>
     <div style={{ fontSize: 14, fontWeight: 400, padding: '0 4px' }}>Recent captures</div>
-    <Card variant="elevated">
+    <Card elevation={1}>
       <List>
         <ListItem primary="Section: introduction" secondary="2 min ago" interactive />
         <Divider subtle />

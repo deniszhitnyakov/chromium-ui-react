@@ -89,21 +89,29 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
     }}>
       Recently saved
     </div>
-    <List>
-      <ListItem
-        icon={<GlobeIcon size={14} />}
-        primary="A Case Study on Fixing a Memory Leak"
-        secondary="v8.dev · 3 min ago"
-        interactive
-      />
-      <Divider subtle />
-      <ListItem
-        icon={<GlobeIcon size={14} />}
-        primary="Settling the 3xx redirect debate"
-        secondary="jakearchibald.com · 1 h ago"
-        interactive
-      />
-    </List>
+    <div style={{ padding: '0 16px' }}>
+      <Table density="dense">
+        <TableHead>
+          <TableRow>
+            <TableHeaderCell>Title</TableHeaderCell>
+            <TableHeaderCell>Source</TableHeaderCell>
+            <TableHeaderCell align="end">When</TableHeaderCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow interactive>
+            <TableCell>A Case Study on Fixing a Memory Leak</TableCell>
+            <TableCell>v8.dev</TableCell>
+            <TableCell align="end">3 min</TableCell>
+          </TableRow>
+          <TableRow interactive>
+            <TableCell>Settling the 3xx redirect debate</TableCell>
+            <TableCell>jakearchibald.com</TableCell>
+            <TableCell align="end">1 h</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
   </div>
   <div style={{
     padding: 'var(--cr-space-4)',
@@ -124,7 +132,7 @@ Opens from the toolbar icon. Shows the current tab, the active collection, quick
 - **Filled card** for the active-tab context — visually groups "what you are about to act on" without competing with the popup's own border.
 - **Inline form**, not a dialog. The popup *is* the form; opening another dialog on top would be redundant.
 - **Tags via `<Badge>`.** Tags read as static labels (sentence case, neutral or info colour). Adding a new tag is a small text Button with a `+` icon — not a "compact chip" — keeping the surface in the Badge / Button vocabulary.
-- **Recently saved** is a 11px all-caps section below the form — subtle, not competing for attention.
+- **Recently saved** is rendered as a `<Table density="dense">` with three columns (Title, Source, When) — the row shape is genuinely tabular and the dense density keeps the popup tight at 400px wide. The 14px sentence-case `Recently saved` heading lives above the Table the way a section heading lives above a `<Card>`.
 - **Footer:** `[Cancel (text)] [Save link (action)]` — right-aligned. The text-variant Cancel de-emphasizes it relative to the primary.
 
 ## The options page
@@ -145,7 +153,7 @@ The full-tab options page (opened from the `Settings` drill-in row in the upper 
     <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />
   </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
-    <nav style={{ width: 240, borderRight: '1px solid var(--cr-fallback-color-outline)', padding: '12px 0', overflowY: 'auto' }}>
+    <nav style={{ width: 240, padding: '12px 0', overflowY: 'auto' }}>
       <Menu role="navigation">
         <MenuItem selected>General</MenuItem>
         <MenuItem>Collections</MenuItem>

@@ -44,6 +44,7 @@ import {
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | `variant` | `'elevated' \| 'outlined' \| 'filled' \| 'flat'` | `'elevated'` | Visual style |
+| `elevation` | `1 \| 2` | `2` | Shadow weight when `variant='elevated'`. Use `1` on narrow surfaces (side panels) where elevation-2 reads too heavy. Ignored for non-elevated variants. |
 | `interactive` | `boolean` | `false` | Adds hover/active states (use when the whole card is clickable) |
 
 All other `<div>` attributes are forwarded. Ref goes to the root `<div>`.

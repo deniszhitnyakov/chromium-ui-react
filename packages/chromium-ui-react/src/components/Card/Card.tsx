@@ -4,13 +4,17 @@ import './Card.css';
 
 export type CardVariant = 'elevated' | 'outlined' | 'filled' | 'flat';
 
+export type CardElevation = 1 | 2;
+
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant;
+  /** Shadow weight when `variant='elevated'`. Default `2` (Chromium-faithful settings card). Use `1` on narrow surfaces (side panels) where elevation-2 reads too heavy. Ignored for non-elevated variants. */
+  elevation?: CardElevation;
   interactive?: boolean;
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { variant = 'elevated', interactive, className, ...rest },
+  { variant = 'elevated', elevation = 2, interactive, className, ...rest },
   ref,
 ) {
   return (
@@ -19,6 +23,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       className={cn(
         'cr-card',
         variant !== 'elevated' && `cr-card--${variant}`,
+        variant === 'elevated' && elevation !== 2 && `cr-card--elevation-${elevation}`,
         interactive && 'cr-card--interactive',
         className,
       )}

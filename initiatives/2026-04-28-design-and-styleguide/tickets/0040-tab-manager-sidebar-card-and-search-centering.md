@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. Sidebar `<Menu role="tree">` switched to `role="navigation"` so the flat-CSS rule from #0023 applies (verified: `box-shadow: none, padding: 0px, role: navigation`). SearchInput in the `<Header>` wrapped in a `flex: 1` centring container with `width: 400`, mirroring the Settings page pattern from #0024. Prose updated: Design-decisions bullet now says `Menu role="navigation"` (was `role="tree"`); ✅ checklist row updated; "Surface vs. shape" table row updated.
 
 ## Summary
 

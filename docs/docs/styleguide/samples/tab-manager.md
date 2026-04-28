@@ -28,16 +28,17 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
     title="Tab Manager"
     actions={<IconButton aria-label="More" icon={<MoreVertIcon />} />}
   >
-    <SearchInput placeholder="Search tabs by title or URL" style={{ flex: 1, maxWidth: 400 }} />
+    <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+      <SearchInput placeholder="Search tabs by title or URL" style={{ width: 400 }} />
+    </div>
   </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 240,
-      borderRight: '1px solid var(--cr-fallback-color-outline)',
       padding: '8px 0',
       overflowY: 'auto',
     }}>
-      <Menu role="tree">
+      <Menu role="navigation">
         <MenuLabel>Windows</MenuLabel>
         <MenuItem icon={<HomeIcon />} selected>This window (14)</MenuItem>
         <MenuItem icon={<HomeIcon />}>Laptop (7)</MenuItem>
@@ -157,7 +158,7 @@ The shape follows [`chrome://bookmarks`](../patterns/bookmarks-manager.md) almos
 ### Design decisions
 
 - **Two-pane shell** from the Bookmarks manager pattern: 240px tree on the left, scrollable main column on the right with a 960px max-width — wider than settings (680px) because tab rows need horizontal room for URL + metadata.
-- **Tree pane is a flat `Menu role="tree"`**, no card, just a 1px right border. `MenuLabel` separates "Windows" from "Groups".
+- **Tree pane is a flat `Menu role="navigation"`**, no card, no right border — matches the Settings page sidebar shape. `MenuLabel` separates "Windows" from "Groups".
 - **Colored dots next to group names** are the only saturated-color spots in the UI — they mirror Chromium's tab-group chips. Use the `--cr-fallback-color-primary` token for the "active group" and explicit hex for other group colors (Chromium's group colors are fixed, not theme tokens).
 - **Header actions slot has a single `⋮` overflow `IconButton` at the far corner** — with the `SearchInput` between it and the title, matching `chrome://bookmarks`. "New group", "Sort", and other one-off verbs live inside that overflow `Menu`. Do **not** line up three `IconButton`s next to the title — see [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
 - **Groups rendered as sections** in the main pane. Each section has an 11px all-caps header (count included) above an elevated card. This is the one place 11px all-caps is acceptable inside a manager: *per-group labeling* — analogous to the "Unread" / "Pages you've read" labels in the reading-list side panel.
@@ -279,7 +280,7 @@ No action button — there is nothing to do here yet. The empty state is purely 
 
 - ✅ Two-pane manager shell (tree + main), exactly the `chrome://bookmarks` shape.
 - ✅ 56px `<Header>` with title + `SearchInput` (maxWidth 400) + a single `⋮` overflow `IconButton` at the far right.
-- ✅ Tree pane flat (no card), 240px, 1px right border.
+- ✅ Tree pane flat (no card), 240px, no right border.
 - ✅ Main column centered, 960px max-width, 24px outer padding.
 - ✅ Row actions are `IconButton` only; multi-action rows use `⋮ More`.
 - ✅ Selection mode swaps the toolbar instead of stacking a second strip.
@@ -295,7 +296,7 @@ Across all three sample extensions — Link Collector (popup + options), Reader 
 |---|---|---|---|
 | Popup | 380×520 bordered box + `Header` | None / `PanelStack` | Row list inside form |
 | Side panel | 360–400 wide + 48px custom header | `PanelStack` drill-in | `ListItem` with trailing `IconButton` |
-| Full-tab manager | Viewport + 56px `Header` | 240px `Menu role="tree"` | `ListItem` inside elevated card |
+| Full-tab manager | Viewport + 56px `Header` | 240px `Menu role="navigation"` | `ListItem` inside elevated card |
 | Full-tab options | Viewport + 56px `Header` | 240px `Menu role="navigation"` | `ListItem` inside elevated card, `<h2>` per section |
 
 Pick the row-based shell appropriate to your surface and the rest follows.

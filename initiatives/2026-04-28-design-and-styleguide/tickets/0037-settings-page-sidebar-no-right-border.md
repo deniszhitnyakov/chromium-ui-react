@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. `borderRight` removed from the `<nav>` style in `settings-page.md`, `samples/link-collector.md` (options page), and `samples/tab-manager.md`. Prose updated everywhere it described the right border (`settings-page.md` "Sidebar" bullet, `tab-manager.md` Design decisions + ✅ checklist). Sidebar / content boundary now relies on the implicit gutter, matching native `chrome://settings`.
 
 ## Summary
 

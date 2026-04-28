@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+.cr-card--elevation-1 {
+  box-shadow: var(--cr-elevation-1);
+}
+
 .cr-card--outlined {
   box-shadow: none;
   border: 1px solid var(--cr-fallback-color-surface-variant);
