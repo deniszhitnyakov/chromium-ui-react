@@ -193,6 +193,6 @@ A full-tab options page does **not** have a footer. Settings save inline (toggle
 - **Horizontal layouts at narrow widths.** At side-panel width (~360px), everything stacks vertically.
 - **Sticky section headers.** Chromium uses plain section titles, not sticky ones.
 - **Floating action buttons.** There is no FAB pattern in Chromium.
-- **Max-width on buttons.** Button width is determined by content; only `fullWidth` stretches it, and that is mainly for narrow popup footers.
+- **Max-width on buttons.** Buttons are content-sized; padding ships the only horizontal slack. There is no full-width affordance — a button stretched edge-to-edge reads as a banner, not a control.
 
 Pick your surface shape, match its shell precisely, and the inside will have the right frame to sit in.

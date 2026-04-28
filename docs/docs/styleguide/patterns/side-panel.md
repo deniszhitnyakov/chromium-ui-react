@@ -177,7 +177,7 @@ Notes:
 
 ## The panel's primary action
 
-If the side panel (or any of its subviews) has a single clear CTA — *Start*, *Capture*, *Export*, *Scan*, *Add bookmark*, the verb the user came to press — it belongs in a **pinned footer, horizontally centered, full size**, and it is the **only** `variant="action"` visible. This is a deliberate departure from Chromium's `[Cancel] [Primary]` right-aligned footer; it exists to shorten the time a new user spends finding the thing to press. See [Pattern — Primary action button](./primary-action.md) for the full reasoning, scope, and variants (full-width, running-state replacement, no-primary case).
+If the side panel (or any of its subviews) has a single clear CTA — *Start*, *Capture*, *Export*, *Scan*, *Add bookmark*, the verb the user came to press — it belongs in a **pinned footer, horizontally centered, content-sized**, and it is the **only** `variant="action"` visible. This is a deliberate departure from Chromium's `[Cancel] [Primary]` right-aligned footer; it exists to shorten the time a new user spends finding the thing to press. See [Pattern — Primary action button](./primary-action.md) for the full reasoning, scope, and variants (running-state replacement, no-primary case).
 
 Side panels without a single primary (pure viewers, status-only panels) omit the footer entirely.
 

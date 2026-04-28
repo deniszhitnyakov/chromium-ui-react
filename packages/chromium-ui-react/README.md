@@ -50,7 +50,7 @@ export default function SignIn() {
       <CardBody>
         <Input label="Email" placeholder="you@example.com" />
         <Input label="Password" type="password" />
-        <Button variant="action" fullWidth>Sign in</Button>
+        <Button variant="action">Sign in</Button>
       </CardBody>
     </Card>
   );

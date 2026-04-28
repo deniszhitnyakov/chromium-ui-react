@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0003 — Drop Button fullWidth prop and the full-width primary-action pattern"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: `fullWidth` prop removed from `Button.tsx`, `.cr-button--full` removed from `Button.css`. Primary-action pattern's "Full-width" variant section deleted; centred variant rewritten to spell out the content-sized rule. `layout.md`, `button.md`, `one-page.md`, `README.md`, and `side-panel.md` updated. New anti-pattern #19 "Full-width primary action in a narrow footer".
 
 ## Summary
 

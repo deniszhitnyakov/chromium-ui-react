@@ -81,10 +81,7 @@ The primary is the **last** vertical element on the surface. It terminates the l
 
 This is the step that departs from Chromium's `[Cancel] [Primary]` right-alignment. On a narrow surface (~360–400px) with a **single** action, right-aligning the button makes it read as a trailing accessory — the same visual family as the chevrons on the drill-in rows above it. Centering lifts the button out of that family and says: *this is the action, not a row-end affordance.*
 
-Two valid implementations, pick by emphasis:
-
-- **Fixed-width centered.** `display: flex; justify-content: center` on the footer, a normal `<Button variant="action">`. Reads as confident, deliberate.
-- **Full-width.** `<Button variant="action" fullWidth />` inside a padded footer. Reads as "this is the CTA" — useful when the label is long or the panel is very narrow (320–360px).
+The footer is `display: flex; justify-content: center` with a single content-sized `<Button variant="action">` — the same content-sized button that appears anywhere else, just placed in the centre of a padded strip. There is no full-width affordance: a button stretched edge-to-edge stops reading as a button and starts reading as a banner, which is exactly the shape `chrome://settings` never produces. Long verbs are a labelling problem, not a sizing one (see [Pattern — Button labels](#)).
 
 Never right-align a single primary in a side-panel footer. It looks like a forgotten secondary.
 
@@ -169,38 +166,6 @@ Labelled correctly, placed incorrectly. The verb is buried in row 2 and competes
 The eye runs down the rows and lands on the one filled button. `Scraping` is now a pure status row. Time-to-first-action: one scan step.
 
 ## Variants
-
-### Full-width primary
-
-On a narrow panel or with a long label, prefer full-width — the action itself becomes the footer:
-
-```tsx live
-<div style={{
-  width: 340,
-  height: 460,
-  border: '1px solid var(--cr-fallback-color-outline)',
-  borderRadius: 12,
-  overflow: 'hidden',
-  background: 'var(--cr-fallback-color-surface)',
-  display: 'flex',
-  flexDirection: 'column',
-}}>
-  <Toolbar title="Lead enrichment" />
-  <div style={{ flex: 1, overflowY: 'auto' }}>
-    <PanelRow primary="Source" secondary="google.com/maps" />
-    <Divider subtle />
-    <PanelRow primary="Fields" secondary="Name · Category · Phone · Rating" navigateTo="fields" />
-    <Divider subtle />
-    <PanelRow primary="Rate mode" secondary="Conservative" navigateTo="rate" />
-  </div>
-  <div style={{
-    padding: 'var(--cr-space-4)',
-    borderTop: '1px solid var(--cr-divider-color)',
-  }}>
-    <Button variant="action" fullWidth>Enrich visible leads</Button>
-  </div>
-</div>
-```
 
 ### Running-state replacement
 

@@ -34,7 +34,6 @@ import { Button } from 'chromium-ui-react';
 |---|---|---|---|
 | `variant` | `'outlined' \| 'action' \| 'tonal' \| 'destructive' \| 'text'` | `'outlined'` | Visual style |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Control size |
-| `fullWidth` | `boolean` | `false` | Stretch to container width |
 | `startIcon` | `ReactNode` | — | Icon placed before children |
 | `endIcon` | `ReactNode` | — | Icon placed after children |
 | `disabled` | `boolean` | `false` | Standard HTML button disabled |
@@ -77,13 +76,9 @@ All other `<button>` attributes (`onClick`, `aria-*`, `form`, etc.) are forwarde
 
 Icons should be 16×16 inline SVGs with `currentColor` fills. The Button does not size icons for you.
 
-## Full-width
+## Sizing
 
-Useful inside narrow popups and side panels:
-
-```tsx
-<Button variant="action" fullWidth>Continue</Button>
-```
+Buttons are content-sized — width is label plus horizontal padding, no full-width affordance. A button stretched edge-to-edge stops reading as a button and starts reading as a banner; that is not how Chromium uses buttons. If a footer needs visual weight, place the content-sized primary on the right (or centred for the side-panel pattern) — see [Pattern — Primary action button](../styleguide/patterns/primary-action.md).
 
 ## Loading state
 

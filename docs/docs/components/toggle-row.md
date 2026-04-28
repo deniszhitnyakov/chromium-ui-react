@@ -24,7 +24,7 @@ A purpose-built row for settings that toggle a single value. Clicking anywhere i
 
 The row is structurally one `<label>`: native HTML association ties the click target on the text to the underlying `<input>`. There is no extra event handling, no synthetic click — the affordance comes for free from the browser. That is exactly what `chrome://settings` does.
 
-Reach for `ToggleRow` whenever a row's only trailing control is an on/off switch. For rows that drill into a sub-page, use [`PanelRow`](/components/panel-stack#panelrow). For rows with inline controls (Select, Input, Slider) or multiple trailing widgets, use [`ListItem`](/components/list).
+Reach for `ToggleRow` whenever a row's only trailing control is an on/off switch. For rows that drill into a sub-page, use [`PanelRow`](/components/panel-stack#panelrow-props). For rows with inline controls (Select, Input, Slider) or multiple trailing widgets, use [`ListItem`](/components/list).
 
 ## Import
 
@@ -80,6 +80,6 @@ const [syncEnabled, setSyncEnabled] = useState(true);
 
 ## When not to use
 
-- **Drill-in rows** — use [`PanelRow`](/components/panel-stack#panelrow) with `navigateTo` (chevron, not switch).
+- **Drill-in rows** — use [`PanelRow`](/components/panel-stack#panelrow-props) with `navigateTo` (chevron, not switch).
 - **Multiple trailing controls** — use [`ListItem`](/components/list) and accept that the row is no longer single-click.
 - **Inline form controls inside a row** (Select, Input, Slider) — use [`ListItem`](/components/list) with the control in `end`.

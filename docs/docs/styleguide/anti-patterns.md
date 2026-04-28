@@ -316,6 +316,46 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 
 **Rule.** Whenever a row's only trailing control is an on/off switch, reach for `ToggleRow`. The `ListItem + Toggle` composition is reserved for rows that mix the switch with other inline controls — there the loss of click-anywhere is the explicit trade-off.
 
+## 19. Full-width primary action in a narrow footer
+
+**Wrong.** A primary action stretched edge-to-edge inside the side-panel footer. The button reads as a coloured banner, not as a control. (`Button` no longer ships a `fullWidth` prop, but the same shape is reproducible with raw CSS or by setting `style={{ width: '100%' }}` — don't.)
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  padding: 'var(--cr-space-4)',
+  borderTop: '1px solid var(--cr-divider-color)',
+  background: 'var(--cr-fallback-color-surface)',
+}}>
+  <button style={{
+    width: '100%', height: 36, border: 'none', borderRadius: 100,
+    background: 'var(--cr-fallback-color-primary)', color: 'var(--cr-fallback-color-on-primary)',
+    fontFamily: 'var(--cr-font-family)', fontSize: 14, fontWeight: 500, cursor: 'pointer',
+  }}>Start scraping</button>
+</div>
+```
+
+**Right.** Content-sized primary, centred (or right-aligned in dialogs). Width is label plus padding; padding is the only horizontal slack.
+
+```tsx live
+<div style={{
+  width: 360,
+  border: '1px solid var(--cr-fallback-color-outline)',
+  borderRadius: 12,
+  padding: 'var(--cr-space-4)',
+  borderTop: '1px solid var(--cr-divider-color)',
+  background: 'var(--cr-fallback-color-surface)',
+  display: 'flex',
+  justifyContent: 'center',
+}}>
+  <Button variant="action">Start scraping</Button>
+</div>
+```
+
+**Rule.** Chromium buttons are content-sized. A button stretched to the container's full width stops reading as a button and starts reading as a banner — exactly what `chrome://settings`, `chrome://bookmarks`, and the in-browser side panels never produce. Long verbs are a labelling problem, not a sizing one (see [Button labels](#)).
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.
