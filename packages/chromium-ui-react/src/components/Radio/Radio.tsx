@@ -1,4 +1,4 @@
-import { forwardRef, type InputHTMLAttributes, type ReactNode, createContext, useContext, useId, type HTMLAttributes } from 'react';
+import { forwardRef, type InputHTMLAttributes, type ReactNode, createContext, useContext, useId, useState, type HTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 import './Radio.css';
 
@@ -23,6 +23,7 @@ export interface RadioGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'o
 export function RadioGroup({
   name,
   value,
+  defaultValue,
   onChange,
   orientation = 'vertical',
   disabled,
@@ -31,8 +32,17 @@ export function RadioGroup({
   ...rest
 }: RadioGroupProps) {
   const autoName = useId();
+  const [internal, setInternal] = useState<string | number | undefined>(defaultValue);
+  const isControlled = value !== undefined;
+  const resolvedValue = isControlled ? value : internal;
+
+  const handleChange = (next: string) => {
+    if (!isControlled) setInternal(next);
+    onChange?.(next);
+  };
+
   return (
-    <RadioGroupContext.Provider value={{ name: name ?? autoName, value, onChange, disabled }}>
+    <RadioGroupContext.Provider value={{ name: name ?? autoName, value: resolvedValue, onChange: handleChange, disabled }}>
       <div
         role="radiogroup"
         className={cn('cr-radio-group', orientation === 'horizontal' && 'cr-radio-group--horizontal', className)}

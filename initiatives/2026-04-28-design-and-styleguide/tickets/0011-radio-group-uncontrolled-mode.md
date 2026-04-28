@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0011 — RadioGroup uncontrolled mode is broken: defaultValue is accepted but never wired"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (mirror Tabs pattern): `RadioGroup` now destructures `defaultValue`, holds `useState` for the uncontrolled case, resolves `value ?? internal`, and a single `handleChange` updates internal state when uncontrolled and forwards to consumer `onChange`. Type signature now matches behaviour.
 
 ## Summary
 
