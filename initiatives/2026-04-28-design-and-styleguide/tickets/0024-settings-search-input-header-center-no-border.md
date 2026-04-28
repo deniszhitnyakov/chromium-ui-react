@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0024 — Settings-page SearchInput: center in the header, drop the border (match native chrome://settings)"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (drop border + fix centering). `Input.css` `.cr-search__field` border switched from `1px solid var(--cr-fallback-color-outline)` to `1px solid transparent` so the resting state shows just the filled pill on the surface; the focus rule that turns the border `--cr-fallback-color-primary` is preserved (border still appears on focus). Settings-page pattern's live preview header now wraps SearchInput in a `flex: 1` container with `justifyContent: center` and a fixed `width: 360`, so the field sits in the visual middle of the toolbar instead of being right-anchored. The "What to copy" bullet rewritten to spell out the centred placement and the no-border default. Verified in browser: border-color `rgba(0, 0, 0, 0)`, background `var(--cr-fallback-color-surface-1)` (filled).
 
 ## Summary
 

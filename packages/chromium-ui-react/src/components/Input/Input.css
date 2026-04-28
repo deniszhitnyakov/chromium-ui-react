@@ -94,7 +94,7 @@
   width: 100%;
   height: 36px;
   padding: 0 12px 0 34px;
-  border: 1px solid var(--cr-fallback-color-outline);
+  border: 1px solid transparent;
   border-radius: 18px;
   background: var(--cr-fallback-color-surface-1);
   color: var(--cr-primary-text-color);

@@ -23,7 +23,9 @@ This is the pattern a full-tab options page should follow. It is the closest rep
   flexDirection: 'column',
 }}>
   <Header title="Settings">
-    <SearchInput placeholder="Search settings" style={{ flex: 1, maxWidth: 400 }} />
+    <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+      <SearchInput placeholder="Search settings" style={{ width: 360 }} />
+    </div>
   </Header>
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
@@ -136,7 +138,7 @@ This is the pattern a full-tab options page should follow. It is the closest rep
 
 Every measurement above is intentional. The ones worth calling out:
 
-- **Header.** 56px tall (component default). Search field in the middle, `maxWidth: 400`. No shadow below the toolbar.
+- **Header.** 56px tall (component default). Search field **centered** in the toolbar (`flex: 1` spacer + a fixed-width `<SearchInput>`), `width: 360`. No shadow below the header. The SearchInput itself paints **no border** by default — just the filled pill on the toolbar surface, matching native `chrome://settings`.
 - **Sidebar.** 260px wide (Chromium uses 266; rounded to a nicer number here). Separated from content by a 1px right border, no shadow.
 - **Content column.** `max-width: 680px`, centered, with 24px gutters. Sections stack with `gap: 24`.
 - **Section header.** `<h2>` 14px weight-400 (regular!), letter-spacing 0.25px, above the card. Not inside.
