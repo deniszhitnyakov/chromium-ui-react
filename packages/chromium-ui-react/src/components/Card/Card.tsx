@@ -2,7 +2,7 @@ import { forwardRef, type HTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 import './Card.css';
 
-export type CardVariant = 'default' | 'outlined' | 'filled' | 'elevated';
+export type CardVariant = 'elevated' | 'outlined' | 'filled' | 'flat';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   variant?: CardVariant;
@@ -10,7 +10,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { variant = 'default', interactive, className, ...rest },
+  { variant = 'elevated', interactive, className, ...rest },
   ref,
 ) {
   return (
@@ -18,7 +18,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       ref={ref}
       className={cn(
         'cr-card',
-        variant !== 'default' && `cr-card--${variant}`,
+        variant !== 'elevated' && `cr-card--${variant}`,
         interactive && 'cr-card--interactive',
         className,
       )}

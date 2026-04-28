@@ -11,7 +11,7 @@ format: mdx
 ## Live preview
 
 ```tsx live
-<Card variant="outlined" style={{ maxWidth: 360 }}>
+<Card style={{ maxWidth: 360 }}>
   <CardHeader>
     <CardTitle>Bookmarks backup</CardTitle>
     <CardDescription>Last synced 3 minutes ago</CardDescription>
@@ -19,12 +19,12 @@ format: mdx
   <CardBody>Your bookmarks are up to date across all devices.</CardBody>
   <CardFooter>
     <Button variant="text">History</Button>
-    <Button variant="action">Sync now</Button>
+    <Button variant="action">Sync</Button>
   </CardFooter>
 </Card>
 ```
 
-A rectangular surface used to group related content. Comes with four visual variants and a set of semantic sub-components (`CardHeader`, `CardBody`, `CardFooter`, `CardTitle`, `CardDescription`) that handle spacing and typography for you.
+A rectangular surface used to group related content. Default is **elevated** — the subtle `--cr-elevation-2` shadow `chrome://settings`, `chrome://bookmarks`, and `chrome://downloads` ship with. Three other variants cover the cases where elevation is wrong (outlined, filled, flat). Plus a set of semantic sub-components (`CardHeader`, `CardBody`, `CardFooter`, `CardTitle`, `CardDescription`) that handle spacing and typography for you.
 
 ## Import
 
@@ -43,7 +43,7 @@ import {
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `variant` | `'default' \| 'outlined' \| 'filled' \| 'elevated'` | `'default'` | Visual style |
+| `variant` | `'elevated' \| 'outlined' \| 'filled' \| 'flat'` | `'elevated'` | Visual style |
 | `interactive` | `boolean` | `false` | Adds hover/active states (use when the whole card is clickable) |
 
 All other `<div>` attributes are forwarded. Ref goes to the root `<div>`.
@@ -53,18 +53,18 @@ All other `<div>` attributes are forwarded. Ref goes to the root `<div>`.
 ## Variants
 
 ```tsx
-<Card>Default (no border, no shadow — blends with the page)</Card>
-<Card variant="outlined">Outlined (1px border)</Card>
-<Card variant="filled">Filled (subtle tinted background)</Card>
-<Card variant="elevated">Elevated (drop shadow)</Card>
+<Card>Elevated (default — subtle elevation-2 shadow)</Card>
+<Card variant="outlined">Outlined (1px border, no shadow)</Card>
+<Card variant="filled">Filled (subtle tinted background, no shadow)</Card>
+<Card variant="flat">Flat (no border, no shadow)</Card>
 ```
 
 ### When to use which
 
-- `default` — grouping content on a page that already has structure (e.g., inside a settings row).
-- `outlined` — the workhorse for panels and dashboards; gives a clear boundary without visual weight.
-- `filled` — highlights related content without borders (inline alerts, quote blocks).
-- `elevated` — pop a single surface above the page (feature highlight, selected item).
+- `elevated` (default) — settings sections, side-panel sections, dashboard tiles, dialog content cards. The Chromium-faithful default.
+- `outlined` — dense admin layouts, dialogs that already sit on an elevated surface, places where another shadow would feel like noise.
+- `filled` — quote blocks, code samples, inline alerts — content that wants to look distinct without competing for elevation.
+- `flat` — when the parent already provides the boundary (e.g., a card-shaped drawer); reach for it sparingly.
 
 ## Structured composition
 

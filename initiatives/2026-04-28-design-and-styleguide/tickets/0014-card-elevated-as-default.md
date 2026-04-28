@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0014 — Card: 'elevated' should be the default variant (and shown first in the live preview)"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1: `CardVariant` reordered to `'elevated' | 'outlined' | 'filled' | 'flat'`; default changed to `'elevated'`. The previous `'default'` (flat surface, no chrome) became `'flat'` so the type reads true (`default` no longer means the default variant). CSS `.cr-card` now paints elevation-2; `.cr-card--flat` paints the previous flat look. Card docs page rewritten; anti-pattern #10 wording tightened so the "(library default)" claim is accurate.
 
 ## Summary
 

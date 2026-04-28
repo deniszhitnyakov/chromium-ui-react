@@ -1,7 +1,7 @@
 .cr-card {
   background: var(--cr-fallback-color-surface);
   border-radius: var(--cr-card-border-radius);
-  box-shadow: var(--cr-card-shadow);
+  box-shadow: var(--cr-elevation-2);
   overflow: hidden;
 }
 
@@ -15,8 +15,8 @@
   background: var(--cr-fallback-color-surface-1);
 }
 
-.cr-card--elevated {
-  box-shadow: var(--cr-elevation-2);
+.cr-card--flat {
+  box-shadow: none;
 }
 
 .cr-card--interactive {

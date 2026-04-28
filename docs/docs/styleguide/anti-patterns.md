@@ -123,7 +123,7 @@ Color in Chromium is reserved for: the primary action, the checked state of a to
 - `--cr-elevation-3` — popover menus, `cr-action-menu`.
 - `--cr-elevation-5` — dialogs.
 
-A settings card has a **subtle elevation-2 shadow** — `<Card variant="elevated">` or the library default. Outlined cards are an acceptable alternative for dense admin layouts, but the Chromium-faithful default is shadowed. A settings row has **no shadow at all** — row separators are 1px hairlines inside the card.
+A settings card has a **subtle elevation-2 shadow** — `<Card>` (the library default is `variant="elevated"`). Outlined cards are an acceptable alternative for dense admin layouts, but the Chromium-faithful default is shadowed. A settings row has **no shadow at all** — row separators are 1px hairlines inside the card.
 
 ## 11. Primary color on secondary actions
 
