@@ -31,6 +31,11 @@ kanban-plugin: basic
 - [ ] **#0025** — [Primary-action running-state replacement: Stop button is variant='destructive', not outlined](../tickets/0025-running-state-stop-as-destructive.md)
 - [ ] **#0026** — [Settings entry pattern: upper-half placement + standardised 'Settings' naming](../tickets/0026-settings-entry-pattern-placement-naming.md)
 - [ ] **#0027** — [Reader Mode sample: empty space under the Reader Settings card](../tickets/0027-reader-mode-sample-empty-space-under-settings.md)
+- [ ] **#0028** — [Track every library deviation from Chromium source on the chromium-reference page](../tickets/0028-track-deviations-on-chromium-reference.md)
+- [ ] **#0029** — [Cleanup: actualise all documentation after the initiative's changes land](../tickets/0029-cleanup-actualize-all-docs.md)
+- [ ] **#0030** — [Cleanup: regenerate the one-page LLM doc after the initiative's changes land](../tickets/0030-cleanup-regenerate-one-page-llm-doc.md)
+- [ ] **#0031** — [Cleanup: update the Preflight Checklist for LLMs after the initiative's changes land](../tickets/0031-cleanup-update-preflight-checklist.md)
+- [ ] **#0032** — [Cleanup: re-render the Introduction preview images after the initiative's visual changes land](../tickets/0032-cleanup-rerender-introduction-preview-images.md)
 
 ## In Progress
 
