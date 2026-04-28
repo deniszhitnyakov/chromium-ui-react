@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0020 — Select: bring height, border, border-radius, and font-size in line with native Chrome"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (direct mirror of native Chrome). `Select.css` `.cr-select` updated on all four axes: `height: 36px → 32px`, `border-radius: var(--cr-radius-sm) → var(--cr-radius-md)` (4px → 8px), `border-color: var(--cr-fallback-color-outline) → var(--cr-fallback-color-surface-variant)` (lighter / quieter stroke), `font-size: var(--cr-font-size-md) → var(--cr-font-size-sm)` (13px → 12px). Padding unchanged (`0 28px 0 12px`) — chevron SVG still reads correctly at the new height. Focus state's 2px border-width compensation already works because `box-sizing: border-box` keeps the outer geometry stable. Verified in browser: 32px / 12px / 8px / surface-variant border. The new anchor is what #0021 (Input / Textarea geometry) will align to.
 
 ## Summary
 

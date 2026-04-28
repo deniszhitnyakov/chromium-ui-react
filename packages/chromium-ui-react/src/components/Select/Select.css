@@ -13,14 +13,14 @@
 }
 
 .cr-select {
-  height: 36px;
+  height: 32px;
   padding: 0 28px 0 12px;
-  border: 1px solid var(--cr-fallback-color-outline);
-  border-radius: var(--cr-radius-sm);
+  border: 1px solid var(--cr-fallback-color-surface-variant);
+  border-radius: var(--cr-radius-md);
   background: var(--cr-fallback-color-surface);
   color: var(--cr-primary-text-color);
   font-family: var(--cr-font-family);
-  font-size: var(--cr-font-size-md);
+  font-size: var(--cr-font-size-sm);
   cursor: pointer;
   outline: none;
   appearance: none;
