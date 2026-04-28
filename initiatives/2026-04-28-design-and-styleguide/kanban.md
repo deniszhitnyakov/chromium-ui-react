@@ -29,6 +29,8 @@ kanban-plugin: basic
 - [ ] **#0023** — [Menu in role='navigation' (sidebar): drop shadow + radius, render flat to match native chrome://settings](../tickets/0023-menu-navigation-flat-no-card.md)
 - [ ] **#0024** — [Settings-page SearchInput: center in the header, drop the border (match native chrome://settings)](../tickets/0024-settings-search-input-header-center-no-border.md)
 - [ ] **#0025** — [Primary-action running-state replacement: Stop button is variant='destructive', not outlined](../tickets/0025-running-state-stop-as-destructive.md)
+- [ ] **#0026** — [Settings entry pattern: upper-half placement + standardised 'Settings' naming](../tickets/0026-settings-entry-pattern-placement-naming.md)
+- [ ] **#0027** — [Reader Mode sample: empty space under the Reader Settings card](../tickets/0027-reader-mode-sample-empty-space-under-settings.md)
 
 ## In Progress
 
