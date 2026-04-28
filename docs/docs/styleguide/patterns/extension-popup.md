@@ -84,7 +84,7 @@ A popup that shows the feature immediately — no onboarding, no logo, no "What 
       <List>
         <Divider subtle />
         <ListItem
-          primary="Options"
+          primary="Settings"
           secondary="Default format, shortcut, destinations"
           interactive
           end={<span style={{ color: 'var(--cr-fallback-color-on-surface-subtle)' }}>›</span>}

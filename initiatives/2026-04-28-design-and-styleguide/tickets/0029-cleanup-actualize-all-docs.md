@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0029 — Cleanup: actualise all documentation after the initiative's changes land"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (single sweep). Grepped `docs/docs` for stale terminology — every remaining `Toolbar` mention is a Chromium-source citation in `chromium-reference.md` (legitimate). `tonal` survives only as explanatory prose noting it was deliberately removed (`one-page.md`, `button.md`, `chromium-reference.md`). `Options` row label in `extension-popup.md` swept to `Settings`. `one-page.md` Button line ("Filled, outlined, tonal, destructive…") corrected to "Outlined (default), filled action, destructive, or text button." Repo-root `README.md`: showcase alt text dropped "chips", component count bumped 22→23 with Table / ToggleRow / Header named, Quick start example dropped the removed `fullWidth` prop and now uses a flex container for the Sign in CTA. `packages/chromium-ui-react/README.md`: `Chip` row removed from Tags; `ToggleRow` added to Forms; `Table*` exports added to Layout. `sidebars.ts` already has `header`, `table`, `settings-entry` registered (verified). Final build green for both lib and docs.
 
 > **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes the substantive tickets left anything to clean up. The whole-docs top-to-bottom sweep happens; finding nothing to change is a valid outcome, but the sweep itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
 

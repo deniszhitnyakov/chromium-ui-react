@@ -20,7 +20,7 @@ Chromium-native UI primitives for building browser extensions, companion apps, a
 
 </div>
 
-![Chromium UI React showcase — light mode. Toolbar with search, sidebar menu, account preferences card with tabs and form, sync status with progress, recent activity list, buttons, chips, badges, and toasts.](docs/static/img/showcase-light.v2.png#gh-light-mode-only)
+![Chromium UI React showcase — light mode. Header with search, sidebar menu, account preferences card with tabs and form, sync status with progress, recent activity list, buttons, badges, and toasts.](docs/static/img/showcase-light.v2.png#gh-light-mode-only)
 ![Chromium UI React showcase — dark mode. Same layout on a dark surface.](docs/static/img/showcase-dark.v2.png#gh-dark-mode-only)
 
 <div align="center">
@@ -50,7 +50,7 @@ It's built first and foremost for **Chromium extension developers**, but nothing
 
 ## Highlights
 
-- **22 accessible React component families** — Button, Input, Toggle, Dialog, Tabs, Menu, Toast, and a drill-in `PanelStack` for native Chromium side-panel navigation
+- **23 accessible React component families** — Button, Input, Toggle, Dialog, Tabs, Menu, Toast, Table, ToggleRow, Header, and a drill-in `PanelStack` for native Chromium side-panel navigation
 - **Chromium-authentic design tokens** — Google color palette (blue / green / red / yellow / grey), 4 / 8 / 12 / 16 px spacing scale, Roboto typography, `cr_shared_vars.css`-aligned elevation
 - **Automatic dark mode** via `prefers-color-scheme` — no provider, no context, no setup
 - **Zero-runtime styling** — plain CSS, no CSS-in-JS bundle bloat
@@ -71,13 +71,13 @@ import { Button, Input, Card, CardBody } from 'chromium-ui-react';
 
 export default function SignIn() {
   return (
-    <Card variant="outlined">
+    <Card>
       <CardBody>
         <Input label="Email" placeholder="you@example.com" />
         <Input label="Password" type="password" />
-        <Button variant="action" fullWidth>
-          Sign in
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 16 }}>
+          <Button variant="action">Sign in</Button>
+        </div>
       </CardBody>
     </Card>
   );
@@ -97,7 +97,7 @@ This repository is a small npm workspaces monorepo:
 ├── packages/
 │   └── chromium-ui-react/      # the published library (react + css)
 ├── docs/                        # Docusaurus 3 documentation site
-│   ├── docs/                    # markdown pages (25 total)
+│   ├── docs/                    # markdown pages
 │   ├── plugins/raw-markdown/    # "Copy Markdown" plugin
 │   └── src/theme/               # swizzled DocItem for Copy Markdown button
 ├── package.json                 # workspaces root
