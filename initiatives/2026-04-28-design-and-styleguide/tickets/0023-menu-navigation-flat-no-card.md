@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0023 — Menu in role='navigation' (sidebar): drop shadow + radius, render flat to match native chrome://settings"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (attribute selector). New `.cr-menu[role="navigation"]` rule in `Menu.css` zeroes the popover-card chrome — `box-shadow: none`, `border-radius: 0`, `padding: 0`, `min-width: 0`, `background: transparent` — so the sidebar nav reads as flat rows on the page surface. Verified in browser: navigation Menu paints `box-shadow: none / border-radius: 0px / padding: 0px / transparent background`, popover Menu (no role) keeps `var(--cr-elevation-3)` and `var(--cr-radius-md)` (8px). The `role="navigation"` discriminator was already on every navigation call site for accessibility, so no JSX or API change was needed. Active-item tint (`cr-menu-item--selected`) survives both contexts.
 
 ## Summary
 

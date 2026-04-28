@@ -10,6 +10,17 @@
   margin: 0;
 }
 
+/* Sidebar navigation: render flat. Native chrome://settings sidebar has no card,
+   no shadow, no rounded corners — just rows on the page surface separated by the
+   sidebar's right border. The popover/dropdown use (default) keeps its elevation. */
+.cr-menu[role="navigation"] {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: 0;
+}
+
 .cr-menu-item {
   display: flex;
   align-items: center;
