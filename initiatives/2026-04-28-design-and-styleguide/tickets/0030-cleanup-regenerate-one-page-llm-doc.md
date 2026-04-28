@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0030 — Cleanup: regenerate the one-page LLM doc after the initiative's changes land"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 3 (manual rewrite this round + checklist for the future). `one-page.md` updates: import block now lists `ToggleRow`, `Header`, and `Table*` exports; Card props line corrected to `'elevated' | 'outlined' | 'filled' | 'flat'` with default `'elevated'`; Header section opens with the side-panel ban + Header/PanelHeader distinction; new `ToggleRow` and `Table` sections added; Composition cheat-sheet's Side-panel layout dropped the in-panel `Header` and moved Settings to the upper half; Settings rows example uses `ToggleRow` instead of `ListItem + Toggle`. New "Notable styleguide rules" section (#9) lists the 11 most-easy-to-get-wrong library defaults — action-row pair, one primary, Settings entry naming/placement, side-panel header ban, header actions slot rule, shared form-control geometry, side-panel cards-not-bare-list, removed APIs, centred primary, Stop=destructive, sidebar Menu flat. Old "9. Versioning" renumbered to 10. CLAUDE.md release-process section gains a one-sentence reminder to re-read one-page before any release that changes the public API or a styleguide rule. Internal-only ticket links from chromium-reference.md stripped (they were broken — `initiatives/` is not in the docs site's published tree).
 
 > **Mandatory verification gate.** This ticket runs to completion at the end of the initiative regardless of whether the implementer believes one-page is already current. The full top-to-bottom re-read of `one-page.md` against the live state of every component and styleguide page happens; finding nothing to change is a valid outcome, but the verification itself is not optional. The initiative cannot be marked `approved` until this ticket is `done`.
 

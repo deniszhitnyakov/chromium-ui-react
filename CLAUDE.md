@@ -134,6 +134,8 @@ Three workflows in `.github/workflows/`:
 
 **Release process.** Bump the version in both `package.json` (repo root) and `packages/chromium-ui-react/package.json` in a single commit, push, then push a matching `v<version>` tag. The tag push triggers publish-npm and release in parallel; the preceding commit's push triggers deploy-docs. Do not rely on `npm version` — it doesn't understand the two-package version bump.
 
+Before tagging a release that changes a public API, a default value, or a styleguide rule: verify that `docs/docs/one-page.md` still reflects the current state. The one-page LLM doc is the primary artifact agents load and must not lie about the API.
+
 ## Conventions that matter
 
 - **Conventional Commits** (`feat:`, `fix:`, `docs:`, `refactor:`, `ci:`, `chore:`) — one logical change per commit. Release tooling and changelog generation assume this.
