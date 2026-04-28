@@ -4,6 +4,10 @@ kanban-plugin: basic
 
 ## To Do
 
+- [ ] **#0041** — [Table: doubled header/body border is still visible after #0033](./tickets/0041-table-double-border-still-visible.md)
+- [ ] **#0042** — [Table sticky header does not actually stick (scroll context issue)](./tickets/0042-table-sticky-header-not-sticking.md)
+- [ ] **#0043** — [Bookmarks Manager pattern: sidebar still rendered as elevated card with a dark right border](./tickets/0043-bookmarks-manager-sidebar-shadow-and-border.md)
+- [ ] **#0044** — [Side Panel pattern: add a centred Action Footer with the primary verb](./tickets/0044-side-panel-pattern-add-action-footer.md)
 
 ## In Progress
 
