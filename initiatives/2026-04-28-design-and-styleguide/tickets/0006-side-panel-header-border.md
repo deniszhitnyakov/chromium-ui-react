@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0006 — Side-panel header bottom border should match Divider color (use PanelHeader, not a hand-rolled div)"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 + the anti-pattern from direction 3: the Reading-list example now uses `<PanelHeader title="Reading list" />` instead of a hand-rolled header div. New anti-pattern #22 "Hand-rolled chrome instead of the matching primitive" added so the lesson sticks beyond this one example.
 
 ## Summary
 

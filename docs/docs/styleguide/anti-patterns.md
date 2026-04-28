@@ -441,6 +441,44 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 
 **Rule.** Section labels are sentence case at 14px regular weight. The 11px caps recipe (`.cr-label-small`) survives only as a form-field-label utility — used above a single input, never above a card or list. Reaching for it as a section label is the single most visible "this is older Material, not Chromium" tell. See [Typography — section title](./typography.md#section-title--description).
 
+## 22. Hand-rolled chrome instead of the matching primitive
+
+**Wrong.** A live example builds a side-panel header out of a `<div>` with hard-coded `height: 48`, padding, border, and an inline-styled title. The library exposes `<PanelHeader />` two folders away, but the example reaches for inline CSS — and reliably picks the heavier `--cr-fallback-color-outline` token instead of the quiet hairline.
+
+```tsx live
+<div style={{ width: 320, border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 12, overflow: 'hidden' }}>
+  <div style={{
+    height: 48,
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 16px',
+    borderBottom: '1px solid var(--cr-fallback-color-outline)',
+  }}>
+    <div style={{ fontSize: 14, fontWeight: 500 }}>Reading list</div>
+  </div>
+  <div style={{ padding: 16, color: 'var(--cr-fallback-color-on-surface-subtle)', fontSize: 13 }}>
+    (rest of panel)
+  </div>
+</div>
+```
+
+**Right.** Use the matching component. `PanelHeader` already has the right height, the right padding, the right hairline (`--cr-divider-color`, matching Toolbar and Divider), and forwards a back button slot.
+
+```tsx live
+<div style={{ width: 320, border: '1px solid var(--cr-fallback-color-outline)', borderRadius: 12, overflow: 'hidden' }}>
+  <PanelStack defaultView="main">
+    <PanelView id="main">
+      <PanelHeader title="Reading list" />
+      <div style={{ padding: 16, color: 'var(--cr-fallback-color-on-surface-subtle)', fontSize: 13 }}>
+        (rest of panel)
+      </div>
+    </PanelView>
+  </PanelStack>
+</div>
+```
+
+**Rule.** Whenever the library exposes a primitive for the structural chrome you are about to draw — `Toolbar` (or `Header`), `PanelHeader`, `Divider`, `Card` — reach for it. Inline reconstructions reliably diverge from the canonical token, the canonical sizes, or the canonical hairline, and ship the divergence to anyone who copies the example. The `var(--cr-divider-color)` token (introduced in #0002) names the hairline so even structural divs can read from it instead of `--cr-fallback-color-outline`.
+
 ---
 
 If you catch any of these in review, the fix is usually: remove a card, remove a shadow, remove a color, remove an icon, remove a heading. Restraint is the default setting.

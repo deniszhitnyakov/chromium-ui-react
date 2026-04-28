@@ -23,17 +23,9 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
   display: 'flex',
   flexDirection: 'column',
 }}>
-  <div style={{
-    height: 48,
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 16px',
-    borderBottom: '1px solid var(--cr-fallback-color-outline)',
-  }}>
-    <div style={{ fontSize: 14, fontWeight: 500 }}>Reading list</div>
-  </div>
   <PanelStack defaultView="main" style={{ flex: 1, minHeight: 0 }}>
     <PanelView id="main">
+      <PanelHeader title="Reading list" />
       <div style={{ flex: 1, overflowY: 'auto' }}>
         <div style={{ padding: 'var(--cr-space-2) var(--cr-space-4)' }}>
           <SearchInput placeholder="Search reading list" />
