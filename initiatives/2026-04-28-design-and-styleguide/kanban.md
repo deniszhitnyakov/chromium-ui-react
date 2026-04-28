@@ -23,6 +23,9 @@ kanban-plugin: basic
 - [ ] **#0017** — [Action-row secondary (Cancel) should be variant='text', not outlined](../tickets/0017-action-row-secondary-as-text.md)
 - [ ] **#0018** — [Rename Toolbar component to Header](../tickets/0018-rename-toolbar-to-header.md)
 - [ ] **#0019** — [Layout shell is content-only by default; header / footer are opt-in; header is forbidden in side-panel extensions](../tickets/0019-layout-shell-content-only-default-header-banned-in-side-panel.md)
+- [ ] **#0020** — [Select: bring height, border, border-radius, and font-size in line with native Chrome](../tickets/0020-select-native-geometry.md)
+- [ ] **#0021** — [Input / Textarea: align height, border-radius, and font-size with the new Select](../tickets/0021-input-textarea-geometry-align-with-select.md)
+- [ ] **#0022** — [Sections-and-rows: expand the canonical row vocabulary beyond toggle / drill-in / inline-control](../tickets/0022-expanded-row-vocabulary.md)
 
 ## In Progress
 
