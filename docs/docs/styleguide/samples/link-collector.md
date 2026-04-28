@@ -245,7 +245,7 @@ function ClearAllDemo() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button variant="destructive" onClick={() => setOpen(true)}>Clear all collections</Button>
+      <Button variant="destructive" onClick={() => setOpen(true)}>Clear all</Button>
       <Dialog
         open={open}
         onClose={() => setOpen(false)}

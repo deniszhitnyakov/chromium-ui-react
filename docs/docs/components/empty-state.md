@@ -15,7 +15,7 @@ format: mdx
   icon={<div style={{ fontSize: 48 }}>📚</div>}
   title="No bookmarks yet"
   description="Bookmark your favorite pages to find them again quickly."
-  action={<Button variant="action">Import from browser</Button>}
+  action={<Button variant="action">Import</Button>}
 />
 ```
 
@@ -45,7 +45,7 @@ Children render between description and action — use this for custom inline co
   icon={<BookmarkIcon style={{ width: 48, height: 48 }} />}
   title="No bookmarks yet"
   description="Bookmark your favorite pages to find them again quickly."
-  action={<Button variant="action">Import from browser</Button>}
+  action={<Button variant="action">Import</Button>}
 />
 ```
 

@@ -56,6 +56,7 @@ const sidebars: SidebarsConfig = {
             'styleguide/styleguide-typography',
             'styleguide/styleguide-spacing',
             'styleguide/styleguide-color',
+            'styleguide/styleguide-content',
           ],
         },
         {

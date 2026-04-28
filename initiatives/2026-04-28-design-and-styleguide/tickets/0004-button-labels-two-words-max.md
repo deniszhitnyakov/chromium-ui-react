@@ -1,6 +1,6 @@
 ---
 title: "Ticket 0004 — Button labels: aim for one word, never more than two"
-status: open
+status: done
 created: 2026-04-28
 updated: 2026-04-28
 authors: [Denis Zhitnyakov]
@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 + canonical-verb list folded into a new `content.md` styleguide page (Foundations sidebar). Anti-pattern #20 added. `checklist.md` Step 6 gains a one-line rule. Existing examples swept: "Import from browser" → "Import", "Add current tab" → "Add tab", "Clear all collections" → "Clear all". Two-word labels ("Start scraping", "Save changes") are within the rule and were left.
 
 ## Summary
 

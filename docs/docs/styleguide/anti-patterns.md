@@ -287,7 +287,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
     display: 'flex',
     justifyContent: 'center',
   }}>
-    <Button variant="action">Start scraping</Button>
+    <Button variant="action">Start</Button>
   </div>
 </div>
 ```
@@ -333,7 +333,7 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
     width: '100%', height: 36, border: 'none', borderRadius: 100,
     background: 'var(--cr-fallback-color-primary)', color: 'var(--cr-fallback-color-on-primary)',
     fontFamily: 'var(--cr-font-family)', fontSize: 14, fontWeight: 500, cursor: 'pointer',
-  }}>Start scraping</button>
+  }}>Start new scrape</button>
 </div>
 ```
 
@@ -354,7 +354,45 @@ The verb is labelled and coloured correctly. But a first-time user has to scan p
 </div>
 ```
 
-**Rule.** Chromium buttons are content-sized. A button stretched to the container's full width stops reading as a button and starts reading as a banner — exactly what `chrome://settings`, `chrome://bookmarks`, and the in-browser side panels never produce. Long verbs are a labelling problem, not a sizing one (see [Button labels](#)).
+**Rule.** Chromium buttons are content-sized. A button stretched to the container's full width stops reading as a button and starts reading as a banner — exactly what `chrome://settings`, `chrome://bookmarks`, and the in-browser side panels never produce. Long verbs are a labelling problem, not a sizing one (see [Content & labels — Button labels](./content.md#button-labels)).
+
+## 20. Multi-word button labels
+
+**Wrong.** Three- or four-word verbs in a button. The instinct is "be explicit", but the result reads like a SaaS CTA, not a Chromium control.
+
+```tsx live
+<div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 360 }}>
+  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+    <Button>Cancel</Button>
+    <Button variant="action">Save and continue</Button>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Button variant="action">Start new scrape</Button>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Button variant="action">Enrich visible leads</Button>
+  </div>
+</div>
+```
+
+**Right.** One word, or two when the verb genuinely needs a noun. Move qualifying nouns into the surface around the button — the dialog title, the panel header, the row's primary text already say what is being acted on.
+
+```tsx live
+<div style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 360 }}>
+  <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8 }}>
+    <Button>Cancel</Button>
+    <Button variant="action">Save</Button>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Button variant="action">Start</Button>
+  </div>
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <Button variant="action">Enrich</Button>
+  </div>
+</div>
+```
+
+**Rule.** Aim for one word; two is acceptable when the verb genuinely needs a noun ("Save changes", "Add account", "Restore defaults"). Three or more is wrong. See [Content & labels — Button labels](./content.md#button-labels) for the canonical Chromium verb list.
 
 ---
 

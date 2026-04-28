@@ -108,6 +108,8 @@ Any time the user has a primary/secondary action pair:
 - Order: `[Cancel] [Primary]`. Not the other way around.
 - Exactly two buttons. If you have a third, move it into a Menu behind an `IconButton`.
 - Primary is `variant="action"`. Destructive is `variant="destructive"`. Secondary is default (outlined) or `variant="text"`.
+- Buttons are content-sized — there is no `fullWidth` prop. Stretching a button edge-to-edge produces a banner, not a control.
+- **Labels are one word, two when the verb genuinely needs a noun.** `Save`, `Cancel`, `Add`, `Remove`, `Sync`, `Continue`. `Save changes` and `Add account` are acceptable. `Start new scrape`, `Enrich visible leads`, `Save and continue` are wrong — pick a tighter verb or move the noun into the surface around the button. See [Content & labels — Button labels](./content.md#button-labels).
 
 ## Step 7 — Navigation
 

@@ -142,7 +142,7 @@ For the first-run case before the extension has any state. One empty-state block
     <EmptyState
       title="No saved pages"
       description="Pages you save will appear here. Start by adding this tab."
-      action={<Button variant="action">Add current tab</Button>}
+      action={<Button variant="action">Add tab</Button>}
     />
   </div>
 </div>
