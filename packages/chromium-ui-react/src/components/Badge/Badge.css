@@ -5,10 +5,10 @@
   min-width: 20px;
   height: 20px;
   padding: 0 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--cr-fallback-color-primary);
   border-radius: 10px;
-  background: var(--cr-fallback-color-primary);
-  color: var(--cr-fallback-color-on-primary);
+  background: transparent;
+  color: var(--cr-fallback-color-primary);
   font-family: var(--cr-font-family);
   font-size: 11px;
   font-weight: var(--cr-font-weight-medium);
@@ -16,40 +16,22 @@
   white-space: nowrap;
 }
 
-.cr-badge--error   { background: var(--cr-fallback-color-error); color: var(--cr-fallback-color-on-error); }
-.cr-badge--success { background: var(--google-green-600); color: #fff; }
-.cr-badge--neutral { background: var(--cr-fallback-color-surface-variant); color: var(--cr-secondary-text-color); }
-.cr-badge--warning { background: var(--google-yellow-400); color: var(--google-grey-900); }
-
-/* Outline appearance — same semantic color is used for the border and the text,
-   with a transparent fill. Border sits in the same 1px slot reserved on .cr-badge,
-   so solid and outline badges line up at identical dimensions. */
-.cr-badge--outline {
-  background: transparent;
-  border-color: var(--cr-fallback-color-primary);
-  color: var(--cr-fallback-color-primary);
-}
-
-.cr-badge--outline.cr-badge--error {
-  background: transparent;
+.cr-badge--error {
   border-color: var(--cr-fallback-color-error);
   color: var(--cr-fallback-color-error);
 }
 
-.cr-badge--outline.cr-badge--success {
-  background: transparent;
+.cr-badge--success {
   border-color: var(--google-green-700);
   color: var(--google-green-700);
 }
 
-.cr-badge--outline.cr-badge--warning {
-  background: transparent;
+.cr-badge--warning {
   border-color: var(--google-yellow-700);
   color: var(--google-yellow-700);
 }
 
-.cr-badge--outline.cr-badge--neutral {
-  background: transparent;
+.cr-badge--neutral {
   border-color: var(--cr-secondary-text-color);
   color: var(--cr-secondary-text-color);
 }
@@ -58,23 +40,23 @@
    outline stays readable on dark surfaces. Primary/error already derive from
    semantic tokens that flip with the theme. */
 @media (prefers-color-scheme: dark) {
-  .cr-badge--outline.cr-badge--success {
+  .cr-badge--success {
     border-color: var(--google-green-300);
     color: var(--google-green-300);
   }
 
-  .cr-badge--outline.cr-badge--warning {
+  .cr-badge--warning {
     border-color: var(--google-yellow-300);
     color: var(--google-yellow-300);
   }
 }
 
-[data-cr-theme="dark"] .cr-badge--outline.cr-badge--success {
+[data-cr-theme="dark"] .cr-badge--success {
   border-color: var(--google-green-300);
   color: var(--google-green-300);
 }
 
-[data-cr-theme="dark"] .cr-badge--outline.cr-badge--warning {
+[data-cr-theme="dark"] .cr-badge--warning {
   border-color: var(--google-yellow-300);
   color: var(--google-yellow-300);
 }

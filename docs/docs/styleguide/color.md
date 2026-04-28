@@ -135,7 +135,7 @@ The components handle this via `:focus-visible`. Rules:
 
 The one place where additional accents are OK:
 
-- `Badge variant="success"` — green (`--google-green-600` token family).
+- `Badge variant="success"` — green (`--google-green-700` border + text in light mode, `--google-green-300` in dark).
 - `Badge variant="warning"` — yellow.
 - `Badge variant="error"` — red.
 - `Badge variant="neutral"` — grey.
@@ -146,12 +146,14 @@ Toasts follow the same palette for their left accent strip — the body remains 
 
 ### Badge defaults: quiet first
 
-Badges are attention magnets. A row of solid-filled badges competes with the primary action for the user's eye and produces the same "too much color" feeling as a colored page background. The styleguide prefers **quiet-first** defaults:
+Badges are attention magnets. A row of solid-filled badges competes with the primary action for the user's eye and produces the same "too much color" feeling as a colored page background — so the library does not ship one. Every `Badge` is an outline: a 1px border and matching text color with a transparent fill. There is no `appearance` prop.
 
-1. **Prefer `appearance="outline"` over solid.** An outline badge shares only a 1px border + text color with the surface, so several of them can sit on a row without forming a wall of fills. Reach for the solid appearance only when the state must be spotted instantly in a long list of otherwise-neutral rows — a single red "Failed" in a column of green "OK".
-2. **Prefer `variant="neutral"` over colored variants.** Most status labels ("Beta", "Draft", "Archived", "Experimental", a plain count like "3") are informational, not actionable — grey says "here is a label" without inventing a color hierarchy. Reserve `success` / `warning` / `error` for states the user actually has to react to.
+The remaining decision is which **variant** to use:
 
-Combined, the rule is: **outline-neutral first, colored outline second, solid last.** If you find yourself reaching for a solid colored badge, confirm the state deserves that much volume — otherwise dial it down.
+- **Prefer `variant="neutral"` over colored variants.** Most status labels ("Beta", "Draft", "Archived", "Experimental", a plain count like "3") are informational, not actionable — grey says "here is a label" without inventing a color hierarchy. Reserve `success` / `warning` / `error` for states the user actually has to react to.
+- **Don't stack colored badges in a list.** A column of green/yellow/red status pills in a results table or scrape preview is exactly the "wall of color" the outline-only default is meant to prevent. If five rows in a row have a colored badge, the column has lost its meaning — drop them all to neutral, or move the differentiator into the row's secondary text.
+
+The rule is: **neutral first, colored only when the user must react.** If you find yourself reaching for a colored badge on every row, you are decorating, not signalling.
 
 ## Dark mode
 
