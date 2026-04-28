@@ -21,6 +21,8 @@ kanban-plugin: basic
 - [ ] **#0015** — [Tabs: reduce default height — 48px is too tall for extension surfaces](../tickets/0015-tabs-reduce-default-height.md)
 - [ ] **#0016** — [Add a Table component (dense default, sticky-header option, automatic horizontal scroll)](../tickets/0016-add-table-component.md)
 - [ ] **#0017** — [Action-row secondary (Cancel) should be variant='text', not outlined](../tickets/0017-action-row-secondary-as-text.md)
+- [ ] **#0018** — [Rename Toolbar component to Header](../tickets/0018-rename-toolbar-to-header.md)
+- [ ] **#0019** — [Layout shell is content-only by default; header / footer are opt-in; header is forbidden in side-panel extensions](../tickets/0019-layout-shell-content-only-default-header-banned-in-side-panel.md)
 
 ## In Progress
 
