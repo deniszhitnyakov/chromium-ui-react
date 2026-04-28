@@ -37,11 +37,10 @@ Use this pattern whenever you have:
   <div style={{ display: 'flex', flex: 1, minHeight: 0 }}>
     <nav style={{
       width: 240,
-      borderRight: '1px solid var(--cr-fallback-color-outline)',
       padding: '8px 0',
       overflowY: 'auto',
     }}>
-      <Menu role="tree">
+      <Menu role="navigation">
         <MenuItem icon={<FolderIcon />} selected>Bookmarks bar</MenuItem>
         <MenuItem icon={<FolderIcon />}>Work</MenuItem>
         <MenuItem icon={<FolderIcon />}>Recipes</MenuItem>
@@ -104,7 +103,7 @@ Use this pattern whenever you have:
 ## What to copy from this
 
 - **Header.** 56px, title on the left, `SearchInput` in the middle (`maxWidth: 400`), a single `⋮` overflow `IconButton` at the far right. **The `SearchInput` sits between the title and the icon** — the icon never butts up against the title. "Add bookmark" and other one-off actions live inside that overflow `Menu`, not as their own toolbar icons. See [Anti-patterns #16](../anti-patterns.md#16-iconbutton-glued-to-a-title-in-the-header).
-- **Tree pane.** 240px wide, 1px right border separating from main. No shadow, no background tint. `Menu role="tree"` is the right semantic.
+- **Tree pane.** 240px wide. **No right border, no shadow, no background tint** — native `chrome://bookmarks` uses the implicit gutter to separate sidebar from main content. `Menu role="navigation"` triggers the flat sidebar styling (no popover-card chrome).
 - **Main pane.** Scrollable, 24px padding, content column max-width 960px centered. This is wider than the settings page's 680px — because manager rows need horizontal room for URL + metadata.
 - **Row structure.** 16px favicon, 40–48px row height, primary is the title, secondary is the URL (short domain for the un-selected state, full URL when selected in Chromium). `IconButton` on the right for per-row actions.
 - **Selected row.** The `selected` prop on `ListItem` highlights the row with a subtle fill. Supports keyboard navigation.
@@ -184,7 +183,7 @@ The Chromium bookmarks manager supports sort order via a `Menu` inside the "more
 
 ## Common mistakes
 
-- **Tree rendered as a card with shadow.** The tree pane is flat (no card), with a 1px right border.
+- **Tree rendered as a card with shadow.** The tree pane is flat (no card, no shadow, no right border) — see [Anti-pattern #22](../anti-patterns.md#22-hand-rolled-chrome-instead-of-the-matching-primitive) and the Settings page pattern's sidebar shape.
 - **Wide rows with colored backgrounds.** Selection is a subtle fill at `--cr-hover-background-color`-ish intensity — not a full-saturation blue.
 - **Multi-column table.** Manager rows are single-row `ListItem`s, not table rows. Density comes from text truncation and smaller icons, not from splitting into columns.
 - **Per-row checkboxes on the left.** Selection happens via click (with shift/cmd for multi). A leading checkbox on every row is a spreadsheet pattern, not a Chromium pattern.

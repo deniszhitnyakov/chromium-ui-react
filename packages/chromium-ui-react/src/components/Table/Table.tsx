@@ -26,7 +26,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(
   ref,
 ) {
   return (
-    <div className={cn('cr-table-scroll', wrapperClassName)}>
+    <div className={cn('cr-table-scroll', stickyHeader && 'cr-table--sticky-wrap', wrapperClassName)}>
       <table
         ref={ref}
         className={cn(

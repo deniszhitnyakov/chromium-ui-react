@@ -85,8 +85,18 @@ Chromium's side panel (reading list, bookmarks, search, journeys) shares a preci
       </div>
     </PanelView>
   </PanelStack>
+  <div style={{
+    padding: 'var(--cr-space-4)',
+    borderTop: '1px solid var(--cr-divider-color)',
+    display: 'flex',
+    justifyContent: 'center',
+  }}>
+    <Button variant="action">Start</Button>
+  </div>
 </div>
 ```
+
+The pinned bottom footer carries the panel's single primary verb — *Start*, here, but in your own panel it is *Capture*, *Save*, *Scan*, *Add bookmark* — whatever the user came to press. Centred, content-sized, and the only `variant="action"` button visible. See [Pattern — Primary action button](./primary-action.md) for the running-state replacement (Start → Stop), the no-primary case (status-only panels), and the full reasoning behind the centred-instead-of-right-aligned footer on side panels.
 
 ## What to copy from this
 

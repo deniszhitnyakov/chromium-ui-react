@@ -4,10 +4,6 @@ kanban-plugin: basic
 
 ## To Do
 
-- [ ] **#0041** — [Table: doubled header/body border is still visible after #0033](./tickets/0041-table-double-border-still-visible.md)
-- [ ] **#0042** — [Table sticky header does not actually stick (scroll context issue)](./tickets/0042-table-sticky-header-not-sticking.md)
-- [ ] **#0043** — [Bookmarks Manager pattern: sidebar still rendered as elevated card with a dark right border](./tickets/0043-bookmarks-manager-sidebar-shadow-and-border.md)
-- [ ] **#0044** — [Side Panel pattern: add a centred Action Footer with the primary verb](./tickets/0044-side-panel-pattern-add-action-footer.md)
 
 ## In Progress
 
@@ -55,6 +51,10 @@ kanban-plugin: basic
 - [x] **#0038** — [Side panel pattern: Card shadow reads too heavy](./tickets/0038-side-panel-card-shadow-too-heavy.md)
 - [x] **#0039** — [Extension Popup pattern: Settings entry is at the bottom, should be in the upper half (regression of #0026)](./tickets/0039-extension-popup-settings-entry-upper-half.md)
 - [x] **#0040** — [Tab Manager sample: sidebar still rendered as elevated card; SearchInput not centred in the header](./tickets/0040-tab-manager-sidebar-card-and-search-centering.md)
+- [x] **#0041** — [Table: doubled header/body border is still visible after #0033](./tickets/0041-table-double-border-still-visible.md)
+- [x] **#0042** — [Table sticky header does not actually stick (scroll context issue)](./tickets/0042-table-sticky-header-not-sticking.md)
+- [x] **#0043** — [Bookmarks Manager pattern: sidebar still rendered as elevated card with a dark right border](./tickets/0043-bookmarks-manager-sidebar-shadow-and-border.md)
+- [x] **#0044** — [Side Panel pattern: add a centred Action Footer with the primary verb](./tickets/0044-side-panel-pattern-add-action-footer.md)
 - [x] Drop solid Badge appearance — outline-only by design (commit `77bafca`, pre-tickets-system)
 
 

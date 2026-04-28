@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. Side Panel pattern's canonical live preview now ends in a pinned footer (`padding: var(--cr-space-4)`, `borderTop: 1px solid var(--cr-divider-color)`, `display: flex; justifyContent: center`) with one centred `<Button variant="action">Start</Button>`. Caption directly under the live preview links to [Pattern — Primary action button](./primary-action.md) for the running-state replacement and no-primary case.
 
 ## Summary
 

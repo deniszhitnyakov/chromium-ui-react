@@ -5,12 +5,33 @@
 }
 
 .cr-table {
+  /* display + overflow override: host sites (Docusaurus / Infima) sometimes
+     set `display: block; overflow: auto` on <table>, which breaks the
+     table-layout column alignment AND makes the table its own scroll context
+     (defeating cr-table-scroll + sticky header). Force native table layout. */
+  display: table;
+  overflow: visible;
   min-width: 100%;
   border-collapse: collapse;
+  border: none;
   font-family: var(--cr-font-family);
   font-size: var(--cr-font-size-md);
   line-height: var(--cr-line-height-normal);
   color: var(--cr-primary-text-color);
+  background: transparent;
+}
+
+/* Defensive reset against host-site (Docusaurus / Infima) default <th>/<td>/<tr>
+   styling: zero out inherited borders + zebra striping so cr-table is the sole
+   source of truth for row hairlines and backgrounds. The :where(...) wrapper
+   keeps these resets at specificity (0,1,0) so cell-level rules below
+   (.cr-table__header-cell { border-bottom: ... } etc) win in the cascade. */
+.cr-table :where(th, td) {
+  border: none;
+}
+.cr-table tbody tr,
+.cr-table tbody tr:nth-child(2n),
+.cr-table tbody tr:nth-child(2n+1) {
   background: transparent;
 }
 
@@ -20,7 +41,6 @@
 
 .cr-table__head {
   background: var(--cr-fallback-color-surface);
-  border-bottom: 1px solid var(--cr-divider-color);
 }
 
 .cr-table__header-cell {
@@ -28,6 +48,7 @@
   font-weight: var(--cr-font-weight-medium);
   color: var(--cr-secondary-text-color);
   padding: 10px 16px;
+  border-bottom: 1px solid var(--cr-divider-color);
   white-space: nowrap;
 }
 
@@ -72,14 +93,20 @@
   pointer-events: none;
 }
 
-.cr-table--sticky .cr-table__head {
-  border-bottom: none;
+/* Sticky header — see #0042. The wrapper itself becomes the vertical scroll
+   context (overflow-y: auto + height: 100%) so the sticky <th> can pin to the
+   top of cr-table-scroll while the consumer just bounds the parent's height. */
+.cr-table--sticky-wrap {
+  overflow-y: auto;
+  height: 100%;
 }
 
-.cr-table--sticky .cr-table__head .cr-table__header-cell {
+.cr-table--sticky .cr-table__head {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.cr-table--sticky .cr-table__head .cr-table__header-cell {
   background: var(--cr-fallback-color-surface);
-  border-bottom: 1px solid var(--cr-divider-color);
 }

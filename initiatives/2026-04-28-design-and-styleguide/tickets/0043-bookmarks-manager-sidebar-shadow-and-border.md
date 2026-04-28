@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1. Bookmarks Manager pattern's sidebar `<Menu role="tree">` switched to `role="navigation"` (triggers the flat-CSS rule from #0023); `borderRight` dropped from the `<nav>` style. "Tree pane" bullet rewritten to spell out the no-border / no-shadow / no-background rule. The "Tree rendered as a card with shadow" failure-mode entry rewritten to point at the right primitive shape.
 
 ## Summary
 

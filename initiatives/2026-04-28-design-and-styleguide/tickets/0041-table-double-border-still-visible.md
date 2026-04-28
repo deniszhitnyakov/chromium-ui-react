@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 (Infima reset) plus a `display: table; overflow: visible` reset on `.cr-table` itself (Docusaurus / Infima sets `display: block; overflow: auto` on every `<table>` and that was breaking column alignment + the sticky scroll context). Resets are wrapped in `:where(...)` so cell-level rules win the cascade. Verified — `<th>` / `<td>` no longer paint inherited Infima borders, `tbody tr:nth-child(2n)` background reset to transparent (no zebra), `<table>` is `display: table` again, hairline between header and body is the same single 1px line as the row dividers below.
 
 ## Summary
 

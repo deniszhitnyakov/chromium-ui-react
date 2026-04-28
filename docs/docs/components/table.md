@@ -122,7 +122,7 @@ All other `<table>` attributes are forwarded. A `ref` is forwarded to the underl
 ## Sticky header
 
 ```tsx live
-<div style={{ height: 200, overflow: 'auto', border: '1px solid var(--cr-divider-color)', borderRadius: 8 }}>
+<div style={{ height: 200, border: '1px solid var(--cr-divider-color)', borderRadius: 8 }}>
   <Table stickyHeader>
     <TableHead>
       <TableRow>
@@ -146,7 +146,7 @@ All other `<table>` attributes are forwarded. A `ref` is forwarded to the underl
 </div>
 ```
 
-`stickyHeader` requires the outer container to bound the height — without that, there is nothing for the header to be sticky against.
+`stickyHeader` requires the outer container to bound the height — without that, there is nothing for the header to stick against. The wrapper itself becomes the vertical scroll context (`overflow-y: auto`); do **not** set `overflow: auto` on the outer container, or the sticky `<th>` will pin to the wrong scroll ancestor and stop sticking.
 
 ## Horizontal scroll
 

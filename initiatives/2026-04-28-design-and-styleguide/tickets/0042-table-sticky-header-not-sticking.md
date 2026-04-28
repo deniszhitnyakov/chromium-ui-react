@@ -13,7 +13,7 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**open**
+**done** — direction 1 plus `<thead>`-level sticky. Two coordinated changes: (a) new `cr-table--sticky-wrap` modifier on the outer `<div>` adds `overflow-y: auto` and `height: 100%` so the wrapper itself becomes the vertical scroll context; (b) sticky moved from `<th>` to `<thead>` (the `<th>` cells still take the surface background so the body content doesn't bleed through behind them). The Sticky-header live preview now renders correctly — scrolling the demo container 200px up keeps the `<thead>` pinned (`headOffsetFromWrap` stays at 0). Docs prose updated to spell out the precondition: bound the parent's height, do **not** add `overflow: auto` on the parent (the wrapper handles it).
 
 ## Summary
 
