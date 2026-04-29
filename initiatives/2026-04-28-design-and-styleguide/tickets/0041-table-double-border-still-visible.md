@@ -13,7 +13,9 @@ initiative: 2026-04-28-design-and-styleguide
 
 ## Status
 
-**done** — direction 1 (Infima reset) plus a `display: table; overflow: visible` reset on `.cr-table` itself (Docusaurus / Infima sets `display: block; overflow: auto` on every `<table>` and that was breaking column alignment + the sticky scroll context). Resets are wrapped in `:where(...)` so cell-level rules win the cascade. Verified — `<th>` / `<td>` no longer paint inherited Infima borders, `tbody tr:nth-child(2n)` background reset to transparent (no zebra), `<table>` is `display: table` again, hairline between header and body is the same single 1px line as the row dividers below.
+**done** — direction 1 (Infima reset) plus a `display: table; overflow: visible` reset on `.cr-table` itself (Docusaurus / Infima sets `display: block; overflow: auto` on every `<table>` and that was breaking column alignment + the sticky scroll context). Resets are wrapped in `:where(...)` so cell-level rules win the cascade.
+
+**Follow-up fix (v0.4.3)** — operator's review of v0.4.2 surfaced that the doubled-line *perception* persisted even after the geometry was clean. Diagnosis: `<thead>` carried an explicit opaque `var(--cr-fallback-color-surface)` background while body rows were transparent. Against the Docusaurus playground's tinted parent surface, this produced a visible colour step at the header/body boundary; combined with the 1px hairline, the eye read the boundary as two close lines. The first three attempts (#0033, #0041 v1, the supporting #0034) chased the geometry — number of borders, where they collapse — instead of the perception. Fix: drop the explicit `<thead>` background, so header reads via font-weight + secondary text colour and the entire table reads as a single continuous surface. The opaque background is restored only when `.cr-table--sticky` is set (sticky pinned header still needs to hide body content scrolling under it). Verified on the deployed v0.4.3 docs site — header/body boundary is a single hairline, no perceptual doubling.
 
 ## Summary
 

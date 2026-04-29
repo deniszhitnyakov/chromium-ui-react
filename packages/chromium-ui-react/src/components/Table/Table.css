@@ -39,8 +39,15 @@
   font-size: var(--cr-font-size-sm);
 }
 
+/* <thead> is intentionally transparent by default. An opaque header background
+   creates a visible colour step against a tinted parent surface (e.g. the
+   Docusaurus playground's surface-1 backdrop). The hairline + the colour step
+   together perceptually read as a doubled line — three previous attempts
+   (#0033, #0041, the underlying intent of #0034) chased the geometry instead
+   of the perception. The opaque background returns only in sticky mode below,
+   where it is needed to hide body rows scrolling under the pinned header. */
 .cr-table__head {
-  background: var(--cr-fallback-color-surface);
+  background: transparent;
 }
 
 .cr-table__header-cell {
@@ -105,6 +112,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  background: var(--cr-fallback-color-surface);
 }
 
 .cr-table--sticky .cr-table__head .cr-table__header-cell {
